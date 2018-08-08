@@ -1,11 +1,13 @@
 class User < ApplicationRecord
   DEFAULT_AVATAR_URL =[]
 
-  validates :username, :email, :avatar_url, :password_digest, :session_token, :username_salt, presence: true
+  # avatar_url needs to be validates
+  validates :username, :email, :password_digest, :session_token, :username_salt, presence: true
   validates :email, :session_token, uniqueness: true
   validates_uniqueness_of :username, :scope => [:username_salt]
 
-  after_intialize :ensure_session_token, :ensure_salt, :ensure_avatar_url
+  after_intialize :ensure_session_token, :ensure_salt
+  # :ensure_avatar_url
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -30,9 +32,9 @@ class User < ApplicationRecord
 
   private
 
-  def ensure_avatar_url
-    self.avatar_url ||= 
-  end
+  # def ensure_avatar_url
+  #   self.avatar_url ||= 
+  # end
 
   def generate_salt
     salt = ""
