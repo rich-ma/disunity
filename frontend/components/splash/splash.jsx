@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 const Homepage = ({ currentUser, logout }) => {
   const dashboard = () => (
     <div>
-      <p>test1</p>
+      <p>Hell {currentUser.username}</p>
     </div>
   );
   const splash = () => (
     <div>
-      <p>test2</p>
+      <Link to="/login">Already have an account?</Link>
     </div>
   );
   

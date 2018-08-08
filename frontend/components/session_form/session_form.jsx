@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
             <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
           </div>
         </form>
-        {(this.props.formType === 'login' ? "Need an account?" : null)}{this.props.navLink}
+        {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
       </div>
     );
   }
