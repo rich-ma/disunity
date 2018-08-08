@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //test
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  // ReactDOM.render(<Root store={store} />, root);
-  ReactDOM.render(<h1>Fullstacks suck</h1>, root);
+  ReactDOM.render(<Root store={store} />, root);
+  // ReactDOM.render(<h1>Fullstacks suck</h1>, root);
 });
