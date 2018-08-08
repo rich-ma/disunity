@@ -5,9 +5,12 @@ class User < ApplicationRecord
   validates :username, :email, :password_digest, :session_token, :username_salt, presence: true
   validates :email, :session_token, uniqueness: true
   validates_uniqueness_of :username, :scope => [:username_salt]
+  validates :password, length: {minimum: 6, allow_nil: true}
 
-  after_intialize :ensure_session_token, :ensure_salt
+  attr_reader :password
+  after_initialize :ensure_session_token, :ensure_salt
   # :ensure_avatar_url
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -38,14 +41,13 @@ class User < ApplicationRecord
 
   def generate_salt
     salt = ""
-    4.times {salt << rand(0..9)}
+    4.times {salt << rand(0..9).to_s}
     salt
   end
 
   def ensure_salt
-    self.username_salt = generate_salt
-    while User.find_by(username: self.username) &&
-      User.find_by(username_salt: self.username_salt)
+    self.username_salt ||= generate_salt
+    while (User.where(username: self.username, username_salt: self.username_salt).exists?)
       self.username_salt = generate_salt
     end
   end
