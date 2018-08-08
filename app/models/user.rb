@@ -31,7 +31,7 @@ class User < ApplicationRecord
   private
 
   def ensure_avatar_url
-    
+    self.avatar_url ||= 
   end
 
   def generate_salt
@@ -63,6 +63,5 @@ class User < ApplicationRecord
     end
     self.session_token
   end
-
 
 end
