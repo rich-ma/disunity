@@ -13,7 +13,7 @@ const Homepage = ({ currentUser }) => {
     </div>
   );
   const splash = () => (
-    <div>
+    <div className="homepage-container">
       <Route path='/' component={Header}/>
       <Route path='/' component={Splash}/>
       <Route path='/' component={Footer}/>
