@@ -11,6 +11,10 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token, :ensure_salt
   # :ensure_avatar_url
 
+  has_many :servers_owned,
+    foreign_key: :admin_id,
+    class_name: :Server
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user

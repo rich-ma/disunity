@@ -43,6 +43,9 @@
     font-size: 14px;
     margin-top: 10px;
   }
+  .session-input:focus{
+    border-color:#677bc4;
+  }
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -96,7 +99,6 @@
    }
 }
 
-
  .session-form-appear {
    opacity: 0.01;
    transform: translate(5%, -20%);
@@ -126,14 +128,3 @@
  .session-errors{
    color: #f04747;
  }
-
-// .session-form-logo-appear {
-//   opacity: 0.01;
-//   transform: translate(-5%, -20%);
-// }
-
-// .session-form-logo-appear.session-form-logo-appear-active {
-//   opacity: 1;
-//   transform: translateY(0%);
-//   transition: opacity 200ms, transform 800ms;
-// }

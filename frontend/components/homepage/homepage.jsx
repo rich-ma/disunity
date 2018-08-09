@@ -3,13 +3,13 @@ import { Link, Route } from 'react-router-dom';
 import Header from './header';
 import Splash from './splash';
 import Footer from './footer';
+// import ServerIndexContainer from 
 
 
 
 const Homepage = ({ currentUser, logout }) => {
   const dashboard = () => (
     <div>
-      <Route path='/' component={Header}/>
       <p>Hello {currentUser.username}</p>
       <button onClick={(e) => logout(e)}>CLICK ME DAVID</button>
     </div>
