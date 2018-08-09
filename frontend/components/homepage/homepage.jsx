@@ -6,10 +6,11 @@ import Footer from './footer';
 
 
 
-const Homepage = ({ currentUser }) => {
+const Homepage = ({ currentUser, logout }) => {
   const dashboard = () => (
     <div>
       <p>Hello {currentUser.username}</p>
+      <button onClick={(e) => logout(e)}>CLICK ME DAVID</button>
     </div>
   );
   const splash = () => (

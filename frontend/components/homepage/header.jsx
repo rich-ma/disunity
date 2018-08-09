@@ -20,11 +20,11 @@ const Header = () => (
       </ul>
     </nav>
     <nav className="homepage-nav-right">
-      <a href="http://cdn.earthporm.com/wp-content/uploads/2015/08/booby-bird.jpg">
+      <a href="https://github.com/rich-ma">
         <i class="fab fa-github-alt"></i></a>
-      <a href="http://cdn.earthporm.com/wp-content/uploads/2015/08/booby-bird.jpg">
+      <a href="https://www.linkedin.com/in/richard-ma-39a24718/">
         <i className="fab fa-linkedin"></i></a>
-      <a href="http://cdn.earthporm.com/wp-content/uploads/2015/08/booby-bird.jpg">
+      <a href="mailto:rich.maaa@gmail.com">
         <i class="fas fa-envelope"></i></a>
         <div>
         <Link className="header-login" to="/login">Login</Link>

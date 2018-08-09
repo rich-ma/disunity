@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class SessionForm extends React.Component {
@@ -39,6 +39,12 @@ class SessionForm extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  handleDemo(e){
+    e.preventDefault();
+    const demoUser = { email: "dweb", password: 'starwars' };
+    this.props.demoLogin(demoUser);
   }
 
   render() {
@@ -104,6 +110,7 @@ class SessionForm extends React.Component {
             </form>
             <div className="session-redirect">
             {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+            <Link to='#' onClick={(e) => this.handleDemo(e)}>Demo Login</Link>
             </div>
           </div>
           </ReactCSSTransitionGroup>
