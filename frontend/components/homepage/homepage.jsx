@@ -9,6 +9,7 @@ import Footer from './footer';
 const Homepage = ({ currentUser, logout }) => {
   const dashboard = () => (
     <div>
+      <Route path='/' component={Header}/>
       <p>Hello {currentUser.username}</p>
       <button onClick={(e) => logout(e)}>CLICK ME DAVID</button>
     </div>
