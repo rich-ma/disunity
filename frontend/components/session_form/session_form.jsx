@@ -63,7 +63,11 @@ class SessionForm extends React.Component {
 
     return (
       <div className="session-main">
-        <i className="fab fa-discord" alt="disunity logo">Dis/Unity</i>
+        <div className="session-logo">
+        <i className="fab fa-discord" alt="disunity logo"></i>
+        &nbsp;
+          <p>DisUnity</p>
+        </div>
         <ReactCSSTransitionGroup transitionName="session-form"
           transitionAppear={true}
           transitionAppearTimeout={100}
@@ -74,7 +78,9 @@ class SessionForm extends React.Component {
             <form onSubmit={this.handleSubmit} className="session-form-box">
               {welcome}
 
+              <div className="session-errors">
               {this.renderErrors()}
+              </div>
                 <label>EMAIL
                   <input type="text" value={this.state.email}
                     onChange={this.update('email')}
