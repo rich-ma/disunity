@@ -110,7 +110,7 @@ class SessionForm extends React.Component {
             </form>
             <div className="session-redirect">
             {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
-            <Link to='#' onClick={(e) => this.handleDemo(e)}>Demo Login</Link>
+            <Link className="handle-demo" to='/' onClick={(e) => this.handleDemo(e)}>Demo Login</Link>
             </div>
           </div>
           </ReactCSSTransitionGroup>

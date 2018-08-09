@@ -43,6 +43,9 @@
   a:hover {
     color: #fff;
   }
+  .header-login:hover{
+    background-color: #637acc;
+  }
 }
 
 
@@ -87,8 +90,3 @@ fa-envelope {
   background-color: #7289DA;
   border-color: #2C2F33;
  }
-
-  .homepage-nav-right a:hover {
-  box-shadow: 1px 1px 1px 1px darkslategrey;
-  background-color: #637acc;
-  }
