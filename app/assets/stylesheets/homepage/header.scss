@@ -38,7 +38,7 @@
   font-size: 20px;
   padding-right: 20px;
   a {
-    padding-right: 20px; 
+    margin-right: 20px; 
   }
   i:hover {
     color: #fff;
@@ -46,8 +46,16 @@
   .header-login:hover{
     background-color: #637acc;
   }
-}
 
+  ul {
+    display: flex;
+    border-right: 1px solid lightgray;
+    padding-right: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+  }
+}
 
 fa-envelope {
   font-size: 27px;
@@ -70,12 +78,6 @@ fa-envelope {
    }
  }
 
- .fa-envelope {
-  border-right: 1px solid lightgray;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
- }
 
  .header-login {
   align-self: center;
