@@ -7,7 +7,7 @@ const Splash = () => (
 		<h1>It's time to ditch Skype and TeamSpeak.</h1>
 		<p>All-in-one voice and text chat for gamers thats free, secure, and works on both your desktop and phone.  Stop paying for TeamSpeak servers and hassling with Skype.  Simplfy your life.</p>
 
-    </div>
+  </div>
 
 );
 
