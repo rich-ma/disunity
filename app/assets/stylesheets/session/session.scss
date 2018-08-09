@@ -1,9 +1,4 @@
 .session-form-container {
-  font-family: Whitney,
-  Helvetica Neue,
-  Helvetica,
-  Arial,
-  sans-serif;
   background: #36393f;
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
@@ -60,8 +55,8 @@
 
   label {
     margin-bottom: 20px;
+    color: #b9bbbe;
   }
-  
 }
 
 .session-submit {
@@ -78,7 +73,6 @@
   text-align: center;
 }
 
-
 .session-main {
   background-image: url("https://i.kym-cdn.com/entries/icons/original/000/021/018/arthur.jpg");
   background-size: cover;
@@ -87,4 +81,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.session-redirect {
+  font-size: 14px;
+  color: #72767d;
+}
+
+.session-link {
+  color: #7289da;
 }

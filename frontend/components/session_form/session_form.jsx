@@ -89,7 +89,9 @@ class SessionForm extends React.Component {
               </label>
               
           </form>
+          <div className="session-redirect">
           {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+          </div>
         </div>
       </div>
     );
