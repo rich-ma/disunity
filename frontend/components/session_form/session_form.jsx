@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -63,36 +64,43 @@ class SessionForm extends React.Component {
     return (
       <div className="session-main">
         <i className="fab fa-discord" alt="disunity logo">Dis/Unity</i>
-        <div className="session-form-container">
-          <form onSubmit={this.handleSubmit} className="session-form-box">
-            {welcome}
+        <ReactCSSTransitionGroup transitionName="session-form"
+          transitionAppear={true}
+          transitionAppearTimeout={100}
+          transitionEnter={true}
+          transitionLeave={false}
+          >
+          <div className="session-form-container">
+            <form onSubmit={this.handleSubmit} className="session-form-box">
+              {welcome}
 
-            {this.renderErrors()}
-              <label>EMAIL
-                <input type="text" value={this.state.email}
-                  onChange={this.update('email')}
-                  className="session-input" />
-              </label>
-  
-              {usernameField}
+              {this.renderErrors()}
+                <label>EMAIL
+                  <input type="text" value={this.state.email}
+                    onChange={this.update('email')}
+                    className="session-input" />
+                </label>
+    
+                {usernameField}
 
-              <label>PASSWORD
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  className="session-input"
-                />
-              </label>
+                <label>PASSWORD
+                  <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="session-input"
+                  />
+                </label>
 
-              <label>
-              <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
-              </label>
-              
-          </form>
-          <div className="session-redirect">
-          {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+                <label>
+                <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
+                </label>
+                
+            </form>
+            <div className="session-redirect">
+            {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+            </div>
           </div>
-        </div>
+          </ReactCSSTransitionGroup>
       </div>
     );
   }

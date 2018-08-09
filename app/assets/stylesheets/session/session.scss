@@ -74,7 +74,7 @@
 }
 
 .session-main {
-  background-image: url("https://i.kym-cdn.com/entries/icons/original/000/021/018/arthur.jpg");
+  background-image: image-url('cartoonBackground.jpg');
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -91,3 +91,23 @@
 .session-link {
   color: #7289da;
 }
+
+ .session-form-appear {
+   opacity: 0.01;
+   transform: translate(5%, -20%);
+ }
+
+ .session-form-appear.session-form-appear-active {
+   opacity: 1;
+   transform: translateY(0%);
+   transition: opacity 500ms, transform 350ms;
+ }
+
+ .fa-discord {
+   font-size: 45px;
+   align-self: flex-start;
+   position: absolute;
+   top: 1%;
+   left: 1%;
+
+ }
