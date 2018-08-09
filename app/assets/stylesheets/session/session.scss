@@ -86,11 +86,16 @@
 .session-redirect {
   font-size: 14px;
   color: #72767d;
+  display: flex;
+  justify-content: space-between;
+  .session-link {
+    color: #7289da;
+  }
+   .handle-demo {
+     color: #7289da;
+   }
 }
 
-.session-link {
-  color: #7289da;
-}
 
  .session-form-appear {
    opacity: 0.01;
@@ -122,9 +127,6 @@
    color: #f04747;
  }
 
- .handle-demo {
-   
- }
 // .session-form-logo-appear {
 //   opacity: 0.01;
 //   transform: translate(-5%, -20%);

@@ -109,7 +109,9 @@ class SessionForm extends React.Component {
                 
             </form>
             <div className="session-redirect">
-            {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+              <div>
+                {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+              </div>
             <Link className="handle-demo" to='/' onClick={(e) => this.handleDemo(e)}>Demo Login</Link>
             </div>
           </div>
