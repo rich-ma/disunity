@@ -12,7 +12,7 @@
   font-size: 18px;
   padding: 40px;
   width: 480px;
-  height: 424px;
+  min-height: 424px;
   border-color: rgba(0, 0, 0, .3);
 }
 
@@ -25,7 +25,9 @@
   line-height: 32px;
   font-weight: 300;
   justify-content: center;
+  margin-bottom: 20px;
     p{
+      margin-top: 10px;
       color: #72767d;
       font-size: 18px;
       line-height: 22px;
@@ -44,6 +46,7 @@
     border-width: 1px;
     border-style: solid;
     font-size: 14px;
+    margin-top: 10px;
   }
   display: flex;
   flex-direction: column;
@@ -54,6 +57,10 @@
   font-size: 12px;
   font-family: inherit;
   height: 100%;
+
+  label {
+    margin-bottom: 20px;
+  }
   
 }
 

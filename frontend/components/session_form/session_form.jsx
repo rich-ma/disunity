@@ -75,7 +75,7 @@ class SessionForm extends React.Component {
               </label>
   
               {usernameField}
-              
+
               <label>PASSWORD
                 <input type="password"
                   value={this.state.password}
@@ -87,6 +87,7 @@ class SessionForm extends React.Component {
               <label>
               <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
               </label>
+              
           </form>
           {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
         </div>
