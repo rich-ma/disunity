@@ -12,6 +12,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -50,44 +54,42 @@ class SessionForm extends React.Component {
     
     const usernameField = this.props.formType === 'login' ? null : (
       <label>USERNAME
-        <br/>
         <input type="text" value={this.state.username}
           onChange={this.update('username')}
           className="session-input"/>
-          <br/>
       </label>
     ); //end username
 
     return (
-      <div className="session-form-container">
-        <form onSubmit={this.handleSubmit} className="session-form-box">
-          {welcome}
-          <br/>
-         
-          {this.renderErrors()}
-          <div className="session-form">
-            <br/>
-            <label>EMAIL
-              <br/>
-              <input type="text" value={this.state.email}
-                onChange={this.update('email')}
-                className="session-input" />
-            </label>
-            <br/>
-            {usernameField}
-            <label>PASSWORD
-              <br/>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="session-input"
-              />
-            </label>
-            <br/>
-            <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
-          </div>
-        </form>
-        {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+      <div className="session-main">
+        <i className="fab fa-discord" alt="disunity logo">Dis/Unity</i>
+        <div className="session-form-container">
+          <form onSubmit={this.handleSubmit} className="session-form-box">
+            {welcome}
+
+            {this.renderErrors()}
+              <label>EMAIL
+                <input type="text" value={this.state.email}
+                  onChange={this.update('email')}
+                  className="session-input" />
+              </label>
+  
+              {usernameField}
+              
+              <label>PASSWORD
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="session-input"
+                />
+              </label>
+
+              <label>
+              <input className="session-submit" type="submit" value={this.props.formType === 'login' ? 'login' : 'continue'} />
+              </label>
+          </form>
+          {(this.props.formType === 'login' ? "Need an account? " : null)}{this.props.navLink}
+        </div>
       </div>
     );
   }

@@ -1,0 +1,83 @@
+.session-form-container {
+  font-family: Whitney,
+  Helvetica Neue,
+  Helvetica,
+  Arial,
+  sans-serif;
+  background: #36393f;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+  box-sizing: border-box;
+  color: #72767d;
+  font-size: 18px;
+  padding: 40px;
+  width: 480px;
+  height: 424px;
+  border-color: rgba(0, 0, 0, .3);
+}
+
+.session-form-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 300;
+  justify-content: center;
+    p{
+      color: #72767d;
+      font-size: 18px;
+      line-height: 22px;
+    }
+}
+
+.session-form-box {
+  .session-input {
+    background-color: rgba(0, 0, 0, .1);
+    border-color: rgba(0, 0, 0, .3);
+    color: #f6f6f7;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 14px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: auto;
+  color: #72767d;
+  font-weight: 600;
+  font-size: 12px;
+  font-family: inherit;
+  height: 100%;
+  
+}
+
+.session-submit {
+  background: #677bc4;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  height: 44px;
+  min-height: 44px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+.session-main {
+  background-image: url("https://i.kym-cdn.com/entries/icons/original/000/021/018/arthur.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
