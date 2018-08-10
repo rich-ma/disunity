@@ -21,3 +21,5 @@ class ServerIndex extends Component {
     )
   }
 }
+
+export default ServerIndex;
