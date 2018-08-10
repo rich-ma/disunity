@@ -5,6 +5,7 @@ class Server < ApplicationRecord
   validates :name, uniqueness: true
 
   belongs_to :admin, foreign_key: :admin_id, class_name: :User
+  has_one_attached :photo
 
   after_initialize :ensure_icon_url
 
