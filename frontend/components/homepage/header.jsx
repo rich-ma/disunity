@@ -21,7 +21,7 @@ const Header = () => (
     </nav>
     <nav className="homepage-nav-right">
       <ul>
-        <li> <a target="_blank" href="https://github.com/rich-ma"><i className="fab fa-github-alt"></i></a>
+        <li><a target="_blank" href="https://github.com/rich-ma"><i className="fab fa-github-alt"></i></a>
         </li>
         <li> <a target="_blank" href="https://www.linkedin.com/in/richard-ma-39a24718/">
         <i className="fab fa-linkedin"></i></a>
