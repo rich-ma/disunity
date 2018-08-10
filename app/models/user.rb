@@ -1,15 +1,14 @@
 class User < ApplicationRecord
-  DEFAULT_AVATAR_URL =[]
+  DEFAULT_AVATAR_URL= ["https://image.flaticon.com/icons/svg/188/188955.svg", "https://image.flaticon.com/icons/png/512/280/280870.png", "https://image.flaticon.com/icons/svg/188/188987.svg", "https://image.flaticon.com/icons/svg/188/188996.svg"]
 
   # avatar_url needs to be validates
-  validates :username, :email, :password_digest, :session_token, :username_salt, presence: true
+  validates :username, :email, :password_digest, :session_token, :username_salt, :avatar_url, presence: true
   validates :email, :session_token, uniqueness: true
   validates_uniqueness_of :username, :scope => [:username_salt]
   validates :password, length: {minimum: 6, allow_nil: true}
 
   attr_reader :password
-  after_initialize :ensure_session_token, :ensure_salt
-  # :ensure_avatar_url
+  after_initialize :ensure_session_token, :ensure_salt, :ensure_avatar_url
 
   has_many :servers_owned, foreign_key: :admin_id, class_name: :Server
 
@@ -35,6 +34,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def ensure_avatar_url
+    self.avatar_url ||= DEFAULT_AVATAR_URL.sample
+  end
 
   def generate_salt
     salt = ""

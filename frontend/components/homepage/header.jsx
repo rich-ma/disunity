@@ -21,14 +21,14 @@ const Header = () => (
     </nav>
     <nav className="homepage-nav-right">
       <ul>
-        <li> <a target="_blank" href="https://github.com/rich-ma"><i class="fab fa-github-alt"></i></a>
+        <li> <a target="_blank" href="https://github.com/rich-ma"><i className="fab fa-github-alt"></i></a>
         </li>
         <li> <a target="_blank" href="https://www.linkedin.com/in/richard-ma-39a24718/">
         <i className="fab fa-linkedin"></i></a>
         </li>
 
         <li><a target="_blank" href="mailto:rich.maaa@gmail.com">
-        <i class="fas fa-envelope"></i></a>
+        <i className="fas fa-envelope"></i></a>
         </li>
       </ul>
         <div>
