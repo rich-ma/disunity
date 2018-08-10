@@ -12,4 +12,4 @@ david = User.create(username: "DW3B17", email:'david@david.io', password: '12345
 rob = User.create(username: "RobFarb2010", email:'rob@rob.io', password: '123456')
 
 Server.create(admin_id: steven, name: 'DoUKNowdaWae', icon_url: 'https://png.icons8.com/color/1600/ugandan-knuckles.png')
-Server.create(admin_id: david, name: 'App Academy', icon_url: 'https://png.icons8.com/color/1600/ugandan-knuckles.png')
+Server.create(admin_id: david, name: 'App Academy', icon_url: 'https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/2005/s300/logo-emblem-red-1000-1-.jpg')

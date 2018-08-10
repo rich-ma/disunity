@@ -1,4 +1,4 @@
-class Api::serversController < ApplicationController 
+class Api::ServersController < ApplicationController 
   def create
     @server = Server.new(server_params)
     if @server.save
