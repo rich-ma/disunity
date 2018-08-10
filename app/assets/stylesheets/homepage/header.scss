@@ -80,7 +80,8 @@ fa-envelope {
  .header-login {
   align-self: center;
   font-size: 16px;
-  border: 2px solid hsla(0, 0%, 100%, .8);
+  border: 2px solid #2C2F33(0, 0%, 100%, .8);
+  box-sizing: border-box;
   border-radius: 20px;
   color: #fff;
   line-height: 24px;
@@ -88,5 +89,4 @@ fa-envelope {
   padding: 5px 20px 7px;
   top: 1%;
   background-color: #7289DA;
-  border-color: #2C2F33;
  }

@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
         <ReactCSSTransitionGroup transitionName="session-form"
           transitionAppear={true}
           transitionAppearTimeout={100}
-          transitionEnter={true}
+          transitionEnter={false}
           transitionLeave={false}
           >
           <div className="session-form-container">
