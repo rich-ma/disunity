@@ -11,9 +11,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token, :ensure_salt
   # :ensure_avatar_url
 
-  has_many :servers_owned,
-    foreign_key: :admin_id,
-    class_name: :Server
+  has_many :servers_owned, foreign_key: :admin_id, class_name: :Server
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -38,10 +36,6 @@ class User < ApplicationRecord
 
   private
 
-  # def ensure_avatar_url
-  #   self.avatar_url ||= 
-  # end
-
   def generate_salt
     salt = ""
     4.times {salt << rand(0..9).to_s}
@@ -50,13 +44,13 @@ class User < ApplicationRecord
 
   def ensure_salt
     self.username_salt ||= generate_salt
-    while (User.where(username: self.username, username_salt: self.username_salt).exists?)
+    while User.where(username: self.username, username_salt: self.username_salt).exists?
       self.username_salt = generate_salt
     end
   end
 
   def ensure_session_token
-     self.session_token ||= generate_unique_session_token
+    self.session_token ||= generate_unique_session_token
   end
 
   def new_session_token
@@ -70,5 +64,4 @@ class User < ApplicationRecord
     end
     self.session_token
   end
-
 end
