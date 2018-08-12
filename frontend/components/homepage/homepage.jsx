@@ -3,16 +3,21 @@ import { Link, Route } from 'react-router-dom';
 import Header from './header';
 import Splash from './splash';
 import Footer from './footer';
+import Modal from '../dashboard/modal/modal.jsx';
 import ServerIndexContainer from '../dashboard/server/server_index_container';
-
-
 
 const Homepage = ({ currentUser, logout }) => {
   const dashboard = () => (
     <div className='dashboard-container'>
+      <Modal />
       <div className='server-index-col'>
         {/* home, server indexcontainer, add server button */}
+        <img className="home-link" src="https://www.shareicon.net/data/512x512/2017/06/21/887435_logo_512x512.png" alt=""/>
+        <span className='home-server-span'></span>
         <Route path='/' component={ServerIndexContainer} />
+        <div className="server-new"
+          onClick={() => openModal('newServer')}><i className="fas fa-plus"></i></div>          
+        {/* <Route path='/' component={CreateServerContainer} /> */}
       </div>
 
       <div className='server-channel-col'>
@@ -29,14 +34,10 @@ const Homepage = ({ currentUser, logout }) => {
             {/* search, info */}
           </div>
         </div>
-
       </div>
-
-
-      <p>Hello {currentUser.username}</p>
-      <button onClick={(e) => logout(e)}>CLICK ME DAVID</button>
     </div>
   );
+  
   const splash = () => (
     <div className="homepage-container">
       <Route path='/' component={Header}/>

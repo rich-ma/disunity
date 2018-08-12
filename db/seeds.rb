@@ -18,5 +18,5 @@ demo = User.create(username: 'DWeb17', email: "dweb", password: 'starwars')
 s1 = Server.create(admin_id: steven.id, name: 'DoUKNowdaWae', icon_url: 'https://png.icons8.com/color/1600/ugandan-knuckles.png')
 s2 = Server.create(admin_id: david.id, name: 'App Academy', icon_url: 'https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/2005/s300/logo-emblem-red-1000-1-.jpg')
 
-s1.photo.attach(io: File.open('app/assets/images/pikachu.jpg'), filename: 'pikachu.jpg')
+s1.photo.attach(io: File.open('app/assets/images/knuckles.png'), filename: 'knuckles.png')
 s2.photo.attach(io: File.open('app/assets/images/doge-icon.png'), filename: 'doge-icon.png')

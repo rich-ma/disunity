@@ -17,6 +17,7 @@ class ServerIndex extends Component {
           <ServerIndexItem key={server.id} server={server} />
         ))}
         </ul>
+        <i className="fas fa-plus"></i>
       </div>
     )
   }
