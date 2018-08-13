@@ -1,0 +1,98 @@
+.new-server-container {
+  // background-image: url(/assets/1949442….png),
+  // url(/assets/6906eb3….png);
+  // background-position: 0 100%,
+  // 100% 100%;
+  // background-repeat: no-repeat;
+  // background-size: 155px auto,
+  // 75px auto;
+  // box-sizing: border-box;
+  height: 240px;
+  // padding: 30px 24px;
+  width: 520px;
+  background: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  border-radius: 10px;
+  align-content: center;
+  justify-content: space-evenly;
+  h1{
+    color: #7289da;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 40px;
+    margin-top: 6px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 30px;
+    pointer-events: auto;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .new-server-choose {
+    background: hsla(0, 0%, 100%, .75);
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    width: 228px;
+    height: 180px;
+
+    h2 {
+      color: #7289da;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+
+    p{
+      color: #99aab5;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-top: 16px;
+      padding: 0 15px;
+      padding-bottom: 20px;
+    }
+
+    button {
+      border-radius: 3px;
+      color: #fff;
+      padding: 14px 20px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 16px;
+       padding: 10px 20px;
+      position: relative;
+    }
+  }
+
+  .server-create {
+    button {
+      background-color: #7289da;
+    }
+  }
+
+  .server-join {
+    button {
+      background-color: #3ca374;
+    }
+  }
+
+}
+

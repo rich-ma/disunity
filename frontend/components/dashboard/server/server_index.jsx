@@ -9,15 +9,16 @@ class ServerIndex extends Component {
   }
 
   render() {
-    const { servers } = this.props;
+    const { servers, openModal } = this.props;
     return (
       <div className='server-index-container'>
         <ul className='server-index-list'>
         {servers.map(server => (
           <ServerIndexItem key={server.id} server={server} />
         ))}
+          <li className="server-new"
+            onClick={() => openModal('newServer')}><i className="fas fa-plus"></i></li>
         </ul>
-        <i className="fas fa-plus"></i>
       </div>
     )
   }

@@ -46,30 +46,32 @@ class CreateServerForm extends React.Component {
   }
 
   render() {
-    const { errors } = this.props;
     const photoFileName = this.state.photoFile ? `Uploaded ${this.state.photoFile.name}` : "";
 
     return (
       <div className="create-server-form-container">
         <form onSubmit={this.handleSubmit}>
-          <h2>Create your server</h2>
-          {errors.map((error, idx) => (
-            <p className="server-error" key={idx}>
-              {error}
-            </p>
-          ))}
+          <h1>Create your server</h1>
+
           <p>
-            By creating a server, you will have access to free  <del>voice and</del> text chat to use amongst your friends.
+            By creating a server, you will have access to free text chat to use amongst your friends.
           </p>
-          <div className="server-input-section">
+
+          <ul className='create-server-errors'>
+          {this.props.errors.map((error, idx) => (
+            <li>{error}</li>
+          ))}
+          </ul>
+
+          <div className="create-server-">
             <label>
               <p>Server Name</p>
               <input
                 type="text"
-                onChange={this.updateState}
-                value={this.state.name}
                 placeholder="Enter a server name"
-                autoFocus="true" />
+                autoFocus="true"
+                onChange={(e) => this.updateState(e)}
+                value={this.state.name} />
             </label>
             <label
               className="server-photo-input-label"

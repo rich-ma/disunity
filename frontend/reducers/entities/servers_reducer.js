@@ -11,7 +11,7 @@ const serversReducer = (state = {}, action) => {
     case RECEIVE_SERVER:
       return merge(newState, {[action.server.id]: action.server});
     case RECEIVE_SERVERS:
-      return action.servers;
+      return action.payload.servers;
     case REMOVE_SERVER:
       delete newState([action.serverId]);
       return newState;

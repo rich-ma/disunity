@@ -26,13 +26,11 @@ const Modal = ({ modal, closeModal }) => {
   }
   return (
     <div className="modal-background" onClick={closeModal}> 
-    <ReactCSSTransitionGroup transitionName="dashboard-modal"
-      transitionAppear={true} transitionAppearTimeout={250}
-      transitionEnter={false} transitionLeave={false} >
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className="modal-child animated fadeIn" 
+      onClick={e => e.stopPropagation()}>
         {component}
       </div>
-    </ReactCSSTransitionGroup>
+
     </div>
   )
 }

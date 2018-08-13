@@ -26,9 +26,29 @@
 .home-server-span {
   width: 35px;
   // border-top: 2px solid hsla(0, 0%, 100%, .3);
-   border-top: 2px solid #2f3136;
+   border-top: 2px solid #535559;
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.server-new {
+  color: #535559;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  font-size: 20px;
+  font-weight: 300;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  border: 1px dashed #535559;
+  margin: 0 auto;
+  padding-left: 1px;
+}
+
+.server-new:hover {
+  border-color: hsla(0, 0%, 100%, .75);
+  color: hsla(0, 0%, 100%, .75)
 }
 
     // width: 60px;

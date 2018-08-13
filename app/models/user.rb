@@ -10,7 +10,17 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token, :ensure_salt, :ensure_avatar_url
 
-  has_many :servers_owned, foreign_key: :admin_id, class_name: :Server
+  has_many :servers_owned, 
+    foreign_key: :admin_id, 
+    class_name: :Server, 
+    dependent: :destroy
+
+  has_many :memberships, 
+    foreign_key: :server_id, 
+    class_name: :ServersMembership, 
+    dependent: :destroy
+
+  has_many :servers, through: :memberships, source: :server
   has_one_attached :photo
 
   def self.find_by_credentials(email, password)

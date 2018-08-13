@@ -15,7 +15,7 @@ export const updateServer = server => (
 );
 
 
-export const fetchServers = ()=> (
+export const fetchServers = () => (
   $.ajax({
     method: 'GET',
     url: `api/servers`,

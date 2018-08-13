@@ -3,8 +3,17 @@ class Server < ApplicationRecord
 
   validates :admin_id, :icon_url, :name, presence: true
   validates :name, uniqueness: true
+  validates_uniqueness_of :admin_id, :scope => [:name]
 
   belongs_to :admin, foreign_key: :admin_id, class_name: :User
+  
+  has_many :memberships, 
+    foreign_key: :server_id, 
+    class_name: :ServersMembership, 
+    dependent: :destroy
+
+  has_many :users, through: :memberships, source: :user
+
   has_one_attached :photo
 
   after_initialize :ensure_icon_url
