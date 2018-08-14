@@ -1,17 +1,17 @@
-export const createMembership = data => (
-  $.ajax({
+export const createMembership = data => {
+  return ($.ajax({
     method: 'POST',
-    url: `/api/memberships`,
+    url: `/api/servers_memberships`,
     data: {
       name: data.name,
-      membership: { server_id: data.serverId }
+      membership: { server_id: data.id }
     }
   })
-);
+)};
 
 export const deleteMembership = id => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/memberships/${id}`
+    url: `/api/servers_memberships/${id}`
   })
 );

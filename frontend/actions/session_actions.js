@@ -28,13 +28,15 @@ export const removeSessionErrors = () => ({
 export const signup = formUser => dispatch => (
   SessionAPIUtil.signup(formUser)
     .then(user => (dispatch(receiveCurrentUser(user))), err => (
-    dispatch(receiveSessionErrors(err.responseJSON))))
+    dispatch(receiveSessionErrors(err.responseJSON)))
+  )
 );
 
 export const login = formUser => dispatch => (
   SessionAPIUtil.login(formUser)
     .then(user => (dispatch(receiveCurrentUser(user))), err => (
-    dispatch(receiveSessionErrors(err.responseJSON))))
+    dispatch(receiveSessionErrors(err.responseJSON)))
+  )
 );
 
 export const logout = () => dispatch => (

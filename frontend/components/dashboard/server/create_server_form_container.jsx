@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createServer, fetchServers, fetchServer, removeServerErrors } from '../../../actions/server_actions';
 import CreateServerForm from './create_server_form.jsx';
 import { createServerMembership } from '../../../actions/server_membership_actions';
+import { closeModal } from '../../../actions/modal_actions';
 
 const mSTP = state => ({
   errors: state.errors.server,
@@ -12,7 +13,7 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal()),
-  createServer: server => dispatch(createServer(server)),
+  createServer: formData => dispatch(createServer(formData)),
   removeServerErrors: () => dispatch(removeServerErrors()),
   createServerMembership: serverId => dispatch(createServerMembership(serverId))
 });

@@ -1,22 +1,13 @@
 .new-server-container {
-  // background-image: url(/assets/1949442….png),
-  // url(/assets/6906eb3….png);
-  // background-position: 0 100%,
-  // 100% 100%;
-  // background-repeat: no-repeat;
-  // background-size: 155px auto,
-  // 75px auto;
-  // box-sizing: border-box;
-  height: 240px;
-  // padding: 30px 24px;
-  width: 520px;
   background: #fff;
+  width: 520px;
   display: flex;
   flex: 1;
   flex-direction: row;
   border-radius: 10px;
   align-content: center;
   justify-content: space-evenly;
+  padding-bottom: 20px;
   h1{
     color: #7289da;
     font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;

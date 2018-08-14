@@ -31,33 +31,39 @@ export const removeServer = (serverId) => ({
 
 export const fetchServers = () => dispatch => (
   ServerAPIUtil.fetchServers()
-    .then(servers => dispatch(receiveServers(servers))), err => (
+    .then(servers => dispatch(receiveServers(servers)), err => (
     dispatch(receiveErrors(err.responseJSON)))
-);
+    )
+  );
 
 export const fetchServer = id => dispatch => (
   ServerAPIUtil.fetchServer(id)
-    .then(server => dispatch(receiveServer(server))), err => (
+    .then(server => dispatch(receiveServer(server)), err => (
     dispatch(receiveErrors(err.responseJSON)))
+    )
 );
 
-export const createServer = server => dispatch => (
-  ServerAPIUtil.createServer(server)
-    .then(server => dispatch(receiveServer(server))), err => (
-    dispatch(receiveErrors(err.responseJSON)))
-);
+export const createServer = formData => dispatch => {
+  return(
+  ServerAPIUtil.createServer(formData).then(
+    server => dispatch(receiveServer(server)), 
+    err => (dispatch(receiveErrors(err.responseJSON)))
+    ) 
+)};
 
 export const updateServer = server => dispatch => (
   ServerAPIUtil.updateServer(server)
-  .then(server => dispatch(receiveerver(server))), err => (
+  .then(server => dispatch(receiveerver(server)), err => (
     dispatch(receiveErrors(err.responseJSON)))
+  )
 )
 
 export const deleteServer = id => dispatch => (
   ServerAPIUtil.deleteServer(id)
-  .then(id => dispatch(removeServer(id))), err => (
+  .then(id => dispatch(removeServer(id)), err => (
     dispatch(receiveErrors(err.responseJSON)))
-)
+  )
+);
 
 export const clearServerErrors = () => dispatch => (
   dispatch(removeErrors())

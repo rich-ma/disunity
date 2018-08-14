@@ -8,7 +8,9 @@ export default (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SERVER_ERRORS:
-      return action.errors;
+
+        return action.errors;
+
     case RECEIVE_SERVER:
       return [];
     case REMOVE_SERVER_ERRORS:

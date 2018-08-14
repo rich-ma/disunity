@@ -9,9 +9,8 @@ class Api::ServersMembershipsController < ApplicationController
         @server_membership.server_id = nil
       end
     else #user creating server
-      @server_membership = ServersMembership.new(membership_params)
+      @server_membership = ServersMembership.new(server_id: params[:membership][:server_id])
     end
-    
     @server_membership.user_id = current_user.id
     if @server_membership.save
       render :show

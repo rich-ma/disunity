@@ -24,20 +24,20 @@ const clearMembershipErrors = () => ({
   type: CLEAR_MEMBERSHIP_ERRORS
 });
 
-export const createMembership = serverId => dispatch => (
+export const createServerMembership = serverId => dispatch => (
   SMApiUtil.createMembership(serverId)
   .then(membership => dispatch(receiveMembership(membership)), err => 
   dispatch(receiveMembershipErrors(err.responseJSON))
   )
 );
 
-export const deleteMembership = id => dispatch => (
+export const deleteServerMembership = id => dispatch => (
   SMApiUtil.deleteMembership(id)
   .then(id => dispatch(removeMembership(id)), err => 
   dispatch(receiveMembershipErrors(err))
   )
 );
 
-export const removeMembershipErrors = () => dispatch => (
+export const removeServerMembershipErrors = () => dispatch => (
   dispatch(clearMembershipErrors())
 );

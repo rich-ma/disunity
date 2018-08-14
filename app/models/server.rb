@@ -20,6 +20,6 @@ class Server < ApplicationRecord
 
   private
   def ensure_icon_url
-    self.icon_url ||= DEFAULT_ICON.sample
+    self.icon_url ||= DEFAULT_ICONS.sample
   end
 end

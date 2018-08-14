@@ -27,17 +27,19 @@ class CreateServerForm extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('server[name]', this.state.name);
+    formData.append('server[admin_id]', this.props.currentUser.id);
     if (this.state.photoFile) {
       formData.append('server[photo]', this.state.photoFile);
     }
-    let server;
     this.props.createServer(formData)
       .then(payload => {
-        server = payload.server;
-        this.props.createMembership(payload.server);
+        return this.props.createServerMembership(payload.server);
       })
-      .then(() => this.props.closeModal())
-      .then(() => this.props.history.push(`/channels/${server.id}`));
+      .then(payload => {
+        debugger
+        this.props.history.push(`/channels/${payload.serverId}`)
+      }) 
+      .then(() => this.props.closeModal());
   }
 
   handleFile(e) {
@@ -50,7 +52,6 @@ class CreateServerForm extends React.Component {
 
     return (
       <div className="create-server-form-container">
-        <form onSubmit={this.handleSubmit}>
           <h1>Create your server</h1>
 
           <p>
@@ -63,33 +64,32 @@ class CreateServerForm extends React.Component {
           ))}
           </ul>
 
-          <div className="create-server-">
+        <form className="create-server-form" onSubmit={this.handleSubmit}>
             <label>
-              <p>Server Name</p>
+              <h2>SERVER NAME</h2>
               <input
                 type="text"
                 placeholder="Enter a server name"
                 autoFocus="true"
+                className = 'create-server-input'
                 onChange={(e) => this.updateState(e)}
                 value={this.state.name} />
             </label>
             <label
               className="server-photo-input-label"
               htmlFor="server-photo-input">
-              <div className="server-photo-input-placeholder">
-                <p>Change</p>
-                <p>Icon</p>
-              </div>
-            </label>
+              <div>
+                <p>Change<br/>Icon</p>
             <input
               type="file"
               id="server-photo-input"
               onChange={this.handleFile}
               accept="image/*" />
-          </div>
+              </div>
+            </label>
           <div className="server-input-footer">
             <div className="server-photo-filename">{photoFileName}</div>
-            <button>Create</button>
+            <input className='create-server-submit' type="submit" value='Create'/>
           </div>
         </form>
       </div>
