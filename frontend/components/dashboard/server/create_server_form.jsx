@@ -58,11 +58,19 @@ class CreateServerForm extends React.Component {
             By creating a server, you will have access to free text chat to use amongst your friends.
           </p>
 
-          <ul className='create-server-errors'>
-          {this.props.errors.map((error, idx) => (
-            <li>{error}</li>
-          ))}
-          </ul>
+          <div className='create-server-errors'>
+            <ul>
+            {this.props.errors.server.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+            </ul>
+            
+            <ul>
+            {this.props.errors.membership.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+            </ul>
+          </div>
 
         <form className="create-server-form" onSubmit={this.handleSubmit}>
             <label>
@@ -78,7 +86,8 @@ class CreateServerForm extends React.Component {
             <label
               className="server-photo-input-label"
               htmlFor="server-photo-input">
-              <div>
+              <div
+              >
                 <p>Change<br/>Icon</p>
             <input
               type="file"

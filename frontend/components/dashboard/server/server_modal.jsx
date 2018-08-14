@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CreateServerFormContainer from './create_server_form_container';
-// import JoinServerFormContainer from './join_server_form_container';
+import JoinServerFormContainer from './join_server_form_container';
 
 class NewServer extends React.Component {
   constructor(props) {
@@ -15,12 +14,28 @@ class NewServer extends React.Component {
     this.setState({ type })
   }
 
+  createServer(){
+    return(
+    <div className='animated fadeIn'>
+      <CreateServerFormContainer />
+    </div>
+    )
+  }
+
+  joinServer(){
+    return (
+    < div className='animated fadeIn' >
+      <JoinServerFormContainer />
+    </div >
+    )
+  }
+
   render() {
     let content;
     if (this.state.type === "create") {
-      content = createServer();
+      content = this.createServer();
     } else if (this.state.type === "join") {
-      content = joinServer();
+      content = this.joinServer();
     } else {
       content = (
         <div>
@@ -49,17 +64,5 @@ class NewServer extends React.Component {
     )
   }
 };
-
-const createServer = () => (
-  <div className='animated fadeIn'>
-    <CreateServerFormContainer />
-  </div>
-)
-
-// const joinServer = () => (
-  // < div className = 'animated fadeIn' >
-  //   <JoinServerFormContainer />
-  // </div >
-// )
 
 export default NewServer;

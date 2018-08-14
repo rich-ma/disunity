@@ -12,7 +12,7 @@ class JoinServerForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.removeMembershipErrors();
+    this.props.removeServerMembershipErrors();
   }
 
   handleInput(e) {
@@ -22,7 +22,7 @@ class JoinServerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let membership;
-    this.props.createMembership(this.state)
+    this.props.createServerMembership(this.state)
       .then(payload => {
         membership = payload.membership;
 
@@ -33,24 +33,35 @@ class JoinServerForm extends React.Component {
   }
 
   render() {
-    const { errors } = this.props;
     return (
       <div className="join-server-form-container">
-        <h2>Join a Server</h2>
-        {errors.map((error, idx) => (
-          <p className="membership-error" key={idx}>
-            {error}
-          </p>
-        ))}
-        <p>Enter the name of the server<br />you want to join below:</p>
+        <h1 className='join-server-title'>JOIN A SERVER</h1>
+        <p>Enter the name of the server<br/>you want to join below:</p>
+
+        <div className='join-server-errors'>
+          <ul>
+            {this.props.errors.server.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+
+          <ul>
+            {this.props.errors.membership.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+        </div>
+
         <form onSubmit={this.handleSubmit}>
           <input
+            className="join-server-input"
             type="text"
             value={this.state.name}
             onChange={this.handleInput}
-            autoFocus="true" />
+            autoFocus="true" 
+            placeholder="Enter a server name"/>
         </form>
-        <div className="join-server-form-button">
+        <div className="join-server-submit">
           <button onClick={this.handleSubmit}>Join</button>
         </div>
       </div>
