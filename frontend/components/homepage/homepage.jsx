@@ -19,8 +19,10 @@ const Homepage = ({ currentUser }) => {
       </div>
 
       <div className='server-channel-col'>
+        
         {/* server name, channelIndex, UserInfo */}
       </div>
+
       <div>
         <header className='dashboard-header'> </header>
         <div className='channel-users-container'>

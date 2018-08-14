@@ -34,7 +34,6 @@
 }
 
 .server-link {
-  // display: block;
   position: relative;
   z-index: 1;
   display: flex;
@@ -42,6 +41,7 @@
   align-items: center;
   text-align: left;
   margin-bottom: 10px;
+  margin-right: 1px;
   img {
     width: 52px;
     height: 52px;
@@ -97,7 +97,7 @@
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     height: 45px;
-    margin-right: 8px;
+    margin-right: 5px;
 }
 
 .server-new:hover {

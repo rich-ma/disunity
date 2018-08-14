@@ -4,7 +4,10 @@ import {
   createServerMembership,
   removeServerMembershipErrors
 } from '../../../actions/server_membership_actions';
-import { fetchServers } from '../../../actions/server_actions';
+import {
+  fetchServers,
+  removeServerErrors
+} from '../../../actions/server_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
 const mSTP = state => ({
@@ -18,7 +21,8 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal()),
   fetchServers: () => dispatch(fetchServers()),
-  removeServerMembershipErrors: () => 
+  removeServerErrors: () => dispatch(removeServerErrors()),
+  removeServerMembershipErrors: () =>
   dispatch(removeServerMembershipErrors()),
   createServerMembership: serverId => dispatch(createServerMembership(serverId))
 });

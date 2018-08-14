@@ -13,6 +13,7 @@ class JoinServerForm extends React.Component {
 
   componentDidMount() {
     this.props.removeServerMembershipErrors();
+    this.props.removeServerErrors();
   }
 
   handleInput(e) {
