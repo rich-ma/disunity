@@ -61,9 +61,9 @@ class JoinServerForm extends React.Component {
             autoFocus="true" 
             placeholder="Enter a server name"/>
         </form>
-        <div className="join-server-submit">
-          <button onClick={this.handleSubmit}>Join</button>
-        </div>
+
+        <button className="join-server-submit" onClick={this.handleSubmit}>Join</button>
+
       </div>
     )
   }

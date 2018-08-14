@@ -83,23 +83,24 @@ class CreateServerForm extends React.Component {
                 onChange={(e) => this.updateState(e)}
                 value={this.state.name} />
             </label>
-            <label
-              className="server-photo-input-label"
-              htmlFor="server-photo-input">
-              <div
-              >
-                <p>Change<br/>Icon</p>
-            <input
-              type="file"
-              id="server-photo-input"
-              onChange={this.handleFile}
-              accept="image/*" />
-              </div>
-            </label>
-          <div className="server-input-footer">
-            <div className="server-photo-filename">{photoFileName}</div>
-            <input className='create-server-submit' type="submit" value='Create'/>
-          </div>
+            <div className='create-submits'>
+              <label
+                className="server-photo-input-label"
+                htmlFor="server-photo-input">
+                <div>
+                  <p>Change<br/>Icon</p>
+              <input
+                type="file"
+                id="server-photo-input"
+                onChange={this.handleFile}
+                accept="image/*" />
+                </div>
+              </label>
+
+                <div className="server-photo-filename">{photoFileName}</div>
+                <input className='create-server-submit' type="submit" value='Create'/>
+             
+            </div>
         </form>
       </div>
     )
