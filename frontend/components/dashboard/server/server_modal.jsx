@@ -41,10 +41,10 @@ class NewServerContainer extends React.Component {
         <div>
           <h1>Oh, another server huh?</h1>
           <div className="new-server-container">
-            <div className="new-server-choose server-create">
+            <div onClick={() => this.updateContent('create')} className="new-server-choose server-create">
               <h2>Create</h2>
               <p>Create a new server and invite your friends. It's free!</p>
-              <button onClick={() => this.updateContent('create')}>
+              <button type='submit'>
               Create a Server</button>
             </div>
             <div className="new-server-choose server-join"

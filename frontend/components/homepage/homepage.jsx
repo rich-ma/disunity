@@ -38,13 +38,15 @@ const Homepage = ({ currentUser }) => {
     </div>
   );
   
-  const splash = () => (
+  const splash = () => {
+    debugger
+    return (
     <div className="homepage-container">
       <Route path='/' component={Header}/>
       <Route path='/' component={Splash}/>
       <Route path='/' component={Footer}/>
     </div>
-  );
+  )};
   
   return currentUser ? dashboard() : splash();
 };

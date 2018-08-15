@@ -1,3 +1,4 @@
+
 class Server < ApplicationRecord
   DEFAULT_ICONS = ["https://image.flaticon.com/icons/svg/188/188955.svg", "https://image.flaticon.com/icons/png/512/280/280870.png", "https://image.flaticon.com/icons/svg/188/188987.svg", "https://image.flaticon.com/icons/svg/188/188996.svg"]
 
@@ -13,6 +14,11 @@ class Server < ApplicationRecord
     dependent: :destroy
 
   has_many :users, through: :memberships, source: :user
+
+  has_many :channels, 
+  foreign_key: :server_id, 
+  class_name: :Channel, 
+  dependent: :destroy
 
   has_one_attached :photo
 

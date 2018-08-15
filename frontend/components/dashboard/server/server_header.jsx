@@ -21,15 +21,25 @@ class ServerHeader extends Component {
   componentDidMount(){
     const that = this;
     this.props.fetchServer(this.props.match.params.serverId)
-      .then((currentServer) => that.setState({currentServer}));
+      .then((payload) => {
+        that.setState({currentServer: payload.server})});
     // this.props.removeServerErrors();
     // this.props.removeServerMembershipErrors();
   }
 
+  componentWillReceiveProps(nextProps){
+    const that = this;
+    if (nextProps.match.params.serverId !== this.props.match.params.serverId){
+      this.props.fetchServer(nextProps.match.params.serverId)
+        .then((payload) => {
+          that.setState({ currentServer: payload.server })
+        });
+    }
+  }
 
   updateState(e) {
     e.preventDefault();
-    this.setState({ name: e.currentTarget.value });
+    this.setState({ currentServer: {name: e.currentTarget.value }});
   }
 
   toggleServerInfo(){
@@ -65,7 +75,6 @@ class ServerHeader extends Component {
 
   ServerInfo(){
     const { currentUser, currentServer, errors } = this.props;
-
     let admin = (
       <div className='server-dropdown'>
         <h1>Server Info</h1>

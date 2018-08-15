@@ -12,12 +12,12 @@ const serversReducer = (state = {}, action) => {
     case RECEIVE_SERVER:
       return merge(newState, {[action.server.id]: action.server});
     case RECEIVE_SERVERS:
+      if (action.payload.servers === undefined) return newState;
       return action.payload.servers;
     case REMOVE_SERVER:
       delete newState[action.serverId];
       return newState;
     case REMOVE_MEMBERSHIP:
-      debugger
       delete newState[action.membership.serverId];
       return newState;
     default:
