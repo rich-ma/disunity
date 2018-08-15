@@ -2,7 +2,7 @@ import React from 'react';
 import CreateServerFormContainer from './create_server_form_container';
 import JoinServerFormContainer from './join_server_form_container';
 
-class NewServer extends React.Component {
+class NewServerContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,4 +65,4 @@ class NewServer extends React.Component {
   }
 };
 
-export default NewServer;
+export default NewServerContainer;

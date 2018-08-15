@@ -1,0 +1,99 @@
+.server-channel-col {
+  width: 240px;
+  background-color: #2C2F33;
+  color: #fff;
+
+  
+}
+
+.server-dropdown {
+  width: 180px;
+  background: #282b30;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .82),
+  0 1px 4px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  position: absolute;
+
+  h1{
+    margin-top: 5px;
+    color: #7289da;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #535559;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .server-dropdown-input {
+    margin-top: 5px;
+    margin-left: 26px;
+    width: 120px;
+    overflow: auto;
+    background-color: #2C2F33;
+     box-shadow: 0 0 1px rgba(0, 0, 0, .82),
+     0 1px 4px rgba(0, 0, 0, .1);
+    height: 35px;
+    padding-left: 10px;
+    border-bottom: 2px solid #2C2F33;
+    border-radius: 3px;
+  }
+  .server-dropdown-input:focus {
+    border-bottom: 2px solid #677bc4;
+  }
+
+  .edit-server-errors{
+    font-size: 12px;
+    color: red;
+    margin-left: 1px;
+  }
+
+  img {
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    background: #2C2F33;
+  }
+  .server-dropdown-photo{
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #202225;
+    border-radius: 60px;
+    background: #2C2F33;
+  }
+
+  #server-photo-input {
+    display: none;
+  }
+
+  .edit-server-submit{
+    padding: 5px 10px;
+    background-color: #677bc4;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .edit-server-submit:hover {
+    background-color: #4e5d94;
+  }
+
+   .delete-server-submit {
+     padding: 6px 10px;
+     background-color: darkred;
+     color: #fff;
+     border-radius: 10px;
+     margin-left: 38px;
+     margin-bottom: 10px;
+     margin-right: 10px;
+
+   }
+
+   .delete-server-submit:hover {
+     background-color: maroon;
+   }
+
+}

@@ -3,24 +3,21 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Route } from 'react-router-dom';
+import NewServerContainer from '../../dashboard/server/server_modal';
 
-import ServerModal from '../server/server_modal';
-// import UserInfoFormContainer from '../user_info/user_info_form_container';
-// import ServerInfoFormContainer from '../server/server_info_form_container';
 
 const Modal = ({ modal, closeModal }) => {
   if (!modal) return null;
   let component;
   switch (modal) {
     case 'newServer':
-      component = <ServerModal />;
+      component = <NewServerContainer />;
       break;
-    // case 'userInfo':
-    //   component = <UserInfoFormContainer />;
-    //   break;
-    // case 'serverInfo':
-    //   component = <Route path="/channels/:serverId" component={ServerInfoFormContainer} />;
-    //   break;
+    case 'editServer':
+      // component = <Route path="/servers/:serverId" component={ServerHeaderFormContainer} />;
+      break;
+    case 'editUser':
+      break;
     default:
       return null;
   }

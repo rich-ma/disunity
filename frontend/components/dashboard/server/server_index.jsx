@@ -10,6 +10,7 @@ class ServerIndex extends Component {
 
   render() {
     const { servers, openModal } = this.props;
+    
     return (
       <div className='server-index-container'>
         <ul className='server-index-list'>

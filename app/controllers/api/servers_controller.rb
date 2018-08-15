@@ -24,12 +24,14 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
+    # @id = params[:id]
     @server = Server.find(params[:id])
     @server.destroy
+    # render :delete
   end
 
   private
   def server_params
-    params.require(:server).permit(:name, :icon_url, :admin_id, :photo)
+    params.require(:server).permit(:name, :icon_url, :admin_id, :photo, :id)
   end
 end

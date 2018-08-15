@@ -29,7 +29,7 @@ class JoinServerForm extends React.Component {
 
         this.props.fetchServers()
           .then(() => this.props.closeModal())
-          .then(() => this.props.history.push(`/channels/${membership.serverId}`))
+          .then(() => this.props.history.push(`/servers/${membership.serverId}`))
       });
   }
 

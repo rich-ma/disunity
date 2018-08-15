@@ -37,8 +37,7 @@ class CreateServerForm extends React.Component {
         return this.props.createServerMembership(payload.server);
       })
       .then(payload => {
-        debugger
-        this.props.history.push(`/channels/${payload.serverId}`)
+        this.props.history.push(`/servers/${payload.membership.serverId}`)
       }) 
       .then(() => this.props.closeModal());
   }
@@ -52,6 +51,7 @@ class CreateServerForm extends React.Component {
     const photoFileName = this.state.photoFile ? `Uploaded ${this.state.photoFile.name}` : "";
 
     return (
+      
       <div className="create-server-form-container">
           <h1>Create your server</h1>
 

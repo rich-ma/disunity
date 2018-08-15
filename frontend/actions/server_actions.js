@@ -24,7 +24,7 @@ export const removeServerErrors = () => ({
   type: REMOVE_SERVER_ERRORS
 });
 
-export const removeServer = (serverId) => ({
+export const removeServer = serverId => ({
   type: REMOVE_SERVER,
   serverId
 });
@@ -53,17 +53,19 @@ export const createServer = formData => dispatch => {
 
 export const updateServer = server => dispatch => (
   ServerAPIUtil.updateServer(server)
-  .then(server => dispatch(receiveerver(server)), err => (
+  .then(server => dispatch(receiveServer(server)), err => (
     dispatch(receiveErrors(err.responseJSON)))
   )
 )
 
-export const deleteServer = id => dispatch => (
-  ServerAPIUtil.deleteServer(id)
-  .then(id => dispatch(removeServer(id)), err => (
+export const deleteServer = id => dispatch => {
+  return (ServerAPIUtil.deleteServer(id)
+  .then(() => {
+    return dispatch(removeServer(id));
+  }), err => (
     dispatch(receiveErrors(err.responseJSON)))
   )
-);
+};
 
 export const clearServerErrors = () => dispatch => (
   dispatch(removeErrors())
