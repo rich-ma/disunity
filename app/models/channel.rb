@@ -8,7 +8,7 @@ class Channel < ApplicationRecord
   validates_uniqueness_of :server_id, :scope => [:name]
   validates :channel_type, inclusion: { in: CHANNEL_TYPE.keys }
 
-  after_intialize :ensure_type, :ensure_server_id
+  after_initialize :ensure_type, :ensure_server_id
 
   belongs_to :server, 
   foreign_key: :server_id, 
