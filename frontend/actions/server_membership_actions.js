@@ -10,9 +10,9 @@ const receiveMembership = membership => ({
   membership
 });
 
-export const removeMembership = id => ({
+export const removeMembership = membership => ({
   type: REMOVE_MEMBERSHIP,
-  id
+  membership
 });
 
 const receiveMembershipErrors = errors => ({
@@ -31,9 +31,9 @@ export const createServerMembership = serverId => dispatch => (
   )
 );
 
-export const deleteServerMembership = id => dispatch => (
-  SMApiUtil.deleteMembership(id)
-  .then(id => dispatch(removeMembership(id)), err => 
+export const deleteServerMembership = membership => dispatch => (
+  SMApiUtil.deleteMembership(membership.id)
+  .then(() => dispatch(removeMembership(membership)), err => 
   dispatch(receiveMembershipErrors(err))
   )
 );

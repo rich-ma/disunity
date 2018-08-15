@@ -1,0 +1,35 @@
+.server-channel-col {
+  width: 240px;
+  background-color: #2C2F33;
+  color: #fff;
+}
+
+.server-info {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 0 rgba(0, 0, 0, .06);
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // flex: 1;
+  font-size: 16px;
+  line-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 48px;
+  transition: background-color .15s ease;
+  z-index: 3;
+
+  h1 {
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .fa {
+    color: #99AAB5;
+    margin-right: 20px;
+  }
+}

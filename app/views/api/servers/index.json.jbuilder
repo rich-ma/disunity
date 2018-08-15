@@ -26,3 +26,12 @@ json.users do
     end
   end
 end
+
+# json.channels do 
+#   @servers.includes(:channels).each do |server|
+#     server.channels.each do |channel|
+#       json.set! channel.id do
+#         json.partial! '/api/channels/channel', channel: channel
+#       end
+#     end  end
+# end

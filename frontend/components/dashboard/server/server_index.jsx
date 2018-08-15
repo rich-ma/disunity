@@ -3,22 +3,34 @@ import { Route, NavLink } from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
 
 class ServerIndex extends Component {
+  constructor(props){
+    super(props);
+    this.state = props;
+  }
+
 
   componentDidMount(){
     this.props.fetchServers();
   }
 
+  static getDerivedStateFromProps(props, state){
+    if (props.servers.length === state.servers.length){
+      return state;
+    }
+    return props;
+  }
+
   render() {
-    const { servers, openModal } = this.props;
-    
+    if (this.state.servers === undefined) return null;
+
     return (
       <div className='server-index-container'>
         <ul className='server-index-list'>
-        {servers.map(server => (
+        {this.state.servers.map(server => (
           <ServerIndexItem key={server.id} server={server} />
         ))}
           <li className="server-new"
-            onClick={() => openModal('newServer')}><i className="fas fa-plus"></i></li>
+            onClick={() => this.props.openModal('newServer')}><i className="fas fa-plus"></i></li>
         </ul>
       </div>
     )

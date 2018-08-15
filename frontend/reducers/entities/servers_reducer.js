@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 
 import { RECEIVE_SERVER, REMOVE_SERVER,
   RECEIVE_SERVERS } from '../../actions/server_actions';
+import { REMOVE_MEMBERSHIP } from '../../actions/server_membership_actions';
 
 const serversReducer = (state = {}, action) => {
   const newState = merge({}, state);
@@ -14,6 +15,10 @@ const serversReducer = (state = {}, action) => {
       return action.payload.servers;
     case REMOVE_SERVER:
       delete newState[action.serverId];
+      return newState;
+    case REMOVE_MEMBERSHIP:
+      debugger
+      delete newState[action.membership.serverId];
       return newState;
     default:
       return state;

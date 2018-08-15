@@ -10,7 +10,7 @@ const serverMembershipsReducer = (state = {}, action) => {
     case RECEIVE_MEMBERSHIP:
       return merge(newState, {[action.membership.id]: action.membership});
     case REMOVE_MEMBERSHIP:
-      delete newState[action.id];
+      delete newState[action.membership.id];
       return newState;
     case RECEIVE_SERVERS:
       if (action.payload.serverMemberships) {

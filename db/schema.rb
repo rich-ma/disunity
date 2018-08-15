@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_154940) do
+ActiveRecord::Schema.define(version: 2018_08_15_172526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,28 @@ ActiveRecord::Schema.define(version: 2018_08_13_154940) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "channel_memberships", force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_memberships_on_channel_id"
+    t.index ["user_id", "channel_id"], name: "index_channel_memberships_on_user_id_and_channel_id", unique: true
+    t.index ["user_id"], name: "index_channel_memberships_on_user_id"
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "user_limit"
+    t.integer "last_message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "channel_type"
+    t.integer "server_id"
+    t.index ["server_id", "name"], name: "index_channels_on_server_id_and_name", unique: true
+    t.index ["server_id"], name: "index_channels_on_server_id"
   end
 
   create_table "servers", force: :cascade do |t|

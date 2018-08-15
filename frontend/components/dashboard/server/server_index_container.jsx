@@ -7,19 +7,16 @@ import { openModal } from '../../../actions/modal_actions';
 
 
 const mSTP = (state) => {
-
   return {
     servers: Object.values(state.entities.servers),
     currentUser: state.entities.users[state.session.id]
-    // loading: state.ui.loading.indexLoading
   }
 }
 
 const mDTP = dispatch => ({
   createServer: server => dispatch(createServer(server)),
-  fetchServer: id => dispatch(fetchServer(id)),
   fetchServers: () => dispatch(fetchServers()),
   openModal: modal => dispatch(openModal(modal))
-});
+}); 
 
 export default connect(mSTP, mDTP)(ServerIndex);

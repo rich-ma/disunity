@@ -8,10 +8,15 @@ class Api::ServersController < ApplicationController
     end
   end
 
+
   def index
-    # server where server.id in current_user.servers
-    @servers = Server.all
+    @servers = current_user.servers
     render :index
+  end 
+
+  def show    
+    @server = Server.find(params[:id])
+    render :show
   end 
 
   def update

@@ -5,9 +5,10 @@ class ServerHeader extends Component {
 
   constructor(props){
     super(props);
-
-    this.state = this.props.currentServer;
-    this.state.toggle = true;
+    this.state = {
+      toggle: false,
+      currentServer: this.props.currentServer
+    }
 
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
     this.ServerInfo = this.ServerInfo.bind(this);
@@ -18,9 +19,13 @@ class ServerHeader extends Component {
   }
 
   componentDidMount(){
-    this.props.removeServerErrors();
-    this.props.removeServerMembershipErrors();
+    const that = this;
+    this.props.fetchServer(this.props.match.params.serverId)
+      .then((currentServer) => that.setState({currentServer}));
+    // this.props.removeServerErrors();
+    // this.props.removeServerMembershipErrors();
   }
+
 
   updateState(e) {
     e.preventDefault();
@@ -39,36 +44,39 @@ class ServerHeader extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('server[name]', this.state.name);
+    formData.append('server[name]', this.state.currentServer.name);
     formData.append('id', this.props.currentServer.id);
-    if (this.state.photoFile) {
-      formData.append('server[photo]', this.state.photoFile);
+    if (this.state.currentServer.photoFile) {
+      formData.append('server[photo]', this.state.currentServer.photoFile);
     }
     this.props.updateServer(formData);
   }
 
   handleRemove(e){
     e.preventDefault();
-    this.props.deleteServer(this.props.currentServer.id)
-    then(()=> {
-      this.props.history.push(`/`)
-    }) 
+    if (this.props.currentServer.adminId === this.props.currentUser.id) {
+      this.props.deleteServer(this.props.currentServer.id)
+      then(()=> { this.props.history.push(`/`)}) 
+    } else {
+      this.props.deleteServerMembership(this.props.serverMembership)
+        .then(() => {this.props.history.push(`/`)}) 
+    }
   }
 
   ServerInfo(){
     const { currentUser, currentServer, errors } = this.props;
-    
+
     let admin = (
       <div className='server-dropdown'>
         <h1>Server Info</h1>
         <div className='edit-server-errors'>
           <ul>
-            {this.props.errors.server.map((error, idx) => (
+            {errors.server.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
           <ul>
-            {this.props.errors.membership.map((error, idx) => (
+            {errors.membership.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
@@ -78,7 +86,7 @@ class ServerHeader extends Component {
           autoFocus="true"
           className='server-dropdown-input'
           onChange={(e) => this.updateState(e)}
-          value={this.state.name} />
+          value={this.state.currentServer.name} />
         <div className='server-dropdown-photo'>
           <label
             className="server-photo-input-label"
@@ -93,28 +101,36 @@ class ServerHeader extends Component {
             </div>
           </label>
         </div>
-        <div>
+        <div className='server-dropdown-buttons'>
           <button className="edit-server-submit" onClick={this.handleSubmit}>Save</button>
           <button className='delete-server-submit' onClick={this.handleRemove}>Delete</button>
         </div>
       </div>
     );
     let member = (
-      <div className='Server-dropdown'>
-
+      <div className='server-dropdown'>
+        <h1>Server Info</h1>
+        <h2>{currentServer.name}</h2>
+      
+        <div className='server-dropdown-photo'>
+          <img src={currentServer.photoUrl} 
+          alt={`${currentServer.name}'s icon`} />
+        </div>
+        <button className='delete-server-submit leave-server-submit' onClick={this.handleRemove}>Leave Server</button>
       </div>
     )
     return currentServer.adminId === currentUser.id ? admin : member;
   }
 
   render() {
+    // if (currentUser === undefined) return null;
     const { currentUser, currentServer, openModal, deleteServer} = this.props;
-    if (currentServer === undefined) return null;
+    if (currentServer === undefined || this.state.currentServer === undefined) return null;
     return (
       <div className='server-info'>
         <h1>{currentServer.name}</h1>
         <div className="server-edit">
-          <i onClick={(e) => this.toggleServerInfo(e)} className="fa fa-chevron-down" aria-hidden="true"></i>
+          <i onClick={(e) => this.toggleServerInfo(e)} className={this.state.toggle === true ? "fa fa-times" : "fa fa-chevron-down"} aria-hidden="true"></i>
           {this.state.toggle ? this.ServerInfo() : null}
         </div>
       </div>

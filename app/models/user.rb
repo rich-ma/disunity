@@ -16,11 +16,14 @@ class User < ApplicationRecord
     dependent: :destroy
 
   has_many :memberships, 
-    foreign_key: :server_id, 
+    foreign_key: :user_id, 
     class_name: :ServersMembership, 
     dependent: :destroy
 
-  has_many :servers, through: :memberships, source: :server
+  has_many :servers, 
+    through: :memberships, 
+    source: :server
+
   has_one_attached :photo
 
   def self.find_by_credentials(email, password)
