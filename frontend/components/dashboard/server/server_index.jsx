@@ -22,7 +22,6 @@ class ServerIndex extends Component {
   }
 
   render() {
-    // if (this.state.servers === undefined) return null;
     if (this.props.loading) {
       return(
         <div align="center" className="cssload-fond">

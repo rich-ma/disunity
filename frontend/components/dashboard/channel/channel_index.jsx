@@ -24,10 +24,11 @@ class ChannelIndex extends Component {
   }
 
   render() {
+    if (this.props.loading) return null;
     const { currentUser, currentServer, channels, deleteChannel, updateChannel } = this.props;
-    if (currentServer === undefined) return null;
+    // if (currentServer === undefined) return null;
     const admin = (currentServer.adminId === currentUser.id ? true : false);
-    if (channels === undefined) return null;
+    // if (channels === undefined) return null;
 
     return (
       <div className='channel-index-container'>

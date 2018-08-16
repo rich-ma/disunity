@@ -38,8 +38,10 @@ class ChannelIndexItem extends Component {
   }
 
   ChannelInfo(){
+    // if (this.props.loading) return null;
     const { channel } = this.props;
-    if (channel === undefined) return null;
+    // if (channel === undefined) return null;
+    
     return(
       <div>
         <div onClick={(e) => this.toggleChannelInfo(e)}  className='close-channel-dropdown'></div>

@@ -12,6 +12,7 @@ const mSTP = (state, ownProps) => {
     channels,
     currentUser,
     currentServer,
+    loading: state.ui.loading
    })
 };
 

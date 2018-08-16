@@ -23,10 +23,11 @@ class ServerHeader extends Component {
 
   componentDidMount(){
     const that = this;
-    
+    this.props.updateLoading(true);
     this.props.fetchServer(this.props.match.params.serverId)
       .then((payload) => {
-        that.setState({currentServer: payload.server})});
+        that.setState({currentServer: payload.server})})
+        .then(() => this.props.updateLoading(false));
     // this.props.removeServerErrors();
     // this.props.removeServerMembershipErrors();
   }
@@ -155,9 +156,9 @@ class ServerHeader extends Component {
   }
 
   render() {
-    // if (currentUser === undefined) return null;
+    if (this.props.loading) return null;
     const { currentUser, currentServer, openModal, deleteServer} = this.props;
-    if (currentServer === undefined || this.state.currentServer === undefined) return null;
+
     return (
       <div className='server-info'>
         <h1>{currentServer.name}</h1>
