@@ -13,8 +13,8 @@ const Modal = ({ modal, closeModal }) => {
     case 'newServer':
       component = <NewServerContainer />;
       break;
-    case 'editServer':
-      // component = <Route path="/servers/:serverId" component={ServerHeaderFormContainer} />;
+    case 'newChannel':
+      component = <NewChannelContainer />;
       break;
     case 'editUser':
       break;

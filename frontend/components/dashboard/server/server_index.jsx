@@ -8,7 +8,6 @@ class ServerIndex extends Component {
     this.state = props;
   }
 
-
   componentDidMount(){
     this.props.fetchServers();
   }

@@ -27,5 +27,9 @@ ServersMembership.create(user_id: 4, server_id: 2)
 ServersMembership.create(user_id: 5, server_id: 1)
 ServersMembership.create(user_id: 5, server_id: 2)
 
+Channel.create(server_id: 1, name: 'general')
+Channel.create(server_id: 1, name: 'gaming')
+Channel.create(server_id: 2, name: 'SF June 2018')
+
 s1.photo.attach(io: File.open('app/assets/images/knuckles.png'), filename: 'knuckles.png')
 s2.photo.attach(io: File.open('app/assets/images/doge-icon.png'), filename: 'doge-icon.png')

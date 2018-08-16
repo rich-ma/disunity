@@ -31,7 +31,6 @@ const mDTP = dispatch => ({
   removeServerMembershipErrors: () => 
   dispatch(removeServerMembershipErrors()),
   openModal: modal => dispatch(openModal(modal)),
-
 })
 
 export default connect(mSTP, mDTP)(ServerHeader);

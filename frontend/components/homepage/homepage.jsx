@@ -5,6 +5,7 @@ import Splash from './splash';
 import Footer from './footer';
 import ServerIndexContainer from '../dashboard/server/server_index_container';
 import ServerHeaderContainer from '../dashboard/server/server_header_container';
+import ChannelIndexContainer from '../dashboard/channel/channel_index_container';
 
 const Homepage = ({ currentUser }) => {
   
@@ -19,7 +20,8 @@ const Homepage = ({ currentUser }) => {
       <div className='server-channel-col'>
         <Route path='/servers/:serverId' 
           component={ServerHeaderContainer} />
-
+        <Route path='/servers/:serverId'
+          component={ChannelIndexContainer} />
         {/* server name, channelIndex, UserInfo */}
       </div>
 
@@ -39,7 +41,6 @@ const Homepage = ({ currentUser }) => {
   );
   
   const splash = () => {
-    debugger
     return (
     <div className="homepage-container">
       <Route path='/' component={Header}/>

@@ -93,7 +93,7 @@ class ServerHeader extends Component {
         <input
           type="text"
           autoFocus="true"
-          className='server-dropdown-input'
+          className='dropdown-input'
           onChange={(e) => this.updateState(e)}
           value={this.state.currentServer.name} />
         <div className='server-dropdown-photo'>
@@ -110,9 +110,9 @@ class ServerHeader extends Component {
             </div>
           </label>
         </div>
-        <div className='server-dropdown-buttons'>
-          <button className="edit-server-submit" onClick={this.handleSubmit}>Save</button>
-          <button className='delete-server-submit' onClick={this.handleRemove}>Delete</button>
+        <div className='dropdown-buttons'>
+          <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
+          <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
         </div>
       </div>
     );

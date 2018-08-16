@@ -13,7 +13,7 @@
     width: 80%;
     margin: 0 auto;
   }
-  .server-dropdown-input {
+  .dropdown-input {
     margin-left: 30px;
     width: 180px;
     overflow: auto;
@@ -24,7 +24,7 @@
     border-bottom: 2px solid #2C2F33;
     border-radius: 3px;
   }
-  .server-dropdown-input:focus {
+  .dropdown-input:focus {
     border-bottom: 2px solid #677bc4;
   }
   .edit-server-errors {
@@ -64,7 +64,7 @@
     justify-content: space-between;
   }
 
-  .edit-server-submit {
+  .edit-submit {
     font-size: 16px;
     line-height: 20px;
     padding: 10px 15px;
@@ -74,10 +74,10 @@
     margin-left: 20px;
     margin-bottom: 15px;
   }
-  .edit-server-submit:hover {
+  .edit-submit:hover {
     background-color: #4e5d94;
   }
-  .delete-server-submit {
+  .delete-submit {
     font-size: 16px;
     line-height: 20px;
     padding: 11px 15px;
@@ -87,7 +87,7 @@
     margin-bottom: 15px;
     margin-right: 20px;
   }
-  .delete-server-submit:hover {
+  .delete-submit:hover {
     background-color: maroon;
   }
 
