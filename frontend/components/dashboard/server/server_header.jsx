@@ -7,7 +7,10 @@ class ServerHeader extends Component {
     super(props);
     this.state = {
       toggle: false,
-      currentServer: this.props.currentServer
+      currentServer: this.props.currentServer,
+      name: this.props.currentServer.name,
+      photoFile: null,
+      photoUrl: this.props.currentServer.photoUrl,
     }
 
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
@@ -39,7 +42,7 @@ class ServerHeader extends Component {
 
   updateState(e) {
     e.preventDefault();
-    this.setState({ currentServer: {name: e.currentTarget.value }});
+    this.setState({ name: e.currentTarget.value });
   }
 
   toggleServerInfo(){
@@ -48,18 +51,28 @@ class ServerHeader extends Component {
 
   handleFile(e) {
     e.preventDefault()
-    this.setState({ photoFile: e.currentTarget.files[0] });
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ photoUrl: reader.result, photoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ PhotoUrl: "", PhotoFile: null });
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('server[name]', this.state.currentServer.name);
+    formData.append('server[name]', this.state.name);
     formData.append('id', this.props.currentServer.id);
-    if (this.state.currentServer.photoFile) {
-      formData.append('server[photo]', this.state.currentServer.photoFile);
+    if (this.state.photoFile) {
+      formData.append('server[photo]', this.state.photoFile);
     }
-    this.props.updateServer(formData);
+    this.props.updateServer(formData)
+    .then(() => this.props.fetchServer(this.props.currentServer.id))
   }
 
   handleRemove(e){
@@ -95,13 +108,13 @@ class ServerHeader extends Component {
           autoFocus="true"
           className='dropdown-input'
           onChange={(e) => this.updateState(e)}
-          value={this.state.currentServer.name} />
+          value={this.state.name} />
         <div className='server-dropdown-photo'>
           <label
             className="server-photo-input-label"
             htmlFor="server-photo-input">
             <div>
-              <img src={currentServer.photoUrl} alt={`${currentServer.name}'s icon`} />
+              <img src={this.state.photoUrl} alt={`${currentServer.name}'s icon`} />
               <input
                 type="file"
                 id="server-photo-input"

@@ -51,14 +51,6 @@
     border-color: #677bc4;
   }
 
-  .create-submits {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-    height: 150px;
-  }
-
   .server-photo-input-label {
     cursor: pointer;
     height: 60px;
@@ -97,6 +89,7 @@
   }
 
   .create-server-submit:hover {
+    cursor: pointer;
     background-color: #4e5d94;
   }
   
@@ -104,6 +97,13 @@
     font-size: 14px;
     color: red;
     min-height: 25px;
+  }
+
+  .create-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
   }
 
 }

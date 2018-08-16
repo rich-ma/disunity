@@ -6,7 +6,8 @@ class CreateServerForm extends React.Component {
     super(props);
     this.state = {
       name: "",
-      photoFile: null
+      photoFile: null,
+      photoUrl: null,
     };
 
     this.updateState = this.updateState.bind(this);
@@ -44,7 +45,16 @@ class CreateServerForm extends React.Component {
 
   handleFile(e) {
     e.preventDefault()
-    this.setState({ photoFile: e.currentTarget.files[0] });
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ photoUrl: reader.result, photoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ PhotoUrl: "", PhotoFile: null });
+    }
   }
 
   render() {
@@ -84,28 +94,47 @@ class CreateServerForm extends React.Component {
                 onChange={(e) => this.updateState(e)}
                 value={this.state.name} />
             </label>
-            <div className='create-submits'>
-              <label
-                className="server-photo-input-label"
-                htmlFor="server-photo-input">
-                <div>
-                  <p>Change<br/>Icon</p>
+
+        <div className='server-dropdown-photo create-photo'>
+          <label
+            className="server-photo-input-label"
+            htmlFor="server-photo-input">
+            <div>
+              <img src={this.state.photoUrl}/>
               <input
                 type="file"
                 id="server-photo-input"
                 onChange={this.handleFile}
-                accept="image/*" />
-                </div>
-              </label>
-
-                <div className="server-photo-filename">{photoFileName}</div>
-                <input className='create-server-submit' type="submit" value='Create'/>
-             
+                accept="image/*"/>
             </div>
+          </label>
+            <input className='create-server-submit' type="submit" value='Create' />
+          </div>
         </form>
       </div>
     )
-  }
-}
+      }
+    }
+    
+    export default withRouter(CreateServerForm);
+{/*     
+ </div>
+      <div className='create-submits'>
+        {this.state.photoUrl ? <img src={this.state.photoUrl} /> : null}
+        <label
+          className="server-photo-input-label"
+          htmlFor="server-photo-input">
+          <div>
+            <p>Change<br />Icon</p>
+            <input
+              type="file"
+              id="server-photo-input"
+              onChange={this.handleFile}
+              accept="image/*" />
+          </div>
+        </label>
 
-export default withRouter(CreateServerForm);
+        <div className="server-photo-filename">{photoFileName}</div>
+        <input className='create-server-submit' type="submit" value='Create' />
+
+      </div> */}
