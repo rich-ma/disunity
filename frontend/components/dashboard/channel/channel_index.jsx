@@ -20,7 +20,12 @@ class ChannelIndex extends Component {
     return props;
   }
 
-  add
+  addChannel(server){
+    return (
+      <div className="channel-new"
+        onClick={() => this.props.openModal('newChannel', server)}><i className="fas fa-plus"></i></div>
+    )
+  }
 
   render() {
     const { currentUser, currentServer, channels, deleteChannel, updateChannel } = this.props;
@@ -30,8 +35,8 @@ class ChannelIndex extends Component {
     return (
       <div className='channel-index-container'>
         <div className='channel-index-header'>
-          <h3>Text Channels</h3>
-          { currentServer.adminId === currentUser.id ? this.addChannel() : null }
+          <p>Text Channels</p>
+          { currentServer.adminId === currentUser.id ? this.addChannel(currentServer) : null }
         </div>
         <ul className='channel-index-list'>
           {channels.map(channel =>(

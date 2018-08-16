@@ -1,3 +1,4 @@
+
 import * as ChannelAPIUtil from '../util/channel_api_util';
 export const REMOVE_CHANNEL = 'REMOVE_CHANNEL';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
@@ -24,9 +25,10 @@ export const removeChannelErrors = () => ({
   type: REMOVE_CHANNEL_ERRORS
 })
 
-export const createChannel = formData => dispatch => {
+export const createChannel = channel => dispatch => {
+  debugger;
   return (
-    ChannelAPIUtil.createChannel(formData).then(
+    ChannelAPIUtil.createChannel(channel).then(
       channel => dispatch(receiveChannel(channel)),
       err => (dispatch(receiveErrors(err.responseJSON)))
     )
@@ -49,5 +51,5 @@ export const deleteChannel = id => dispatch => {
 };
 
 export const clearChannelErrors = () => dispatch => (
-  dispatch(removeErrors())
+  dispatch(removeChannelErrors())
 );

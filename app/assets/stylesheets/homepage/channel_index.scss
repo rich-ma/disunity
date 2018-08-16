@@ -1,0 +1,97 @@
+
+
+.channel-index-container{
+
+  .channel-index-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #72767d;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin-left: 10px;
+
+    p{
+      padding-top: 20px;
+      font-size: 12px;
+    }
+
+    .channel-new{
+      // align-self: center;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .channel-new:hover{
+      color: #fff;
+    }
+  }
+
+  .channel-index-list {
+    margin-left: 12px;
+    margin-right: 12px;
+    color: #72767d;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+
+    .channel-index-item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      width: 95%;
+      border-radius: 3px;
+      margin-bottom: 2px;
+
+      div{
+        width: 16px;
+        height: 16px;
+        align-self: center;
+        margin-right: 5px;
+      }
+      
+      p{
+        width: 75%;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 10px 0px;
+        font-weight: 300px;
+      }
+      
+      .fa-cog {
+        align-self: center;
+        margin-right: 2px;
+        color: #fff;
+        opacity: 0;
+      }
+    }
+
+    .channel-index-item:hover{
+      background-color: rgba(79, 84, 92, .6);
+      .fa-cog{
+        opacity: 0.3;
+      }
+      .fa-cog:hover{
+        opacity: 0.6;
+      }
+    }
+
+    .channel-link-selected {
+      background-color: rgba(79, 84, 92, .6);
+      p {
+        color: #f6f6f7;
+      }
+    }
+  }
+  
+  
+
+  
+
+
+}

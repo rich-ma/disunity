@@ -18,7 +18,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
   createChannel: channel => dispatch(createChannel(channel)),
   updateChannel: channel => dispatch(updateChannel(channel)),
-  deleteChannel: id => dispatch(deleteChannel(id))
+  deleteChannel: id => dispatch(deleteChannel(id)),
+  openModal: modal => dispatch(openModal(modal))
 })
 
 export default connect(mSTP, mDTP)(ChannelIndex);

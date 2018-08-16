@@ -125,7 +125,7 @@ class ServerHeader extends Component {
           <img src={currentServer.photoUrl} 
           alt={`${currentServer.name}'s icon`} />
         </div>
-        <button className='delete-server-submit leave-server-submit' onClick={this.handleRemove}>Leave Server</button>
+        <button className='delete-submit leave-server-submit' onClick={this.handleRemove}>Leave Server</button>
       </div>
     )
     return currentServer.adminId === currentUser.id ? admin : member;

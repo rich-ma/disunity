@@ -64,14 +64,17 @@ class ChannelIndexItem extends Component {
 
   render(){
     return (
-      <li className='channel-index-item'>
-        <NavLink className='server-link' to={`/servers/${this.props.server.id}`} activeClassName="server-link-selected"></NavLink>
 
+      <NavLink className='channel-link channel-index-item' 
+        to={`/servers/${this.props.server.id}/${this.state.channel.id}`} activeClassName="channel-link-selected">
+        <i className="fas fa-hashtag">&nbsp;</i>
+        <p>{this.state.channel.name}</p>
         {this.props.admin ? 
           <i onClick={(e) => this.toggleChannelInfo(e)} className="fas fa-cog" aria-hidden="true"></i> 
-          : null}
+          : <div></div>}
         {this.state.toggle ? this.ChannelInfo() : null}
-      </li>
+      </NavLink>
+
     )
   }
 }

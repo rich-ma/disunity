@@ -18,11 +18,14 @@ const Homepage = ({ currentUser }) => {
       </div>
 
       <div className='server-channel-col'>
-        <Route path='/servers/:serverId' 
-          component={ServerHeaderContainer} />
-        <Route path='/servers/:serverId'
-          component={ChannelIndexContainer} />
-        {/* server name, channelIndex, UserInfo */}
+        <div>
+          <Route path='/servers/:serverId' 
+            component={ServerHeaderContainer} />
+          <Route path='/servers/:serverId'
+            component={ChannelIndexContainer} />
+        </div>
+        {/* <Route path='/servers/:serverId'
+          component={UserInfoContainer} /> */}
       </div>
 
       <div>

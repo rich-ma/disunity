@@ -1,0 +1,78 @@
+.create-channel-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-height: 180px;
+  background: #36393f;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .82),
+  0 1px 4px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  color: #f6f6f7;
+  margin: 0 auto;
+  ;
+   h1{
+    margin-left: 10px;
+    padding-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+   }
+
+  .create-channel-errors {
+    margin-left: 10px;
+    font-size: 14px;
+    color: red;
+    min-height: 25px;
+  }
+
+  label {
+    margin-left: 10px;
+    display: block;
+    color: #b9bbbe;
+    line-height: 16px;
+    font-size: 12px;
+
+    input {
+      background-color: rgba(0, 0, 0, .1);
+      border-color: rgba(0, 0, 0, .3);
+      color: #f6f6f7;
+      height: 40px;
+      padding: 10px;
+      border-radius: 3px;
+      border-style: solid;
+      border-width: 1px;
+      box-sizing: border-box;
+      transition: background-color .15s ease,
+      border .15s ease;
+      width: 95%;
+      font-size: 16px;
+    }
+
+    input:focus{
+      border-color: #7289da;
+    }
+  }
+
+  .create-channel-footer{
+    width: 100%;
+    background-color: #282b30;
+    margin-top: 20px;
+
+  }
+
+  .create-channel-submit {
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: #677bc4;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 240px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .create-channel-submit:hover {
+    background-color: #4e5d94;
+  }
+
+}

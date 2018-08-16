@@ -4,6 +4,7 @@ import { closeModal } from '../../../actions/modal_actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Route } from 'react-router-dom';
 import NewServerContainer from '../../dashboard/server/server_modal';
+import CreateChannelFormContainer from '../../dashboard/channel/create_channel_form_container';
 
 
 const Modal = ({ modal, closeModal }) => {
@@ -14,7 +15,7 @@ const Modal = ({ modal, closeModal }) => {
       component = <NewServerContainer />;
       break;
     case 'newChannel':
-      component = <NewChannelContainer />;
+      component = <CreateChannelFormContainer />;
       break;
     case 'editUser':
       break;
