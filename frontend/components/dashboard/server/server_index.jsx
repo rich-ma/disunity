@@ -9,7 +9,9 @@ class ServerIndex extends Component {
   }
 
   componentDidMount(){
-    this.props.fetchServers();
+    this.props.updateLoading(true);
+    this.props.fetchServers()
+    .then(()=>this.props.updateLoading(false))
   }
 
   static getDerivedStateFromProps(props, state){
@@ -20,8 +22,19 @@ class ServerIndex extends Component {
   }
 
   render() {
-    if (this.state.servers === undefined) return null;
-
+    // if (this.state.servers === undefined) return null;
+    if (this.props.loading) {
+      return(
+        <div align="center" className="cssload-fond">
+          <div className="cssload-container-general">
+            <div className="cssload-internal"><div className="cssload-ballcolor cssload-ball_1"> </div></div>
+            <div className="cssload-internal"><div className="cssload-ballcolor cssload-ball_2"> </div></div>
+            <div className="cssload-internal"><div className="cssload-ballcolor cssload-ball_3"> </div></div>
+            <div className="cssload-internal"><div className="cssload-ballcolor cssload-ball_4"> </div></div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className='server-index-container'>
         <ul className='server-index-list'>

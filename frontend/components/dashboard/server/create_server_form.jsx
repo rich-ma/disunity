@@ -33,6 +33,7 @@ class CreateServerForm extends React.Component {
     if (this.state.photoFile) {
       formData.append('server[photo]', this.state.photoFile);
     }
+    this.props.updateLoading(true);
     this.props.createServer(formData)
       .then(payload => {
         return this.props.createServerMembership(payload.server);
@@ -40,7 +41,8 @@ class CreateServerForm extends React.Component {
       .then(payload => {
         this.props.history.push(`/servers/${payload.membership.serverId}`)
       }) 
-      .then(() => this.props.closeModal());
+      .then(() => this.props.closeModal())
+      .then(() => this.props.updateLoading(false));
   }
 
   handleFile(e) {

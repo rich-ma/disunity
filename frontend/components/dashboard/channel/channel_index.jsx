@@ -9,10 +9,6 @@ class ChannelIndex extends Component {
     this.addChannel = this.addChannel.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchServers();
-  // }
-
   static getDerivedStateFromProps(props, state) {
     if (props.channels.length === state.channels.length) {
       return state;
@@ -29,6 +25,7 @@ class ChannelIndex extends Component {
 
   render() {
     const { currentUser, currentServer, channels, deleteChannel, updateChannel } = this.props;
+    if (currentServer === undefined) return null;
     const admin = (currentServer.adminId === currentUser.id ? true : false);
     if (channels === undefined) return null;
 

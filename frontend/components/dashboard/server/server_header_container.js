@@ -4,7 +4,7 @@ import { deleteServer, fetchServers, updateServer, removeServerErrors, fetchServ
 import ServerHeader from './server_header';
 import { removeServerMembershipErrors, deleteServerMembership } from '../../../actions/server_membership_actions';
 import { getMembership } from '../../../reducers/selector';
-
+import { updateLoading } from '../../../actions/loading_actions';
 
 const mSTP = (state, ownProps) => {
   const currentServer = state.entities.servers[ownProps.match.params.serverId];
@@ -15,6 +15,7 @@ const mSTP = (state, ownProps) => {
       server: state.errors.server,
       membership: state.errors.serverMembership
     },
+    loading: state.ui.loading,
     currentServer,
     currentUser,
     serverMembership: getMembership(state, currentUser.id, parseInt(ownProps.match.params.serverId))
@@ -22,6 +23,7 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = dispatch => ({
+  updateLoading: (value) => dispatch(updateLoading(value)),
   deleteServer: id => dispatch(deleteServer(id)),
   updateServer: id => dispatch(updateServer(id)),
   fetchServers: () => dispatch(fetchServers()),

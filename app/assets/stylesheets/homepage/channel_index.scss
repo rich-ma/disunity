@@ -42,13 +42,12 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
       padding: 0 5px;
       width: 95%;
       border-radius: 3px;
       margin-bottom: 2px;
 
-      div{
+      span{
         width: 16px;
         height: 16px;
         align-self: center;
@@ -59,13 +58,12 @@
         width: 75%;
         overflow: hidden;
         white-space: nowrap;
-        margin: 10px 0px;
-        font-weight: 300px;
+        margin: 10px 10px 10px 2px;
+        font-weight: 400;
       }
       
       .fa-cog {
         align-self: center;
-        margin-right: 2px;
         color: #fff;
         opacity: 0;
       }

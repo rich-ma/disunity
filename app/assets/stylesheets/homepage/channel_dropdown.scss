@@ -1,0 +1,68 @@
+.close-channel-dropdown {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: -86px;
+  left: -127px;
+}
+.channel-dropdown {
+  width: 240px;
+  background: #282b30;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.82),
+  0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: absolute;
+  z-index: 2;
+
+    h1 {
+      margin-top: 10px;
+      color: #7289da;
+      font-size: 18px;
+      text-align: center;
+      border-bottom: 1px solid #535559;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+   input {
+     margin-top: 10px;
+     margin-left: 25px;
+   }
+
+   .dropdown-buttons{
+     margin-top: 5px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+   }
+
+  .edit-submit {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 5px 10px;
+    background-color: #677bc4;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .edit-submit:hover {
+    background-color: #4e5d94;
+  }
+
+  .delete-submit {
+    font-size: 16px;
+    line-height: 20px;
+    background-color: darkred;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    margin-right: 20px;
+  }
+
+  .delete-submit:hover {
+    background-color: maroon;
+  }
+
+}

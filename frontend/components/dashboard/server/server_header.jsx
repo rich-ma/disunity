@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 class ServerHeader extends Component {
-
   constructor(props){
     super(props);
-    this.state = {
+    
+    this.state={
       toggle: false,
-      currentServer: this.props.currentServer,
-      name: this.props.currentServer.name,
+      currentServer: props.currentServer,
+      // name: props.currentServer.name,
       photoFile: null,
-      photoUrl: this.props.currentServer.photoUrl,
+      // photoUrl: props.currentServer.photoUrl,
     }
 
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
@@ -23,6 +23,7 @@ class ServerHeader extends Component {
 
   componentDidMount(){
     const that = this;
+    
     this.props.fetchServer(this.props.match.params.serverId)
       .then((payload) => {
         that.setState({currentServer: payload.server})});
@@ -36,13 +37,15 @@ class ServerHeader extends Component {
       this.props.fetchServer(nextProps.match.params.serverId)
         .then((payload) => {
           that.setState({ currentServer: payload.server })
+          // that.setState({ currentServer: payload.server, photoUrl: payload.server.photoUrl })
         });
     }
   }
 
   updateState(e) {
     e.preventDefault();
-    this.setState({ name: e.currentTarget.value });
+    this.setState({ currentServer: { name: e.currentTarget.value } });
+    // this.setState({ name: e.currentTarget.value });
   }
 
   toggleServerInfo(){
@@ -54,7 +57,8 @@ class ServerHeader extends Component {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
-      this.setState({ photoUrl: reader.result, photoFile: file });
+      this.setState({ currentServer: { photoUrl: reader.result}, photoFile: file });
+      // this.setState({ photoUrl: reader.result, photoFile: file });
 
     if (file) {
       reader.readAsDataURL(file);
@@ -66,8 +70,8 @@ class ServerHeader extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('server[name]', this.state.name);
-    formData.append('id', this.props.currentServer.id);
+    formData.append('server[name]', this.state.currentServer.name);
+    formData.append('id', this.state.currentServer.id);
     if (this.state.photoFile) {
       formData.append('server[photo]', this.state.photoFile);
     }
@@ -79,66 +83,72 @@ class ServerHeader extends Component {
     e.preventDefault();
     if (this.props.currentServer.adminId === this.props.currentUser.id) {
       this.props.deleteServer(this.props.currentServer.id)
-      then(()=> { this.props.history.push(`/`)}) 
+      .then(()=> { this.props.history.push(`/`)}) 
     } else {
       this.props.deleteServerMembership(this.props.serverMembership)
-        .then(() => {this.props.history.push(`/`)}) 
+      .then(() => {this.props.history.push(`/`)}) 
     }
   }
 
   ServerInfo(){
     const { currentUser, currentServer, errors } = this.props;
     let admin = (
-      <div className='server-dropdown'>
-        <h1>Server Info</h1>
-        <div className='edit-server-errors'>
-          <ul>
-            {errors.server.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-          <ul>
-            {errors.membership.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-        </div>
-        <input
-          type="text"
-          autoFocus="true"
-          className='dropdown-input'
-          onChange={(e) => this.updateState(e)}
-          value={this.state.name} />
-        <div className='server-dropdown-photo'>
-          <label
-            className="server-photo-input-label"
-            htmlFor="server-photo-input">
-            <div>
-              <img src={this.state.photoUrl} alt={`${currentServer.name}'s icon`} />
-              <input
-                type="file"
-                id="server-photo-input"
-                onChange={this.handleFile}
-                accept="image/*"/>
-            </div>
-          </label>
-        </div>
-        <div className='dropdown-buttons'>
-          <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
-          <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
+      <div>
+        <div onClick={(e) => this.toggleServerInfo(e)} className='close-server-dropdown'></div>
+        <div className='server-dropdown'>
+          <h1>Server Info</h1>
+          <div className='edit-server-errors'>
+            <ul>
+              {errors.server.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <ul>
+              {errors.membership.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+          </div>
+          <input
+            type="text"
+            autoFocus="true"
+            className='dropdown-input'
+            onChange={(e) => this.updateState(e)}
+            value={this.state.currentServer.name} />
+          <div className='server-dropdown-photo'>
+            <label
+              className="server-photo-input-label"
+              htmlFor="server-photo-input">
+              <div>
+                <img src={this.state.currentServer.photoUrl} alt={`${this.state.currentServer.name}'s icon`} />
+                <input
+                  type="file"
+                  id="server-photo-input"
+                  onChange={this.handleFile}
+                  accept="image/*"/>
+              </div>
+            </label>
+          </div>
+          <div className='dropdown-buttons'>
+            <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
+            <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
+          </div>
         </div>
       </div>
     );
     let member = (
-      <div className='server-dropdown'>
-        <h1>Server Info</h1>
-        <h2>{currentServer.name}</h2>
-      
-        <div className='server-dropdown-photo'>
-          <img src={currentServer.photoUrl} 
-          alt={`${currentServer.name}'s icon`} />
+      <div>
+        <div onClick={(e) => this.toggleServerInfo(e)} className='close-server-dropdown'></div>
+        <div className='server-dropdown'>
+          <h1>Server Info</h1>
+          <h2>{currentServer.name}</h2>
+        
+          <div className='server-dropdown-photo'>
+            <img src={currentServer.photoUrl} 
+            alt={`${currentServer.name}'s icon`} />
+          </div>
+          <button className='delete-submit leave-server-submit' onClick={this.handleRemove}>Leave Server</button>
         </div>
-        <button className='delete-submit leave-server-submit' onClick={this.handleRemove}>Leave Server</button>
       </div>
     )
     return currentServer.adminId === currentUser.id ? admin : member;

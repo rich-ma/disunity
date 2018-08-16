@@ -1,9 +1,18 @@
+.close-server-dropdown {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: -1px;
+  left: 1px;
+  z-index: 1;
+}
 .server-dropdown {
   width: 240px;
   background: #282b30;
   box-shadow: 0 0 1px rgba(0, 0, 0, .82), 0 1px 4px rgba(0, 0, 0, .1);
   border-radius: 5px;
   position: absolute;
+  z-index: 10;
   h1 {
     margin-top: 5px;
     color: #7289da;
@@ -100,3 +109,46 @@
   }
 }
 
+.dropdown-input {
+  margin-left: 30px;
+  width: 180px;
+  overflow: auto;
+  background-color: #2C2F33;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .82), 0 1px 4px rgba(0, 0, 0, .1);
+  height: 35px;
+  padding-left: 10px;
+  border-bottom: 2px solid #2C2F33;
+  border-radius: 3px;
+}
+
+.dropdown-input:focus {
+  border-bottom: 2px solid #677bc4;
+}
+
+
+  .edit-submit {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 15px;
+    background-color: #677bc4;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  .edit-submit:hover {
+    background-color: #4e5d94;
+  }
+  .delete-submit {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 11px 15px;
+    background-color: darkred;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    margin-right: 20px;
+  }
+  .delete-submit:hover {
+    background-color: maroon;
+  }

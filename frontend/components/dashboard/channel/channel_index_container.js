@@ -7,9 +7,9 @@ import { createChannel, updateChannel, deleteChannel } from '../../../actions/ch
 const mSTP = (state, ownProps) => {
    const currentServer = state.entities.servers[ownProps.match.params.serverId];
    const currentUser = state.entities.users[state.session.id];
-
+   const channels = currentServer === undefined ? [] : getChannels(state, currentServer.id);
    return ({
-    channels: getChannels(state, currentServer.id),
+    channels,
     currentUser,
     currentServer,
    })

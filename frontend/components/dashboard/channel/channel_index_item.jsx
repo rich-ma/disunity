@@ -6,7 +6,9 @@ class ChannelIndexItem extends Component {
     super(props);
     this.state = {
       toggle: false,
-      channel: this.props.channel
+      name: this.props.channel.name,
+      server_id: this.props.channel.serverId,
+      id: this.props.channel.id
     }
 
     this.toggleChannelInfo = this.toggleChannelInfo.bind(this);
@@ -18,7 +20,7 @@ class ChannelIndexItem extends Component {
 
   updateState(e) {
     e.preventDefault();
-    this.setState({ channel: { name: e.currentTarget.value } });
+    this.setState({ name: e.currentTarget.value });
   }
 
   toggleChannelInfo() {
@@ -27,51 +29,46 @@ class ChannelIndexItem extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateChannel(this.state.channel);
+    this.props.updateChannel(this.state);
   }
 
   handleRemove(e){
-    const serverId = this.state.channel.serverId;
     e.preventDefault();
-    // if (this.props.currentServer.adminId === this.props.currentUser.id) {
-      this.props.deleteChannel(this.state.channel.id)
-        .then(() => this.props.history.push(`/servers/${serverId}`))
-    // } else {
-    //   this.props.deleteServerMembership(this.props.serverMembership)
-    //     .then(() => { this.props.history.push(`/`) })
-    // }
+      this.props.deleteChannel(this.state.id).then(() => this.props.history.push(`/servers/${this.state.serverId}`))
   }
 
   ChannelInfo(){
     const { channel } = this.props;
     if (channel === undefined) return null;
     return(
-      <div className='channel-dropdown'>
-        <h1>Channel Info</h1>
-        <input
-          type="text"
-          autoFocus="true"
-          className='dropdown-input'
-          onChange={(e) => this.updateState(e)}
-          value={this.state.channel.name} />
-        <div className='dropdown-buttons'>
-          <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
-          <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
+      <div>
+        <div onClick={(e) => this.toggleChannelInfo(e)}  className='close-channel-dropdown'></div>
+        <div className='channel-dropdown'>
+          <h1>Channel Info</h1>
+          <input
+            type="text"
+            autoFocus="true"
+            className='dropdown-input'
+            onChange={(e) => this.updateState(e)}
+            value={this.state.name} />
+          <div className='dropdown-buttons'>
+            <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
+            <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
+          </div>
         </div>
-      </div>
+    </div>
     )
   }
 
   render(){
     return (
-
       <NavLink className='channel-link channel-index-item' 
-        to={`/servers/${this.props.server.id}/${this.state.channel.id}`} activeClassName="channel-link-selected">
+        to={`/servers/${this.props.server.id}/${this.state.id}`} activeClassName="channel-link-selected">
         <i className="fas fa-hashtag">&nbsp;</i>
-        <p>{this.state.channel.name}</p>
+        <p>{this.state.name}</p>
         {this.props.admin ? 
           <i onClick={(e) => this.toggleChannelInfo(e)} className="fas fa-cog" aria-hidden="true"></i> 
-          : <div></div>}
+          : <span></span>}
         {this.state.toggle ? this.ChannelInfo() : null}
       </NavLink>
 

@@ -5,16 +5,19 @@ import { createServer, fetchServers, fetchServer, removeServerErrors } from '../
 import CreateServerForm from './create_server_form.jsx';
 import { createServerMembership, removeServerMembershipErrors } from '../../../actions/server_membership_actions';
 import { closeModal } from '../../../actions/modal_actions';
+import { updateLoading } from '../../../actions/loading_actions';
 
 const mSTP = state => ({
   errors: {
     server: state.errors.server,
     membership: state.errors.serverMembership
   },
-  currentUser: state.entities.users[state.session.id]
+  currentUser: state.entities.users[state.session.id],
+  loading: state.ui.loading,
 });
 
 const mDTP = dispatch => ({
+  updateLoading: value => dispatch(updateLoading(value)),
   closeModal: () => dispatch(closeModal()),
   createServer: formData => dispatch(createServer(formData)),
   removeServerErrors: () => dispatch(removeServerErrors()),
