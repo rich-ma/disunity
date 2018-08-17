@@ -26,8 +26,8 @@ class ServerHeader extends Component {
     this.props.fetchServer(that.props.match.params.serverId)
     .then(payload => (that.setState({ name: payload.server.name, photoUrl: payload.server.photoUrl})))
     .then(() => that.props.updateLoading(false));
-    // this.props.removeServerErrors();
-    // this.props.removeServerMembershipErrors();
+    this.props.removeServerErrors();
+    this.props.removeServerMembershipErrors();
   }
 
   componentWillReceiveProps(nextProps){
