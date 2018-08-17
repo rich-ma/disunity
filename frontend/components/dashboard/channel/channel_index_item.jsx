@@ -7,7 +7,7 @@ class ChannelIndexItem extends Component {
     this.state = {
       toggle: false,
       name: this.props.channel.name,
-      server_id: this.props.channel.serverId,
+      serverId: this.props.server.id,
       id: this.props.channel.id
     }
 
@@ -31,12 +31,14 @@ class ChannelIndexItem extends Component {
     e.preventDefault();
     const that = this;
     this.props.updateChannel(this.state)
-    .then(()=>this.toggleChannelInfo());
+    .then(()=>that.toggleChannelInfo());
   }
 
   handleRemove(e){
     e.preventDefault();
-      this.props.deleteChannel(this.state.id).then(() => this.props.history.push(`/servers/${this.state.serverId}`))
+    const that = this;
+      this.props.deleteChannel(this.state.id).then(() => that.props.history.push(`/servers/${this.state.serverId}`))
+      .then(()=>that.toggleChannelInfo());
   }
 
   ChannelInfo(){

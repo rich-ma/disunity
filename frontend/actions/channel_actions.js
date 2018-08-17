@@ -40,14 +40,12 @@ export const updateChannel = channel => dispatch => (
     dispatch(receiveErrors(err.responseJSON))))
 )
 
-export const deleteChannel = id => dispatch => {
-  return (ChannelAPIUtil.deleteChannel(id)
-    .then(() => {
-      return dispatch(removeChannel(id));
-    }), err => (
+export const deleteChannel = id => dispatch => (
+  ChannelAPIUtil.deleteChannel(id)
+    .then(() => dispatch(removeChannel(id)), err => (
       dispatch(receiveErrors(err.responseJSON)))
   )
-};
+)
 
 export const clearChannelErrors = () => dispatch => (
   dispatch(removeChannelErrors())

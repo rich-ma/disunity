@@ -36,7 +36,6 @@ class ServerHeader extends Component {
       this.props.fetchServer(nextProps.match.params.serverId)
         .then((payload) => {
           that.setState({ name: payload.server.name, photoUrl: payload.server.photoUrl })
-          // that.setState({ currentServer: payload.server, photoUrl: payload.server.photoUrl })
         });
     }
   }
@@ -79,16 +78,17 @@ class ServerHeader extends Component {
 
   handleRemove(e){
     e.preventDefault();
+    const that = this;
     if (this.props.currentServer.adminId === this.props.currentUser.id) {
       this.props.updateLoading(true);
-      this.props.deleteServer(this.props.currentServer.id)
-      .then(()=> { this.props.history.push(`/`)})
-      .then(() => this.props.updateLoading(false));
+      this.props.deleteServer(that.props.currentServer.id)
+      .then(()=> { that.props.history.push(`/`)})
+      .then(() => that.props.updateLoading(false));
     } else {
       this.props.updateLoading(true);
       this.props.deleteServerMembership(this.props.serverMembership)
-      .then(() => {this.props.history.push(`/`)})
-      .then(() => this.props.updateLoading(false));
+      .then(() => {that.props.history.push(`/`)})
+      .then(() => that.props.updateLoading(false));
     }
   }
 

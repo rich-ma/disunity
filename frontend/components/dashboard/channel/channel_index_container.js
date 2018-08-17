@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { openModal } from '../../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 import ChannelIndex from './channel_index';
 import { getChannels } from '../../../reducers/selector';
 import { createChannel, updateChannel, deleteChannel } from '../../../actions/channel_actions';
@@ -23,4 +24,4 @@ const mDTP = dispatch => ({
   openModal: modal => dispatch(openModal(modal))
 })
 
-export default connect(mSTP, mDTP)(ChannelIndex);
+export default withRouter(connect(mSTP, mDTP)(ChannelIndex));

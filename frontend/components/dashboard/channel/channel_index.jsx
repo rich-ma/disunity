@@ -16,6 +16,8 @@ class ChannelIndex extends Component {
     return props;
   }
 
+  
+
   addChannel(server){
     return (
       <div className="channel-new"

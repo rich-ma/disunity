@@ -61,12 +61,10 @@ export const updateServer = formData => dispatch => (
 
 export const deleteServer = id => dispatch => {
   return (ServerAPIUtil.deleteServer(id)
-  .then(() => {
-    return dispatch(removeServer(id));
-  }), err => (
+  .then(() => dispatch(removeServer(id)), err => (
     dispatch(receiveErrors(err.responseJSON)))
   )
-};
+  )};
 
 export const clearServerErrors = () => dispatch => (
   dispatch(removeErrors())
