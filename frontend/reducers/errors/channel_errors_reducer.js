@@ -1,7 +1,5 @@
 import merge from 'lodash/merge';
 import {
-  REMOVE_CHANNEL,
-  RECEIVE_CHANNEL,
   REMOVE_CHANNEL_ERRORS,
   RECEIVE_CHANNEL_ERRORS
 } from '../../actions/channel_actions';
