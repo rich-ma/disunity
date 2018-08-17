@@ -29,7 +29,9 @@ class ChannelIndexItem extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateChannel(this.state);
+    const that = this;
+    this.props.updateChannel(this.state)
+    .then(()=>this.toggleChannelInfo());
   }
 
   handleRemove(e){
@@ -38,9 +40,7 @@ class ChannelIndexItem extends Component {
   }
 
   ChannelInfo(){
-    // if (this.props.loading) return null;
     const { channel } = this.props;
-    // if (channel === undefined) return null;
     
     return(
       <div>

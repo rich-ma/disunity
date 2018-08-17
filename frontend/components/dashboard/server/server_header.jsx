@@ -159,12 +159,11 @@ class ServerHeader extends Component {
   render() {
     if (this.props.loading) return null;
     const { currentUser, currentServer, openModal, deleteServer} = this.props;
-
     return (
       <div className='server-info'>
         <h1>{currentServer.name}</h1>
         <div className="server-edit">
-          <i onClick={(e) => this.toggleServerInfo(e)} className={this.state.toggle === true ? "fa fa-times" : "fa fa-chevron-down"} aria-hidden="true"></i>
+          <i onClick={() => this.toggleServerInfo()} className={this.state.toggle === true ? "fa fa-times" : "fa fa-chevron-down"} aria-hidden="true"></i>
           {this.state.toggle ? this.ServerInfo() : null}
         </div>
       </div>

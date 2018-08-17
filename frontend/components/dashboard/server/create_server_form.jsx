@@ -27,6 +27,7 @@ class CreateServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const that = this;
     const formData = new FormData();
     formData.append('server[name]', this.state.name);
     formData.append('server[admin_id]', this.props.currentUser.id);
@@ -36,13 +37,13 @@ class CreateServerForm extends React.Component {
     this.props.updateLoading(true);
     this.props.createServer(formData)
       .then(payload => {
-        return this.props.createServerMembership(payload.server);
+        return that.props.createServerMembership(payload.server);
       })
       .then(payload => {
-        this.props.history.push(`/servers/${payload.membership.serverId}`)
+        that.props.history.push(`/servers/${payload.membership.serverId}`)
       }) 
-      .then(() => this.props.closeModal())
-      .then(() => this.props.updateLoading(false));
+      .then(() => that.props.closeModal())
+      .then(() => that.props.updateLoading(false));
   }
 
   handleFile(e) {
