@@ -4,15 +4,14 @@ import { withRouter } from 'react-router-dom';
 class ServerHeader extends Component {
   constructor(props){
     super(props);
-    
+    if (props.loading) return null;
     this.state={
       toggle: false,
-      currentServer: props.currentServer,
-      // name: props.currentServer.name,
+      name: props.currentServer.name,
       photoFile: null,
-      // photoUrl: props.currentServer.photoUrl,
+      photoUrl: props.currentServer.photoUrl,
     }
-
+    
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
     this.ServerInfo = this.ServerInfo.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -24,10 +23,9 @@ class ServerHeader extends Component {
   componentDidMount(){
     const that = this;
     this.props.updateLoading(true);
-    this.props.fetchServer(this.props.match.params.serverId)
-      .then((payload) => {
-        that.setState({currentServer: payload.server})})
-        .then(() => this.props.updateLoading(false));
+    this.props.fetchServer(that.props.match.params.serverId)
+    .then(payload => (that.setState({ name: payload.server.name, photoUrl: payload.server.photoUrl})))
+    .then(() => that.props.updateLoading(false));
     // this.props.removeServerErrors();
     // this.props.removeServerMembershipErrors();
   }
@@ -37,7 +35,7 @@ class ServerHeader extends Component {
     if (nextProps.match.params.serverId !== this.props.match.params.serverId){
       this.props.fetchServer(nextProps.match.params.serverId)
         .then((payload) => {
-          that.setState({ currentServer: payload.server })
+          that.setState({ name: payload.server.name, photoUrl: payload.server.photoUrl })
           // that.setState({ currentServer: payload.server, photoUrl: payload.server.photoUrl })
         });
     }
@@ -45,7 +43,7 @@ class ServerHeader extends Component {
 
   updateState(e) {
     e.preventDefault();
-    this.setState({ currentServer: { name: e.currentTarget.value } });
+    this.setState({ name: e.currentTarget.value });
     // this.setState({ name: e.currentTarget.value });
   }
 
@@ -58,9 +56,7 @@ class ServerHeader extends Component {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
-      this.setState({ currentServer: { photoUrl: reader.result}, photoFile: file });
-      // this.setState({ photoUrl: reader.result, photoFile: file });
-
+      this.setState({ photoUrl: reader.result, photoFile: file });
     if (file) {
       reader.readAsDataURL(file);
     } else {
@@ -71,13 +67,14 @@ class ServerHeader extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('server[name]', this.state.currentServer.name);
-    formData.append('id', this.state.currentServer.id);
+    formData.append('server[name]', this.state.name);
+    formData.append('id', this.props.currentServer.id);
     if (this.state.photoFile) {
       formData.append('server[photo]', this.state.photoFile);
     }
     this.props.updateServer(formData)
     .then(() => this.props.fetchServer(this.props.currentServer.id))
+    .then(() => this.toggleServerInfo())
   }
 
   handleRemove(e){
@@ -119,24 +116,24 @@ class ServerHeader extends Component {
             autoFocus="true"
             className='dropdown-input'
             onChange={(e) => this.updateState(e)}
-            value={this.state.currentServer.name} />
+            value={this.state.name} />
           <div className='server-dropdown-photo'>
             <label
               className="server-photo-input-label"
               htmlFor="server-photo-input">
               <div>
-                <img src={this.state.currentServer.photoUrl} alt={`${this.state.currentServer.name}'s icon`} />
+                <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
                 <input
                   type="file"
                   id="server-photo-input"
-                  onChange={this.handleFile}
+                  onChange={(e)=>this.handleFile(e)}
                   accept="image/*"/>
               </div>
             </label>
           </div>
           <div className='dropdown-buttons'>
-            <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
-            <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
+            <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
+            <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
           </div>
         </div>
       </div>

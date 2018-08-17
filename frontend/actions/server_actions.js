@@ -52,8 +52,8 @@ export const createServer = formData => dispatch => {
     ) 
 )};
 
-export const updateServer = server => dispatch => (
-  ServerAPIUtil.updateServer(server)
+export const updateServer = formData => dispatch => (
+  ServerAPIUtil.updateServer(formData)
   .then(server => dispatch(receiveServer(server)), err => (
     dispatch(receiveErrors(err.responseJSON)))
   )

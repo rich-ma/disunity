@@ -18,7 +18,6 @@ export const clearErrors = () => ({
 });
 
 export const updateUser = formData => dispatch => {
-  debugger;
   return (
   UserAPIUtil.updateUser(formData)
   .then(user => dispatch(receiveUser(user)), err => (

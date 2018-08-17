@@ -14,6 +14,10 @@ class ServerIndex extends Component {
     .then(()=>this.props.updateLoading(false))
   }
 
+  componentWillReceiveProps(newProps){
+    debugger;
+  }
+
   static getDerivedStateFromProps(props, state){
     if (props.servers.length === state.servers.length){
       return state;

@@ -31,7 +31,6 @@ class EditUserForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
     const formData = new FormData();
     formData.append('user[username]', this.state.username);
     formData.append('id', this.props.currentUser.id);
