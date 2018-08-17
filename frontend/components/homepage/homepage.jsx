@@ -26,7 +26,7 @@ const Homepage = ({ currentUser }) => {
           <Route path='/servers/:serverId'
             component={ChannelIndexContainer} />
         </div>
-        <Route path='/servers/:serverId'
+        <Route path='/'
           component={UserInfoContainer} />
       </div>
 

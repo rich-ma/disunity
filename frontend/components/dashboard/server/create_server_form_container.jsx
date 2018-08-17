@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { createServer, fetchServers, fetchServer, removeServerErrors } from '../../../actions/server_actions';
 import CreateServerForm from './create_server_form.jsx';
 import { createServerMembership, removeServerMembershipErrors } from '../../../actions/server_membership_actions';
@@ -26,4 +26,4 @@ const mDTP = dispatch => ({
   createServerMembership: serverId => dispatch(createServerMembership(serverId))
 });
 
-export default connect(mSTP, mDTP)(CreateServerForm);
+export default withRouter(connect(mSTP, mDTP)(CreateServerForm));

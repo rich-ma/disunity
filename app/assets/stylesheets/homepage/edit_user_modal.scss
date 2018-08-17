@@ -1,0 +1,115 @@
+.edit-user-form-container{
+  width: 480px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .82),
+  0 1px 4px rgba(0, 0, 0, .1);
+  background: #2C2F33;
+  border-color: #202225;
+  border-radius: 5px;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px 20px;
+
+
+  .edit-user-info{
+    display: flex;
+    flex-direction: column;
+
+      h1 {
+        color: #f6f6f7;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+    .edit-user-photo{
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    img {
+      
+    }
+
+    #user-photo-input{
+      display: none;
+    }
+
+  }
+
+  .edit-user-text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 300px;
+
+    .edit-user-errors{
+      min-height: 25px;
+    }
+
+    p{
+      color: rgba(220, 221, 222, .3);
+      font-weight: 600;
+      line-height: 16px;
+      font-size: 12px;
+    }
+
+    input{
+      background-color: rgba(0, 0, 0, .1);
+      border-color: rgba(0, 0, 0, .3);
+      color: #f6f6f7;
+      height: 40px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 18px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, .82),
+      0 1px 4px rgba(0, 0, 0, .1);
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .user-email{
+      font-weight: 300;
+      color: #f6f6f7;
+      height: 40px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 18px;
+    }
+
+  }
+  .edit-user-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    .edit-user-submit{
+    font-size: 14px;
+    padding: 10px 30px;
+    background-color: #677bc4;
+    color: #fff;
+    border-radius: 10px;
+    height: 20px;
+    width: 30px;
+    align-self: flex-end;
+    }
+    .edit-user-submit:hover {
+      background-color: #4e5d94;
+    }
+
+    .logout { 
+      color: rgb(240, 71, 71);
+      margin-right: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .logout:hover {
+      background-color: rgba(240, 71, 71, .098);
+    }
+
+  }
+
+
+}

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { openModal } from '../../../actions/modal_actions';
 import { deleteServer, fetchServers, updateServer, removeServerErrors, fetchServer } from '../../../actions/server_actions';
 import ServerHeader from './server_header';
@@ -35,4 +36,4 @@ const mDTP = dispatch => ({
   openModal: modal => dispatch(openModal(modal)),
 })
 
-export default connect(mSTP, mDTP)(ServerHeader);
+export default withRouter(connect(mSTP, mDTP)(ServerHeader));

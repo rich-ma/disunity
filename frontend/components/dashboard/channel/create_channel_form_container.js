@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../../actions/modal_actions';
 import { createChannel, clearChannelErrors } from '../../../actions/channel_actions';
 import CreateChannelForm from './create_channel_form';
@@ -20,4 +21,4 @@ const mDTP = dispatch => ({
   clearChannelErrors: () => dispatch(clearChannelErrors()),
 })
 
-export default connect(mSTP, mDTP)(CreateChannelForm);
+export default withRouter(connect(mSTP, mDTP)(CreateChannelForm));
