@@ -15,6 +15,11 @@ class Channel < ApplicationRecord
   class_name: :Server,
   optional: true
 
+  has_many :messages,
+  foreign_key: :channel_id,
+  class_name: :Message,
+  dependent: :destroy
+
   private
   def ensure_type 
     self.channel_type ||= 0

@@ -19,6 +19,10 @@ class Server < ApplicationRecord
   class_name: :Channel, 
   dependent: :destroy
 
+  has_many :messages,
+    through: :channels,
+    source: :messages
+
   has_one_attached :photo
 
   after_initialize :ensure_icon_url

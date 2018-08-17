@@ -4,13 +4,12 @@ class EditUserForm extends Component {
     super(props);
     this.state = {
       username: props.currentUser.username,
-      // email: props.currentUser.email,
+      email: props.currentUser.email,
       photoFile: null,
       photoUrl: props.currentUser.photoUrl
     };
 
     this.updateName = this.updateName.bind(this);
-    // this.updateEmail = this.updateEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -24,17 +23,11 @@ class EditUserForm extends Component {
     e.preventDefault();
     this.setState({ username: e.currentTarget.value });
   }
-  // updateEmail(e) {
-  //   e.preventDefault();
-  //   this.setState({ email: e.currentTarget.value });
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
     formData.append('user[username]', this.state.username);
     formData.append('id', this.props.currentUser.id);
-    // formData.append('user[email]', this.state.email);
     if (this.state.photoFile) {
       formData.append('user[photo]', this.state.photoFile);
     }
@@ -106,7 +99,7 @@ class EditUserForm extends Component {
             value={this.state.username} />
 
             <p>EMAIL</p>
-            <p className='user-email'>{this.props.currentUser.email}</p>
+            <p className='user-email'>{this.state.email}</p>
             <div className='edit-user-buttons'>
             <button onClick={e=>this.handleLogout(e)} className='logout'>Logout</button>
             <button className="edit-user-submit" onClick={(e)=>this.handleSubmit(e)}>Save</button>

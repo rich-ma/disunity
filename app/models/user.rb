@@ -24,6 +24,11 @@ class User < ApplicationRecord
     through: :memberships, 
     source: :server
 
+  has_many :messages,
+    foreign_key: :author_id,
+    class_name: :Message,
+    dependent: :destroy
+
   has_one_attached :photo
 
   def self.find_by_credentials(email, password)
