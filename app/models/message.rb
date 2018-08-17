@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   validates :author_id, :channel_id, :content, presence: true
+  default_scope { order(created_at: :desc) }
 
   belongs_to :author,
   foreign_key: :author_id,

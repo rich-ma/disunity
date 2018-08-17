@@ -36,3 +36,15 @@ json.channels do
     end  
   end
 end
+
+json.messages do
+  @servers.includes(:channels => :messages) do |server|
+    @server.channels.each do |channel|
+      channel.messages.each do |message|
+        json.set! message.id do
+          json.partial! '/api/messages/message', message: message
+        end
+      end
+    end
+  end
+end

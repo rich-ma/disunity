@@ -1,0 +1,1 @@
+json.extract! @message, :author_id, :channel_id, :content, :created_at
