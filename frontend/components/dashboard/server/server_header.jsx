@@ -83,11 +83,15 @@ class ServerHeader extends Component {
   handleRemove(e){
     e.preventDefault();
     if (this.props.currentServer.adminId === this.props.currentUser.id) {
+      this.props.updateLoading(true);
       this.props.deleteServer(this.props.currentServer.id)
-      .then(()=> { this.props.history.push(`/`)}) 
+      .then(()=> { this.props.history.push(`/`)})
+      .then(() => this.props.updateLoading(false));
     } else {
+      this.props.updateLoading(true);
       this.props.deleteServerMembership(this.props.serverMembership)
-      .then(() => {this.props.history.push(`/`)}) 
+      .then(() => {this.props.history.push(`/`)})
+      .then(() => this.props.updateLoading(false));
     }
   }
 

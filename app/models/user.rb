@@ -61,9 +61,9 @@ class User < ApplicationRecord
 
   def ensure_salt
     self.username_salt ||= generate_salt
-    while User.where(username: self.username, username_salt: self.username_salt).exists?
-      self.username_salt = generate_salt
-    end
+    # while User.where(username: self.username, username_salt: self.username_salt).exists?
+    #   self.username_salt = generate_salt
+    # end
   end
 
   def ensure_session_token

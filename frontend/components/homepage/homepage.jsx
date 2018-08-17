@@ -6,6 +6,7 @@ import Footer from './footer';
 import ServerIndexContainer from '../dashboard/server/server_index_container';
 import ServerHeaderContainer from '../dashboard/server/server_header_container';
 import ChannelIndexContainer from '../dashboard/channel/channel_index_container';
+import UserInfoContainer from '../../components/dashboard/user/user_info_container';
 
 const Homepage = ({ currentUser }) => {
   
@@ -25,8 +26,8 @@ const Homepage = ({ currentUser }) => {
           <Route path='/servers/:serverId'
             component={ChannelIndexContainer} />
         </div>
-        {/* <Route path='/servers/:serverId'
-          component={UserInfoContainer} /> */}
+        <Route path='/servers/:serverId'
+          component={UserInfoContainer} />
       </div>
 
       <div>

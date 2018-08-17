@@ -1,0 +1,55 @@
+.user-info-container{
+  -webkit-box-align: center;
+  align-items: center;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 400;
+  height: 52px;
+  margin-bottom: 1px;
+  padding: 0 10px;
+  background: rgba(32, 34, 37, .3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .user-info-display{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      height: 40px;
+      width: 40px;
+      margin-right: 5px;
+    }
+
+    .user-info-name{
+      display: block;
+      max-width: 84px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .user-info-salt{
+      display: block;
+      font-size: 10px;
+      margin-top: 4px;
+      opacity: .4;
+    }
+  }
+
+  .edit-user-cog {
+    font-size: 18px;
+    opacity: 0.3;
+  }
+  .edit-user-cog:hover {
+    opacity: 0.6;
+  }
+
+
+
+}
