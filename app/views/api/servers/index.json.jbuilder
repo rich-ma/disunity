@@ -17,7 +17,7 @@ json.serverMemberships do
   end
 end
 
-json.users do
+json.users do          
   @servers.includes(:users).each do |server|
     server.users.each do |user|
       json.set! user.id do

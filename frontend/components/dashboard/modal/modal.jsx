@@ -20,6 +20,9 @@ const Modal = ({ modal, closeModal }) => {
     case 'editUser':
       component = <EditUserFormContainer />;
       break;
+    // case 'userInfo':
+    //   component = <UserInfoContainer />
+    //   break;
     default:
       return null;
   }
@@ -29,7 +32,6 @@ const Modal = ({ modal, closeModal }) => {
       onClick={e => e.stopPropagation()}>
         {component}
       </div>
-
     </div>
   )
 }

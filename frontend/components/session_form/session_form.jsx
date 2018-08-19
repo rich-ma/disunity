@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
       <div className="session-form-title">
         <h2>Create an account</h2>
       </div>
-    ); //end welcome
+    );
     
     const usernameField = this.props.formType === 'login' ? null : (
       <label>USERNAME
@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
           onChange={this.update('username')}
           className="session-input"/>
       </label>
-    ); //end username
+    );
 
     return (
       <div className="session-main">
@@ -89,18 +89,12 @@ class SessionForm extends React.Component {
               </div>
                 <label>EMAIL
                   <input type="text" value={this.state.email}
-                    onChange={this.update('email')}
-                    className="session-input" />
+                    onChange={this.update('email')} className="session-input" />
                 </label>
-    
                 {usernameField}
-
                 <label>PASSWORD
-                  <input type="password"
-                    value={this.state.password}
-                    onChange={this.update('password')}
-                    className="session-input"
-                  />
+                  <input type="password" value={this.state.password}
+                    onChange={this.update('password')} className="session-input"/>
                 </label>
 
                 <label>
