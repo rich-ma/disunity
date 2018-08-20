@@ -35,7 +35,7 @@ This is done to keep code dry, and limit the number of functional components, ma
    const welcome = this.props.formType === 'login' ? (
       <div className="session-form-title">
         <h2>Welcome back!</h2>
-        <p>We're so excited to see you again!</p>
+        <p>We are so excited to see you again!</p>
       </div>
     ) : (
       <div className="session-form-title">
