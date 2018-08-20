@@ -51,7 +51,7 @@ This is done to keep code dry, and limit the number of functional components, ma
     );   
 ```
 
-This code keeps our session from dry by checking the form type and rendering the {username} field if the type === 'signup'.  It also renders the submit button conditionally.
+This code keeps our session from dry by checking the form type and rendering the {usernameField} field if the type === 'signup'.  It also renders the submit button conditionally.
 ``` javascript
 <label>EMAIL
     <input type="text" value={this.state.email}
