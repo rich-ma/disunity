@@ -12,4 +12,11 @@
     ))
   )
 
-  
+export const getMessages = (state, channelId) => (
+  Object.values(state.entities.messages)
+    .filter(message => (
+      (message.channelId === channelId)
+    ))
+)
+
+

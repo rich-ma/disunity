@@ -2,6 +2,7 @@
   "name": "disunity",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.2.1",
     "adorable-avatars": "^0.2.1",
     "animate.css": "^3.7.0",
     "babel-core": "^6.26.3",

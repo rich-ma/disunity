@@ -12,10 +12,6 @@ class CreateChannelForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  componentWillReceiveProps(nextProps){
-    
-  }
-
   componentDidMount() {
     this.props.clearChannelErrors();
   }

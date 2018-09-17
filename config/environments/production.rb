@@ -95,4 +95,11 @@ Rails.application.configure do
 
   # config/environments/production.rb
   config.active_storage.service = :amazon_prod
+
+   config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'http://disunity.herokuapp.com/*'
+      resource 'http://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
+    end
+  end
 end
