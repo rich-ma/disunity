@@ -7,6 +7,8 @@ import ServerIndexContainer from '../dashboard/server/server_index_container';
 import ServerHeaderContainer from '../dashboard/server/server_header_container';
 import ChannelIndexContainer from '../dashboard/channel/channel_index_container';
 import UserInfoContainer from '../../components/dashboard/user/user_info_container';
+import MessageIndexContainer from '../dashboard/message/message_index_container';
+import { ProtectedRoute } from '../../util/route_util';
 
 const Homepage = ({ currentUser }) => {
   
@@ -34,9 +36,9 @@ const Homepage = ({ currentUser }) => {
         <header className='dashboard-header'> </header>
         <div className='channel-users-container'>
           <div className='channel-message-col'>
-            {/*messageIndex, messageForm */}
+            <ProtectedRoute path='/servers/:serverId/:channelId'
+              component={MessageIndexContainer} />
           </div>
-
           <div className='server-users-col'>
             {/* search, info */}
           </div>

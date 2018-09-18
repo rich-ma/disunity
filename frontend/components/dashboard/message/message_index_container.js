@@ -25,4 +25,4 @@ const mDTP = dispatch => ({
   fetchServers: () => dispatch(fetchServers()),
 })
 
-export default connect(mSTP, mDTP)(MessageIndex);
+export default withRouter(connect(mSTP, mDTP)(MessageIndex));

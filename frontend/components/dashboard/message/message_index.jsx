@@ -13,11 +13,12 @@ class MessageIndex extends React.Component {
   }
 
   createSocket() {
+    if (this.props.loading) return null;
     const that = this;
-    let cable = Cable.createConsumer(`ws://${location.host}/cable`);
+    let cable = ActionCable.createConsumer(`ws://${location.host}/cable`);
     that.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
-      channel_id = that.props.channel.id,
+      channel_id: that.props.channel.id,
     }, {
         connected: () => {},
         received: (data) => {
@@ -89,7 +90,7 @@ class MessageIndex extends React.Component {
 
   render() {
     if (this.props.loading) return null;
-    const { channel, users, currentUserId } = this.props;
+    const { channel, users, currentUserId, loading } = this.props;
     const { messages } = this.state;
 
     return(
@@ -107,14 +108,17 @@ class MessageIndex extends React.Component {
           </ul>
         </div>
         <MessageForm
+          loading={loading}
           userId={currentUserId}
           chats={this.chats}
           channel={channel}
+          channelId={this.props.match.params.channelId}
         />
       </div>
 
 
-    );
-}
+    )
+  }
+};
 
 export default MessageIndex;

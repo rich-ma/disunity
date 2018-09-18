@@ -6,22 +6,25 @@ class MessageForm extends React.Component {
     this.state = {
       content: "",
       authorId: props.userId,
-      channelId: props.channel.id,
-    }
+      channelId: props.channelId,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
-    if (nextProps.channel !== this.props.channel){
+    debugger
+    if (nextProps.channelId !== prevState.channelId){
       return {
-        content: this.state.content,
-        authorId: this.state.authorId,
-        channelId: nextProps.channel.id
+        content: prevState.content,
+        authorId: prevState.authorId,
+        channelId: nextProps.channelId
       }
+    } else {
+      return prevState;
     }
   }
+
 
   handleInput(e){
     e.preventDefault();
@@ -35,6 +38,7 @@ class MessageForm extends React.Component {
   }
   
   render() {
+    if (this.props.loading) return null;
     return (
     <form className="message-form" 
       onSubmit={this.handleSubmit}>
@@ -49,3 +53,5 @@ class MessageForm extends React.Component {
     )
   }
 }
+
+export default MessageForm;
