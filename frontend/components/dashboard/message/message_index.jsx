@@ -115,7 +115,7 @@ class MessageIndex extends React.Component {
           userId={currentUserId}
           chats={this.chats}
           channel={channel}
-          channelId={this.props.match.params.channelId}
+          channelId={parseInt(this.props.match.params.channelId)}
         />
       </div>
 

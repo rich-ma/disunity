@@ -19,7 +19,7 @@ const mSTP = ( state, ownProps ) => {
 };
 
 const mDTP = dispatch => ({
-  receiveMessage: messages => dispatch(receiveMessage(message)),
+  receiveMessage: message => dispatch(receiveMessage(message)),
   removeMessage: id => dispatch(removeMessage(id)),
   fetchServers: () => dispatch(fetchServers()),
 })
