@@ -12,7 +12,7 @@ const mSTP = ( state, ownProps ) => {
 
   return ({
     channel,
-    currentUser,
+    currentUserId: state.session.id,
     messages,
     users: state.entities.users,
     loading: state.ui.loading,
