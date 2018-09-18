@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ChannelIndexItem from './channel_index_item';
 
-class ChannelIndex extends Component {
+class ChannelIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = props;

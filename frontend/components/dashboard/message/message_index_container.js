@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMessages } from '../../../reducers/selector';
-import 
-
+import { receiveMessage, removeMessage } from '../../../actions/message_actions';
+import { fetchServers } from '../../../actions/server_actions';
+import MessageIndex from './message_index';
 
 const mSTP = ( state, ownProps ) => {
   const channel = state.entities.channels[ownProps.match.params.channelId];
@@ -18,4 +19,10 @@ const mSTP = ( state, ownProps ) => {
   })
 };
 
-const mDTP = 
+const mDTP = dispatch => ({
+  receiveMessage: messages => dispatch(receiveMessage(message)),
+  removeMessage: id => dispatch(removeMessage(id)),
+  fetchServers: () => dispatch(fetchServers()),
+})
+
+export default connect(mSTP, mDTP)(MessageIndex);
