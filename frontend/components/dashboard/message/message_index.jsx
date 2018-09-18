@@ -13,16 +13,16 @@ class MessageIndex extends React.Component {
   }
 
   createSocket() {
-    if (this.props.loading) return null;
-    const that = this;
+    let that = this;
+
     let cable = ActionCable.createConsumer(`ws://${location.host}/cable`);
     that.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
-      channel_id: that.props.channel.id,
+      channel_id: that.props.match.params.channelId
     }, {
-        connected: () => {},
-        received: (data) => {
-          if (data.type === 'destroy'){
+        connected: () => { },
+        received: data => {
+          if (data.type === "destroy") {
             that.props.removeMessage(data.message.id);
           } else {
             that.props.receiveMessage(data.message);
@@ -35,20 +35,22 @@ class MessageIndex extends React.Component {
             authorId: message.authorId
           });
         },
-        delete: function(message) {
-          this.perform('destroy', {
-            id: message.id
-          })
-        },
         update: function(message) {
           this.perform('update', {
+            id: message.id,
             content: message.content,
             channelId: message.channelId,
             authorId: message.authorId
           })
+        },
+        delete: function(message) {
+          this.perform('destroy', {
+            id: message.id
+          })
         }
       });
   }
+
   
   static getDerivedStateFromProps(props, state) {
     return {
@@ -93,6 +95,7 @@ class MessageIndex extends React.Component {
     const { channel, users, currentUserId, loading } = this.props;
     const { messages } = this.state;
 
+    
     return(
       <div className="message-container">
        <div className="message-index">

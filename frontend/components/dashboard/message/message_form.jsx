@@ -12,19 +12,12 @@ class MessageForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    debugger
-    if (nextProps.channelId !== prevState.channelId){
-      return {
-        content: prevState.content,
-        authorId: prevState.authorId,
-        channelId: nextProps.channelId
-      }
-    } else {
-      return prevState;
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.channel.id !== nextProps.channel.id) {
+      this.state.channelId = nextProps.channel.id;
     }
   }
-
 
   handleInput(e){
     e.preventDefault();
@@ -55,3 +48,16 @@ class MessageForm extends React.Component {
 }
 
 export default MessageForm;
+
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   debugger
+  //   if (nextProps.channelId !== prevState.channelId){
+  //     return {
+  //       content: prevState.content,
+  //       authorId: prevState.authorId,
+  //       channelId: nextProps.channelId
+  //     }
+  //   } else {
+  //     return prevState;
+  //   }
+  // }

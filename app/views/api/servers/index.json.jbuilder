@@ -17,7 +17,7 @@ json.serverMemberships do
   end
 end
 
-json.users do          
+json.users do
   @servers.includes(:users).each do |server|
     server.users.each do |user|
       json.set! user.id do
@@ -33,13 +33,13 @@ json.channels do
       json.set! channel.id do
         json.partial! '/api/channels/channel', channel: channel
       end
-    end  
+    end
   end
 end
 
 json.messages do
-  @servers.includes(:channels => :messages) do |server|
-    @server.channels.each do |channel|
+  @servers.includes(:channels => :messages).each do |server|
+    server.channels.each do |channel|
       channel.messages.each do |message|
         json.set! message.id do
           json.partial! '/api/messages/message', message: message

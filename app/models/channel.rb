@@ -1,7 +1,7 @@
 class Channel < ApplicationRecord
   CHANNEL_TYPE = {
     0 => 'TEXT', 
-    1 => 'VOICE'
+    1 => 'DM'
   }
 
   validates :name, :server_id, presence: true
@@ -25,7 +25,4 @@ class Channel < ApplicationRecord
     self.channel_type ||= 0
   end
 
-  # def ensure_server_id
-  #   self.server_id ||= 
-  # end
 end

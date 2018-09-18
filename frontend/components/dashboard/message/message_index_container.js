@@ -9,7 +9,6 @@ const mSTP = ( state, ownProps ) => {
   const channel = state.entities.channels[ownProps.match.params.channelId];
   const currentUser = state.entities.users[state.session.id];
   const messages = getMessages(state, parseInt(ownProps.match.params.channelId));
-
   return ({
     channel,
     currentUserId: state.session.id,

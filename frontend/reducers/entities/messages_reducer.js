@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import { 
-  REMOVE_MESSAGES,
-  RECEIVE_MESSAGES,            
+  REMOVE_MESSAGE,
+  RECEIVE_MESSAGE,            
 } from '../../actions/message_actions';
 import {
   RECEIVE_SERVERS
@@ -18,10 +18,10 @@ const messagesReducer = (state = {}, action) => {
     case RECEIVE_SERVERS:
       if (action.payload.messages === undefined) return newState;
       return action.payload.messages;
-    case REMOVE_MESSAGES:
+    case REMOVE_MESSAGE:
       delete newState[action.messageId];
       return newState;
-    case RECEIVE_MESSAGES:
+    case RECEIVE_MESSAGE:
       return merge(newState, {[action.message.id]: action.message});
     case LOGOUT_CURRENT_USER:
       return {};

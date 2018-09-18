@@ -22,9 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.dispatch = store.dispatch;
-  window.getState = store.dispatch;
-  window.fetchServers = fetchServers;
-  
   ReactDOM.render(<Root store={store} />, root);
 });

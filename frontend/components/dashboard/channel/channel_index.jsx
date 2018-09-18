@@ -16,7 +16,11 @@ class ChannelIndex extends React.Component {
     return props;
   }
 
-  
+  componentDidMount() {
+    this.props.updateLoading(true);
+    this.props.fetchServers()
+      .then(() => this.props.updateLoading(false))
+  }
 
   addChannel(server){
     return (
