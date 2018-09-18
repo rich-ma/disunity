@@ -11,7 +11,7 @@
   height: 52px;
   margin-bottom: 1px;
   padding: 0 10px;
-  background: rgba(32, 34, 37, .3);
+  background: rgb(43,44,49);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,6 +24,8 @@
       height: 40px;
       width: 40px;
       margin-right: 5px;
+      border-radius: 20px;
+      border: 1px solid #2b2c31;
     }
 
     .user-info-name{

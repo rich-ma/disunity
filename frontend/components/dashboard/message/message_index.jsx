@@ -106,6 +106,7 @@ class MessageIndex extends React.Component {
                 key={message.id}
                 author={users[message.authorId]}
                 currentUserId={currentUserId}
+                chats={this.chats}
               />
             ))}
           </ul>
