@@ -103,12 +103,14 @@ class MessageIndex extends React.Component {
                 author={users[message.authorId]}
                 currentUserId={currentUserId}
               />
-
             ))}
           </ul>
         </div>
-        
-
+        <MessageForm
+          userId={currentUserId}
+          chats={this.chats}
+          channel={channel}
+        />
       </div>
 
 
