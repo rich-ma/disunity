@@ -38,10 +38,14 @@ class MessageIndexItem extends React.Component {
   render(){
     const isAuthor = this.props.author.id === this.props.currentUserId ? true : false;
     const { author, message } = this.props
+    const date = new Date();
+    const today = `${date.getDate()} ${date.getFullYear()}`
+    const display = today === `${message.day} ${message.year}` ? message.time : `${message.month} ${message.day} at ${message.time}`
     return(
       <div className="message-item">
         <img className="message-user-icon" src={`${author.photoUrl}`} alt=""/>
         <p>{message.content}</p>
+        <p>{display}</p>
       </div>
     )
   }
