@@ -9,6 +9,7 @@ import ChannelIndexContainer from '../dashboard/channel/channel_index_container'
 import UserInfoContainer from '../../components/dashboard/user/user_info_container';
 import MessageIndexContainer from '../dashboard/message/message_index_container';
 import { ProtectedRoute } from '../../util/route_util';
+import HeaderContainer from '../dashboard/header/header_container';
 
 const Homepage = ({ currentUser }) => {
   
@@ -32,8 +33,9 @@ const Homepage = ({ currentUser }) => {
           component={UserInfoContainer} />
       </div>
 
-      <div>
-        <header className='dashboard-header'> </header>
+      <div className="message-user-container">
+        <header className='dashboard-header'><ProtectedRoute path='/servers/:serverId/:channelId'
+          component={HeaderContainer} /></header>
         <div className='channel-users-container'>
           <div className='channel-message-col'>
             <ProtectedRoute path='/servers/:serverId/:channelId'
