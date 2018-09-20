@@ -41,16 +41,18 @@ class MessageIndexItem extends React.Component {
     const date = new Date();
     const today = `${date.getDate()} ${date.getFullYear()}`
     const displayTime = today === `${message.day} ${message.year}` ? message.time : `${message.month} ${message.day} at ${message.time}`
-    return <div className="message-item">
+    return (
+    <div className="message-item">
         <img className="message-user-icon" src={`${author.photoUrl}`} alt="" />
         <div>
           <div className="message-user-info">
-            <p className="message-author">{author.name}</p>
+            <p className="message-author">{author.username}</p>
             <p className="message-time">{displayTime}</p>
           </div>
+          <p className='message-content'>{message.content}</p>
         </div>
-        <p>{message.content}</p>
-      </div>;
+    </div>
+    )
   }
 }
 

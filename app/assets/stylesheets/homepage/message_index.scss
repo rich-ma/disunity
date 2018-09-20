@@ -10,4 +10,43 @@
   border-radius: 20px;
   border: 1px solid transparent;
   background-color: #37393e;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.message-item {
+  display: flex;
+  color: white;
+  margin-bottom: 5px;
+
+  .message-user-info{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+
+    .message-author {
+      margin-right: 3px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      margin-left: .3rem;
+      color: hsla(0, 0%, 100%, .2);
+      align-self: flex-end;
+    }
+  }
+  
+  .message-content {
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    user-select: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #dcddde;
+  }
+
 }
