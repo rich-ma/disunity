@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 class ServerHeader extends Component {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = props.loading ? null : {
       name: props.currentServer.name,
       photoFile: null,
       photoUrl: props.currentServer.photoUrl,
@@ -18,23 +18,16 @@ class ServerHeader extends Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    const that = this;
-    // if (nextProps.match.params.serverId !== this.props.match.params.serverId){
-      this.props.updateLoading(true);
-      this.props.fetchServers()
-        .then(payload => {
-          let server = payload.payload.servers[parseInt(that.props.match.params.serverId)];
-          that.setState({
-            name: server.name,
-            photoUrl: server.photoUrl,
-            photoFile: null,
-            toggle: false,
-          });
-        })
-        .then(() => that.props.updateLoading(false));
-    // }
+  static getDerivedStateFromProps(props, state) {
+  if (props.loading) return state;
+    return {
+      name: props.currentServer.name,
+      photoFile: null,
+      photoUrl: props.currentServer.photoUrl,
+      toggle: state === null ? false : state.toggle,
+    }
   }
+
 
   updateState(e) {
     e.preventDefault();
@@ -42,9 +35,9 @@ class ServerHeader extends Component {
   }
 
   toggleServerInfo(){
-    this.setState({ toggle: !toggle })
+    const bool = this.state.toggle ? false : true;
+    this.setState({ toggle: bool });
     console.log(this.state.toggle);
-
   }
 
   handleFile(e) {

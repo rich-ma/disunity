@@ -8,7 +8,9 @@ const mSTP = (state) => {
   return {
     servers: Object.values(state.entities.servers),
     currentUser: state.entities.users[state.session.id],
-    loading: state.ui.loading,
+    memberships: Object.values(state.entities.serverMemberships),
+    channels: Object.values(state.entities.channels),
+    loading: state.ui.loading
   }
 }
 
