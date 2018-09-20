@@ -94,21 +94,26 @@ class MessageIndex extends React.Component {
     if (this.props.loading) return null;
     const { channel, users, currentUserId, loading } = this.props;
     const { messages } = this.state;
+    let prevAuth = null;
 
-    
     return(
       <div className="message-container">
        <div className="message-index">
           <ul className="message-index-log">
-            {messages.map(message => (
-              <MessageIndexItem
-                message={message}
-                key={message.id}
-                author={users[message.authorId]}
-                currentUserId={currentUserId}
-                chats={this.chats}
-              />
-            ))}
+            {messages.map(message => {
+              if 
+              return (
+                <MessageIndexItem
+                  message={message}
+                  key={message.id}
+                  author={users[message.authorId]}
+                  currentUserId={currentUserId}
+                  chats={this.chats}
+                />
+              )
+            }
+
+            )}
           </ul>
         </div>
         <MessageForm
