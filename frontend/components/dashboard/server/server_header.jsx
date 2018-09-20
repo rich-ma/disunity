@@ -4,13 +4,12 @@ import { withRouter } from 'react-router-dom';
 class ServerHeader extends Component {
   constructor(props){
     super(props);
-    if (props.loading) return null;
-    this.state={
+    this.state = {
       name: props.currentServer.name,
       photoFile: null,
       photoUrl: props.currentServer.photoUrl,
+      toggle: false,
     }
-    this.toggle = false;
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
     this.ServerInfo = this.ServerInfo.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -19,33 +18,33 @@ class ServerHeader extends Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-
-
   componentWillReceiveProps(nextProps){
     const that = this;
-    if (nextProps.match.params.serverId !== this.props.match.params.serverId){
+    // if (nextProps.match.params.serverId !== this.props.match.params.serverId){
       this.props.updateLoading(true);
-      this.props.fetchServers();
-      this.props
-        .fetchServer(nextProps.match.params.serverId)
+      this.props.fetchServers()
         .then(payload => {
+          let server = payload.payload.servers[parseInt(that.props.match.params.serverId)];
           that.setState({
-            name: payload.server.name,
-            photoUrl: payload.server.photoUrl
-          })
+            name: server.name,
+            photoUrl: server.photoUrl,
+            photoFile: null,
+            toggle: false,
+          });
         })
         .then(() => that.props.updateLoading(false));
-    }
+    // }
   }
 
   updateState(e) {
     e.preventDefault();
     this.setState({ name: e.currentTarget.value });
-    // this.setState({ name: e.currentTarget.value });
   }
 
   toggleServerInfo(){
-    this.toggle = !this.toggle;
+    this.setState({ toggle: !toggle })
+    console.log(this.state.toggle);
+
   }
 
   handleFile(e) {
@@ -92,6 +91,7 @@ class ServerHeader extends Component {
 
   ServerInfo(){
     const { currentUser, currentServer, errors } = this.props;
+
     let admin = (
       <div>
         <div onClick={(e) => this.toggleServerInfo(e)} className='close-server-dropdown'></div>
@@ -136,6 +136,7 @@ class ServerHeader extends Component {
         </div>
       </div>
     );
+
     let member = (
       <div>
         <div onClick={(e) => this.toggleServerInfo(e)} className='close-server-dropdown'></div>
@@ -161,32 +162,12 @@ class ServerHeader extends Component {
       <div className='server-info'>
         <h1>{currentServer.name}</h1>
         <div className="server-edit">
-          <i onClick={() => this.toggleServerInfo()} className={this.toggle  ? "fa fa-times" : "fa fa-chevron-down"} aria-hidden="true"></i>
-          {this.toggle ? this.ServerInfo() : null}
+          <i onClick={() => this.toggleServerInfo()} className={this.state.toggle ? "fa fa-times" : "fa fa-chevron-down"} aria-hidden="true"></i>
+          {this.state.toggle ? this.ServerInfo() : null}
         </div>
       </div>
     )
   }
-
 }
 
-
-
-
 export default withRouter(ServerHeader);
-
-
-  // componentDidMount() {
-  //   const that = this;
-  //   this.props.updateLoading(true);
-  //   debugger
-  //   this.props.fetchServers()
-  //   .then(() => {
-  //     debugger
-  //   })
-  //   this.props.fetchServer(that.props.match.params.serverId)
-  //     .then(payload => (that.setState({ name: payload.server.name, photoUrl: payload.server.photoUrl })))
-  //     .then(() => that.props.updateLoading(false));
-  //   this.props.removeServerErrors();
-  //   this.props.removeServerMembershipErrors();
-  // }

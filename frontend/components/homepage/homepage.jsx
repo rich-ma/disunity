@@ -34,8 +34,8 @@ const Homepage = ({ currentUser }) => {
       </div>
 
       <div className="message-user-container">
-        <header className='dashboard-header'><ProtectedRoute path='/servers/:serverId/:channelId'
-          component={HeaderContainer} /></header>
+        <ProtectedRoute path='/servers/:serverId/:channelId'
+          component={HeaderContainer} />
         <div className='channel-users-container'>
           <div className='channel-message-col'>
             <ProtectedRoute path='/servers/:serverId/:channelId'

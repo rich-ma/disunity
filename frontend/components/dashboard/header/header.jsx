@@ -6,7 +6,10 @@ class Header extends React.Component {
     if(this.props.loading) return null;
 
     return (
-     <p>{this.props.channel.name}</p> 
+    <div className="dashboard-header">
+        <i className="fas fa-hashtag">&nbsp;</i>
+        <p>{this.props.channel.name}</p>
+      </div>
     )
   }
 }
