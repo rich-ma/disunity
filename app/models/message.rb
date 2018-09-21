@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   after_create_commit do
-    MessageCreationEventBroadcastJob.perform_later(self, "create")
+    MessageCreationEventBroadcastJob.perform_now(self, "create")
   end
 
   after_destroy_commit do
