@@ -16,7 +16,7 @@ class MessageIndex extends React.Component {
   createSocket() {
     let that = this;
 
-    let cable = ActionCable.createConsumer(`ws://${location.host}/cable`);
+    let cable = ActionCable.createConsumer();
     that.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
       channel_id: that.props.match.params.channelId

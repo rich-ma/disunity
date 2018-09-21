@@ -67,5 +67,5 @@ Rails.application.configure do
   end
 
   config.action_cable.allowed_request_origins = ['localhost:3000']
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = "wss://localhost:3000/cable"
 end

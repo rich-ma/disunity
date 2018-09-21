@@ -4,6 +4,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
+    stop_all_streams
   end
 
   def create(opts)

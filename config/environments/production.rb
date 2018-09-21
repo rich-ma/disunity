@@ -99,6 +99,8 @@ Rails.application.configure do
     end
   end
 
-  config.web_socket_server_url = "wss://app-name.herokuapp.com/cable" 
+   config.web_socket_server_url = "wss://disunity.herokuapp.com/cable"
+
   config.action_cable.allowed_request_origins = ['https://disunity.herokuapp.com', 'http://disunity.herokuapp.com']
+
 end
