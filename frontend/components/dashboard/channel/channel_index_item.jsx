@@ -37,11 +37,11 @@ class ChannelIndexItem extends Component {
   handleRemove(e){
     e.preventDefault();
     const that = this;
-    this.props.updateLoading('true');
-    this.props.deleteChannel(this.state.id))
+    this.props.updateLoading(true);
+    this.props.deleteChannel(this.state.id)
+    .then(() => that.props.fetchServers())
     .then(() => that.props.history.push(`/servers/${that.state.serverId}`))
-    .then(() => that.props.updateLoading('false'));
-    // .then(() => that.props.fetchServers())
+    .then(() => that.props.updateLoading(false));
   }
 
   ChannelInfo(){
