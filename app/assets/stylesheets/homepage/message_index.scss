@@ -1,3 +1,32 @@
+.dashboard-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #36393f;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 0 rgba(0, 0, 0, .06);
+  height: 48px;
+  align-items: center;
+
+  .fa-hashtag {
+    margin-left: 10px;
+    display: inline-block;
+    color: #8a8e94;
+    margin-right: 3px;
+    position: relative;
+  }
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+    margin-right: 4px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
 .message-user-container {
   width: 100%;
   min-width: 400px;
@@ -17,7 +46,7 @@
 .message-item {
   display: flex;
   color: white;
-  margin-bottom: 5px;
+  margin-top: 5px;
 
   .message-user-info{
     display: flex;
@@ -26,7 +55,7 @@
 
     .message-author {
       margin-right: 3px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
     }
 

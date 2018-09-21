@@ -101,7 +101,6 @@ class MessageIndex extends React.Component {
        <div className="message-index">
           <ul className="message-index-log">
             {messages.map(message => {
-              if 
               return (
                 <MessageIndexItem
                   message={message}
@@ -111,9 +110,7 @@ class MessageIndex extends React.Component {
                   chats={this.chats}
                 />
               )
-            }
-
-            )}
+            })}
           </ul>
         </div>
         <MessageForm
