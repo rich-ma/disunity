@@ -98,9 +98,9 @@ Rails.application.configure do
   #     resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
   #   end
   # end
-  config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
+  config.action_cable.url = "ws://#{ENV['RAILS_HOST']}/cable"
 
-   config.web_socket_server_url = "wss://disunity.herokuapp.com/cable"
+   config.web_socket_server_url = "ws://disunity.herokuapp.com/cable"
 
   config.action_cable.allowed_request_origins = ['https://disunity.herokuapp.com', 'http://disunity.herokuapp.com']
 
