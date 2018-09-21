@@ -16,12 +16,6 @@ class ChannelIndex extends React.Component {
     return props;
   }
 
-  componentDidMount() {
-    this.props.updateLoading(true);
-    this.props.fetchServers()
-      .then(() => this.props.updateLoading(false))
-  }
-
   addChannel(server){
     return (
       <div className="channel-new"
@@ -52,3 +46,10 @@ class ChannelIndex extends React.Component {
 }
 
 export default withRouter(ChannelIndex);
+
+
+  // componentDidMount() {
+  //   this.props.updateLoading(true);
+  //   this.props.fetchServers()
+  //     .then(() => this.props.updateLoading(false))
+  // }

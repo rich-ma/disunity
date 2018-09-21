@@ -1,4 +1,3 @@
-
 json.servers do
   @servers.each do |server|
     json.set! server.id do
@@ -27,11 +26,16 @@ json.users do
   end
 end
 
-json.channels do 
+json.channels do
   @servers.includes(:channels).each do |server|
     server.channels.each do |channel|
       json.set! channel.id do
-        json.partial! '/api/channels/channel', channel: channel
+        json.extract! channel, :id, :server_id, :name, :channel_type
+        if channel.channel_type == 0
+          json.type "TEXT"
+        else
+          json.type "DM"
+        end
       end
     end
   end
@@ -40,9 +44,17 @@ end
 json.messages do
   @servers.includes(:channels => :messages).each do |server|
     server.channels.each do |channel|
+      count = 0
       channel.messages.each do |message|
+        count += 1
+        break if count >= 30
         json.set! message.id do
-          json.partial! '/api/messages/message', message: message
+          json.extract! message, :author_id, :channel_id, :content
+          json.time message.created_at.strftime('%l:%M %p')
+          json.day message.created_at.strftime('%d')
+          json.month message.created_at.strftime('%B')
+          json.year message.created_at.strftime('%Y')
+          json.updatedAt message.updated_at.strftime('%l:%M %p')
         end
       end
     end
