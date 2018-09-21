@@ -46,7 +46,7 @@
 .message-item {
   display: flex;
   color: white;
-  margin-top: 5px;
+  margin-top: 10px;
 
   .message-user-info{
     display: flex;
@@ -77,5 +77,34 @@
     word-wrap: break-word;
     color: #dcddde;
   }
+}
 
+.message-form {
+  border-top: 1px solid hsla(0, 0%, 100%, .06);
+  margin-bottom: 30px;
+  padding-top: 20px;
+  position: relative;
+  transition: opacity .2s ease;
+  width: 100%;
+  margin-top: 10px;
+
+  input {
+    color: hsla(0, 0%, 100%, .7);
+    background-color: rgba(114, 118, 125, .3);
+    width: calc(100% - 50px);
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    letter-spacing: -0.025rem;
+    line-height: 1.25rem;
+    max-height: 144px;
+    min-height: 20px;
+    border: 1px solid #494c50;
+    border-radius: 5px;
+    }
 }
