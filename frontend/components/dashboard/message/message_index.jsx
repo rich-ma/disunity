@@ -10,6 +10,7 @@ class MessageIndex extends React.Component {
       channel: this.props.channel
     };
     this.createSocket();
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   createSocket() {
@@ -51,6 +52,16 @@ class MessageIndex extends React.Component {
       });
   }
 
+  scrollToBottom() {
+    const messages = document.getElementById("message-end");
+    if(messages){
+      messages.scrollIntoView();
+    }
+  }
+
+  // componentDidMount() {
+  //   this.scrollToBottom();
+  // }
   
   static getDerivedStateFromProps(props, state) {
     return {
@@ -83,47 +94,23 @@ class MessageIndex extends React.Component {
     this.scrollToBottom();
   }
 
-  scrollToBottom() {
-    const messages = document.getElementById('message-log');
-    if (messages) {
-      messages.scrollTop = messages.scrollHeight;
-    }
-  }
-
   render() {
     if (this.props.loading) return null;
     const { channel, users, currentUserId, loading } = this.props;
     const { messages } = this.state;
     let prevAuth = null;
 
-    return(
-      <div className="message-container">
-       <div className="message-index">
+    return <div className="message-container">
+        <div className="message-index">
           <ul className="message-index-log">
             {messages.map(message => {
-              return (
-                <MessageIndexItem
-                  message={message}
-                  key={message.id}
-                  author={users[message.authorId]}
-                  currentUserId={currentUserId}
-                  chats={this.chats}
-                />
-              )
+              return <MessageIndexItem message={message} key={message.id} author={users[message.authorId]} currentUserId={currentUserId} chats={this.chats} />;
             })}
           </ul>
+          <div id='message-end'/>
         </div>
-        <MessageForm
-          loading={loading}
-          userId={currentUserId}
-          chats={this.chats}
-          channel={channel}
-          channelId={parseInt(this.props.match.params.channelId)}
-        />
-      </div>
-
-
-    )
+        <MessageForm loading={loading} userId={currentUserId} chats={this.chats} channel={channel} channelId={parseInt(this.props.match.params.channelId)} />
+      </div>;
   }
 };
 

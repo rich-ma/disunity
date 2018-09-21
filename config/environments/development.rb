@@ -71,9 +71,4 @@ Rails.application.configure do
       resource 'http://localhost:3000/*', headers: :any, methods: %I[get post options]
     end
   end
-
-  config.action_cable.url = "ws://localhost:3000/cable"
-
-  config.action_cable.allowed_request_origins = [/http:\/\/*/, 
-  /https:\/\/*/]
 end

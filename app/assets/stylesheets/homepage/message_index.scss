@@ -35,6 +35,7 @@
   height: calc(100% - 48px);
 }
 
+
 .message-container {
   display: flex;
   flex-direction: column;
@@ -125,4 +126,8 @@
     border: 1px solid #494c50;
     border-radius: 5px;
     }
+}
+
+.message-index {
+  overflow: scroll;
 }
