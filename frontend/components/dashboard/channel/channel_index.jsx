@@ -10,46 +10,61 @@ class ChannelIndex extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.channels.length === state.channels.length) {
-      return state;
-    }
     return props;
   }
 
-  addChannel(server){
+  addChannel(server) {
+    debugger
     return (
-      <div className="channel-new"
-        onClick={() => this.props.openModal('newChannel', server)}><i className="fas fa-plus"></i></div>
-    )
+      <div
+        className="channel-new"
+        onClick={() => this.props.openModal("newChannel", server)}
+      >
+        <i className="fas fa-plus" />
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.props.updateLoading(true);
+    this.props.fetchServers()
+      .then(() => this.props.updateLoading(false))
   }
 
   render() {
     if (this.props.loading) return null;
-    const { currentUser, currentServer, channels, deleteChannel, updateChannel } = this.props;
-    const admin = (currentServer.adminId === currentUser.id ? true : false);
+    const {
+      currentUser,
+      currentServer,
+      channels,
+      deleteChannel,
+      updateChannel
+    } = this.props;
+    const admin = currentServer.adminId === currentUser.id ? true : false;
 
     return (
-      <div className='channel-index-container'>
-        <div className='channel-index-header'>
+      <div className="channel-index-container">
+        <div className="channel-index-header">
           <p>Text Channels</p>
-          { currentServer.adminId === currentUser.id ? this.addChannel(currentServer) : null }
+          {currentServer.adminId === currentUser.id
+            ? this.addChannel(currentServer)
+            : null}
         </div>
-        <ul className='channel-index-list'>
-          {channels.map(channel =>(
-            <ChannelIndexItem key={channel.id} channel={channel} 
-            deleteChannel={deleteChannel} updateChannel={updateChannel} admin={admin} server={currentServer}/>
+        <ul className="channel-index-list">
+          {channels.map(channel => (
+            <ChannelIndexItem
+              key={channel.id}
+              channel={channel}
+              deleteChannel={deleteChannel}
+              updateChannel={updateChannel}
+              admin={admin}
+              server={currentServer}
+            />
           ))}
         </ul>
       </div>
-    )
+    );
   }
 }
 
 export default withRouter(ChannelIndex);
-
-
-  // componentDidMount() {
-  //   this.props.updateLoading(true);
-  //   this.props.fetchServers()
-  //     .then(() => this.props.updateLoading(false))
-  // }

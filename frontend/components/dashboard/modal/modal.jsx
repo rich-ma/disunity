@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import NewServerContainer from '../../dashboard/server/server_modal';
 import CreateChannelFormContainer from '../../dashboard/channel/create_channel_form_container';
 import EditUserFormContainer from '../../dashboard/user/edit_user_form_container';
@@ -36,12 +36,14 @@ const Modal = ({ modal, closeModal }) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => {
+  return {
   modal: state.ui.modal
-});
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
