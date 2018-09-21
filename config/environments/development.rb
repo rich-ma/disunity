@@ -9,8 +9,6 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # config/environments/development.rb
-  config.active_storage.service = :amazon_dev
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -30,7 +28,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  # config.active_storage.service = :local
+  config.active_storage.service = :amazon_dev
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -60,10 +58,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-
-  # config/environments/development.rb
-  config.active_storage.service = :amazon_dev
 
   config.middleware.insert_before 0, Rack::Cors do
     allow do
