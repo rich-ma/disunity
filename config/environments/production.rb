@@ -44,7 +44,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://disunity.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://disunity.herokuapp.com', /http:\/\/disunity.herokuapp.*/ ]
+  # config.action_cable.allowed_request_origins = [ 'https://disunity.herokuapp.com', /http:\/\/disunity.herokuapp.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -94,8 +94,8 @@ Rails.application.configure do
 
   config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'https://disunity.herokuapp.com/*'
-      resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
+      origins 'http://disunity.herokuapp.com/*'
+      resource 'http://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
     end
   end
 end
