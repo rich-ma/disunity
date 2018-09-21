@@ -5,13 +5,13 @@ import { createChannel, clearChannelErrors } from '../../../actions/channel_acti
 import CreateChannelForm from './create_channel_form';
 //createChannelMembership, channelmembershipserrors
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
   return{
     errors: {
       server: state.errors.server,
       channel: state.errors.channel
     },
-    serverId: state.ui.server
+    serverId: parseInt(ownProps.location.pathname[9]),
   }
 }
 

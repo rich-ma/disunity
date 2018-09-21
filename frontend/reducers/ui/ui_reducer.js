@@ -5,7 +5,7 @@ import loading from './loading_reducer';
 
 const uiReducer = combineReducers({
   modal,
-  server,
+  // server,
   loading
 });
 

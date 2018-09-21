@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 class CreateChannelForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = {
       name: "",
       server_id: props.serverId,

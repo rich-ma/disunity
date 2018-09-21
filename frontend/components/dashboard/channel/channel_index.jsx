@@ -14,7 +14,6 @@ class ChannelIndex extends React.Component {
   }
 
   addChannel(server) {
-    debugger
     return (
       <div
         className="channel-new"
