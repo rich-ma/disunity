@@ -94,8 +94,8 @@ Rails.application.configure do
 
   config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'http://disunity.herokuapp.com/*'
-      resource 'http://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
+      origins 'https://disunity.herokuapp.com/*'
+      resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
     end
   end
 end
