@@ -5,12 +5,11 @@ class ChannelIndexItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false,
       name: this.props.channel.name,
       serverId: this.props.server.id,
       id: this.props.channel.id
     }
-
+    this.toggle = false;
     this.toggleChannelInfo = this.toggleChannelInfo.bind(this);
     this.ChannelInfo = this.ChannelInfo.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -24,10 +23,11 @@ class ChannelIndexItem extends Component {
   }
 
   toggleChannelInfo() {
-    this.setState({ toggle: !this.state.toggle });
+    this.toggle = !this.toggle;
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const that = this;
     this.props.updateChannel(this.state)
@@ -37,8 +37,11 @@ class ChannelIndexItem extends Component {
   handleRemove(e){
     e.preventDefault();
     const that = this;
-      this.props.deleteChannel(this.state.id).then(() => that.props.history.push(`/servers/${this.state.serverId}`))
-      .then(()=>that.toggleChannelInfo());
+    this.props.updateLoading('true');
+    this.props.deleteChannel(this.state.id))
+    .then(() => that.props.history.push(`/servers/${that.state.serverId}`))
+    .then(() => that.props.updateLoading('false'));
+    // .then(() => that.props.fetchServers())
   }
 
   ChannelInfo(){
@@ -65,6 +68,7 @@ class ChannelIndexItem extends Component {
   }
 
   render(){
+    if(this.props.loading) return null;
     return (
       <NavLink className='channel-link channel-index-item' 
         to={`/servers/${this.props.server.id}/${this.state.id}`} activeClassName="channel-link-selected">
@@ -73,7 +77,7 @@ class ChannelIndexItem extends Component {
         {this.props.admin ? 
           <i onClick={(e) => this.toggleChannelInfo(e)} className="fas fa-cog" aria-hidden="true"></i> 
           : <span></span>}
-        {this.state.toggle ? this.ChannelInfo() : null}
+        {this.toggle ? this.ChannelInfo() : null}
       </NavLink>
 
     )

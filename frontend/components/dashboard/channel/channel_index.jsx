@@ -37,7 +37,10 @@ class ChannelIndex extends React.Component {
       currentServer,
       channels,
       deleteChannel,
-      updateChannel
+      updateChannel,
+      updateLoading,
+      fetchServers,
+      loading
     } = this.props;
     const admin = currentServer.adminId === currentUser.id ? true : false;
 
@@ -58,6 +61,9 @@ class ChannelIndex extends React.Component {
               updateChannel={updateChannel}
               admin={admin}
               server={currentServer}
+              updateLoading={updateLoading} 
+              fetchServers={fetchServers}
+              loading={loading}
             />
           ))}
         </ul>

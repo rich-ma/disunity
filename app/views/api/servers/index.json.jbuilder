@@ -20,7 +20,12 @@ json.users do
   @servers.includes(:users).each do |server|
     server.users.each do |user|
       json.set! user.id do
-        json.partial! '/api/users/user', user: user
+        json.extract! user, :id, :username, :username_salt, :nickname, :email
+        if user.photo.attached?
+          json.photoUrl url_for(user.photo)
+        else
+          json.photoUrl user.avatar_url
+        end
       end
     end
   end
