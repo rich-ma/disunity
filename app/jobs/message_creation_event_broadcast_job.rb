@@ -2,9 +2,7 @@ class MessageCreationEventBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(message, type)
-    ActionCable
-      .server
-      .broadcast(
+    ActionCable.server.broadcast(
         "chat_channel_#{message.channel_id}",
         message: {
           id: message.id,

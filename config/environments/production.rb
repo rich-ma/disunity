@@ -92,12 +92,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins 'https://disunity.herokuapp.com/*'
-      resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
-    end
-  end
+  # config.middleware.insert_before 0, Rack::Cors do
+  #   allow do
+  #     origins 'https://disunity.herokuapp.com/*'
+  #     resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
+  #   end
+  # end
+  config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
 
    config.web_socket_server_url = "wss://disunity.herokuapp.com/cable"
 
