@@ -13,10 +13,6 @@ class MessageIndex extends React.Component {
     this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
-  componentWillUnmount(){
-    console.log("i'm unmounting");
-  }
-
   createSocket() {
     let that = this;
 
@@ -62,6 +58,10 @@ class MessageIndex extends React.Component {
       messages.scrollIntoView();
     }
   }
+
+  // componentDidMount() {
+  //   this.scrollToBottom();
+  // }
   
   static getDerivedStateFromProps(props, state) {
     return {

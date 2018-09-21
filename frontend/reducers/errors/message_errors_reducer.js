@@ -10,7 +10,7 @@ const messageErrorsReducer = (state = [], action) => {
     case REMOVE_MESSAGE_ERRORS:
       return [];
     case RECEIVE_MESSAGE_ERRORS:
-      return action.errors;
+      return [];
     default:
       return state;
   }
