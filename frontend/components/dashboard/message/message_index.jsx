@@ -20,7 +20,7 @@ class MessageIndex extends React.Component {
   createSocket() {
     let that = this;
 
-    let cable = ActionCable.createConsumer();
+    let cable = ActionCable.createConsumer(`ws://${location.host}/cable`);
     that.chats = cable.subscriptions.create({
       channel: 'ChatChannel',
       channel_id: that.props.match.params.channelId
@@ -62,10 +62,6 @@ class MessageIndex extends React.Component {
       messages.scrollIntoView();
     }
   }
-
-  // componentDidMount() {
-  //   this.scrollToBottom();
-  // }
   
   static getDerivedStateFromProps(props, state) {
     return {

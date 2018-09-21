@@ -43,8 +43,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://disunity.herokuapp.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'https://disunity.herokuapp.com', 'http://disunity.herokuapp.com' ]
+  # config.action_cable.url = 'wss://example.com/cable'
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -92,16 +92,17 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # config.middleware.insert_before 0, Rack::Cors do
-  #   allow do
-  #     origins 'https://disunity.herokuapp.com/*'
-  #     resource 'https://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
-  #   end
-  # end
-  config.action_cable.url = "ws://#{ENV['RAILS_HOST']}/cable"
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'http://disunity.herokuapp.com/*'
+      resource 'http://disunity.herokuapp.com/*', headers: :any, methods: %I[get post options]
+    end
+  end
 
-   config.web_socket_server_url = "ws://disunity.herokuapp.com/cable"
+  # config.action_cable.url = "ws://#{ENV['RAILS_HOST']}/cable"
 
-  config.action_cable.allowed_request_origins = ['https://disunity.herokuapp.com', 'http://disunity.herokuapp.com']
+  #  config.web_socket_server_url = "ws://disunity.herokuapp.com/cable"
+
+  # config.action_cable.allowed_request_origins = ['https://disunity.herokuapp.com', 'http://disunity.herokuapp.com']
 
 end
