@@ -1,0 +1,21 @@
+.channel-users-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-list {
+  min-width: 240px;
+  margin-top: 20px;
+}
+
+.user-list-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  
+  
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}

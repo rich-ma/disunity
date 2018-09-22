@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class UserInfo extends Component {
+class UserInfo extends React.Component {
   constructor(props){
     super(props);
     this.state = {

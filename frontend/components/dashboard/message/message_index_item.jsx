@@ -33,8 +33,6 @@ class MessageIndexItem extends React.Component {
 
   }
 
-
-
   render(){
     const isAuthor = this.props.author.id === this.props.currentUserId ? true : false;
     const { author, message } = this.props

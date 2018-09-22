@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 class ServerHeader extends Component {
   constructor(props){
     super(props);
-    this.state = props.loading ? null : {
+    this.state = props.loading ? {} : {
       name: props.currentServer.name,
       photoFile: null,
       photoUrl: props.currentServer.photoUrl,

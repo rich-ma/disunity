@@ -11,7 +11,7 @@ const mSTP = (state, ownProps) => {
       server: state.errors.server,
       channel: state.errors.channel
     },
-    serverId: parseInt(ownProps.location.pathname[9]),
+    serverId: parseInt(ownProps.location.pathname.split('/')[2]),
   }
 }
 

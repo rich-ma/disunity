@@ -26,7 +26,6 @@ class MessageIndex extends React.Component {
           if (data.type === "destroy") {
             that.props.removeMessage(data.message.id);
           } else {
-            console.log('test test');
             that.props.receiveMessage(data.message);
           }
         },
@@ -59,10 +58,6 @@ class MessageIndex extends React.Component {
       messages.scrollIntoView();
     }
   }
-
-  // componentDidMount() {
-  //   this.scrollToBottom();
-  // }
   
   static getDerivedStateFromProps(props, state) {
     return {

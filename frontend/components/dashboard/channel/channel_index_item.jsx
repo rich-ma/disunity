@@ -27,7 +27,7 @@ class ChannelIndexItem extends Component {
   }
 
   handleSubmit(e) {
-    debugger
+    
     e.preventDefault();
     const that = this;
     this.props.updateChannel(this.state)
