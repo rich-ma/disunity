@@ -3,9 +3,25 @@
   flex-direction: row;
 }
 
+.channel-message-col{
+  background-image: image-url('channel-background.png');
+  background-size: cover;
+  background-position-x: center;
+}
+
+.message-user-container {
+  
+}
+.server-users-col {
+  background-color: #2f3136;
+  height: 100%;
+}
+
 .user-list {
-  min-width: 240px;
   margin-top: 20px;
+  margin-left: 10px;
+  width: 230px;
+  overflow: scroll;
 }
 
 .user-list-item {
@@ -17,5 +33,17 @@
   img {
     width: 30px;
     height: 30px;
+    margin-right: 10px;
+  }
+
+  p {
+    color: #fff;
+    align-self: center;
+    font-size: 16px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
   }
 }
