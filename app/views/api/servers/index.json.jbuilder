@@ -54,7 +54,7 @@ json.messages do
         count += 1
         break if count >= 30
         json.set! message.id do
-          json.extract! message, :author_id, :channel_id, :content
+          json.extract! message, :id, :author_id, :channel_id, :content
           json.time message.created_at.strftime('%l:%M %p')
           json.day message.created_at.strftime('%d')
           json.month message.created_at.strftime('%B')
