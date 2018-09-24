@@ -4,19 +4,25 @@ class MessageIndexItem extends React.Component {
   constructor(props){
     super(props);
     this.state = props.message;
+    this.state.messageToggle = false;
+    this.state.editToggle = false;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.messageEllipses = this.messageEllipses.bind(this);
     this.editMessage = this.editMessage.bind(this);
+    this.messageDropdown = this.messageDropdown.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
+    this.setState({ editToggle: false, messageToggle: false });
     this.props.chats.update(this.state);
   }
 
   handleRemove(e){
     e.preventDefault();
+    this.setState({ editToggle: false, messageToggle: false });
     this.props.chat.delete(this.state);
   }
 
@@ -29,8 +35,43 @@ class MessageIndexItem extends React.Component {
     )
   }
 
-  editMessage(){
+  handleCancel(){
+    e.preventDefault();
+    this.setState({ editToggle: false, messageToggle: false, content: this.props.message.content });
+  }
 
+  handleUpdate(e){
+    e.preventDefault();
+    this.setState({ content: e.target.value });
+  }
+
+  editMessage(){
+    return (
+      <div>
+        <form action="" onSubmit={(e) => this.handleSubmit(e)}>
+        <input type="text" onChange={(e) => this.handleUpdate(e)} value={this.state.content}/>
+          <p>escape to <p className="edit-message-link" onClick={this.handleCancel}>cancel</p> <i className="fas fa-circle"></i> enter to <p className="edit-message-link" onClick={(e) => this.handleSubmit(e)}>save</p>
+          </p>
+        </form>
+
+      </div>
+    )
+  }
+
+  toggleMessage(){
+    this.setState({ messageToggle: !this.state.messageToggle });
+  }
+
+  toggleEdit(){
+    this.setState({ editToggle: !this.state.editToggle });
+  }
+
+  messageDropdown(){
+    <div className='message-dropdown'> 
+      <div>
+
+      </div>
+    </div>
   }
 
   render(){
@@ -39,6 +80,7 @@ class MessageIndexItem extends React.Component {
     const date = new Date();
     const today = `${date.getDate()} ${date.getFullYear()}`
     const displayTime = today === `${message.day} ${message.year}` ? message.time : `${message.month} ${message.day} at ${message.time}`
+
     return (
     <div className="message-item">
         <img className="message-user-icon" src={`${author.photoUrl}`} alt="" />
@@ -47,7 +89,9 @@ class MessageIndexItem extends React.Component {
             <p className="message-author">{author.username}</p>
             <p className="message-time">{displayTime}</p>
           </div>
+          { this.state.editToggle ?  }
           <p className='message-content'>{message.content}</p>
+          { isAuthor ? this.messageDropdown() : null }
         </div>
     </div>
     )
