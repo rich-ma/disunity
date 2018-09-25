@@ -50,10 +50,8 @@ class MessageIndexItem extends React.Component {
         <form className="edit-message-form" action="" onSubmit={e => this.handleSubmit(e)}>
           <input className="edit-message-input" type="text" onChange={e => this.handleUpdate(e)} value={this.state.content} />
           <span>
-          click&nbsp;<p className="edit-message-link" onClick={this.handleCancel}>here to cancel
-            </p> <i className="fas fa-circle" /> enter to&nbsp;<p className="edit-message-link" onClick={e => this.handleSubmit(e)}>
-              save
-            </p>
+            click&nbsp;<p className="edit-message-link" onClick={this.handleCancel}>here to cancel
+            </p> <i className="fas fa-circle" /> enter to&nbsp;<p className="edit-message-link" onClick={e => this.handleSubmit(e)}>save</p>
           </span>
         </form>
     )
