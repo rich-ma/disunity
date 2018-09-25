@@ -178,6 +178,21 @@
   height: 100%;
 }
 
+.message-index::-webkit-scrollbar {
+  width: 14px;
+  background-color: #2f3136;
+  border-color: #36393f;
+  border: 3px solid #36393f;
+  border-radius: 7px;
+}
+.message-index::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-color: #36393f;
+  border: 3px solid #36393f;
+  border-radius: 7px;
+}
+
+
 .message-dropdown-container {
   position: absolute;
   right: 5px;
