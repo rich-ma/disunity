@@ -96,6 +96,47 @@ class MessageIndexItem extends React.Component {
     const today = `${date.getDate()} ${date.getFullYear()}`
     const displayTime = today === `${message.day} ${message.year}` ? `Today at ${message.time}` : `${message.month} ${message.day} at ${message.time}`
 
+    //create an a tag
+    let messageContent = message.content.match(/.+\.(com|org|gov|net|io|co|us).*/) ? (
+      <span
+        className="message-content">
+        <a href={`${message.content}`}>{message.content}</a>
+      </span>
+    ) : (
+        <span className="message-content">{message.content}</span>
+      );
+
+    //create an img tag
+    messageContent = message.content.match(/.+\.(png|jpg|jpeg|gif)/) ? (
+      <span
+        className="message-content">
+        <a href={`${message.content}`}>{message.content}</a>
+        <p className="message-content-image-container">
+          <a href={`${message.content}`}>
+            <img src={`${message.content}`} />
+          </a>
+        </p>
+      </span>
+    ) : (
+        messageContent
+      );
+
+    messageContent = message.content.match(/youtube.com/) ? (
+      <span
+        className="message-content">
+        <a href={`${message.content}`}>{message.content}</a>
+        <br />
+        <iframe
+          width="342"
+          height="192"
+          src={`${message.content.replace("watch?v=", "embed/")}`}
+          allowFullScreen>Video cannot be played.</iframe>
+      </span>
+    ) : (
+        messageContent
+      );
+
+
     return <div className="message-item">
         <img className="message-user-icon" src={`${author.photoUrl}`} alt="" />
         <div className="message-info">
@@ -104,9 +145,7 @@ class MessageIndexItem extends React.Component {
             <p className="message-time">{displayTime}</p>
           </div>
           <div className="message-content-container">
-            {this.state.editToggle ? this.editMessage() : <p className="message-content">
-              {message.content}
-            </p>}
+          {this.state.editToggle ? this.editMessage() : messageContent}
             <div>
               {isAuthor ? <i onClick={this.toggleMessage} className="fas fa-ellipsis-v" aria-hidden="true" /> : <span/>}
               <div className='message-dropdown-relative'>

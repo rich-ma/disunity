@@ -114,6 +114,8 @@
     }
 
   }
+
+  .message
   
   .message-content {
     font-size: 0.9375rem;
@@ -124,6 +126,10 @@
     color: #dcddde;
     overflow: auto;
     width: 100%;
+
+    a {
+      color: #0096cf;
+    }
   }
 }
 
