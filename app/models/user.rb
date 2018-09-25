@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  DEFAULT_AVATAR_URL= ["https://image.flaticon.com/icons/svg/188/188955.svg", "https://image.flaticon.com/icons/png/512/280/280870.png", "https://image.flaticon.com/icons/svg/188/188987.svg", "https://image.flaticon.com/icons/svg/188/188996.svg"]
+  DEFAULT_AVATAR_URL= ["https://image.flaticon.com/icons/svg/188/188955.svg", "https://image.flaticon.com/icons/png/512/280/280870.png", "https://image.flaticon.com/icons/svg/188/188987.svg", "https://image.flaticon.com/icons/svg/188/188996.svg",
+  'https://image.flaticon.com/icons/svg/188/188918.svg']
 
   # avatar_url needs to be validates
   validates :username, :email, :password_digest, :session_token, :username_salt, :avatar_url, presence: true
