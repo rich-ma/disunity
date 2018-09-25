@@ -18,10 +18,25 @@
 }
 
 .user-list {
-  margin-top: 20px;
   margin-left: 20px;
   width: 230px;
   overflow: scroll;
+}
+
+.users-count{
+  color: hsla(0, 0%, 100%, .4);
+  font-size: 12px;
+  font-weight: 500;
+  height: 30px;
+  letter-spacing: .08em;
+  line-height: 20px;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 20px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .user-list-item {

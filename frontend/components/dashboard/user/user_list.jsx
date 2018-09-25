@@ -2,7 +2,7 @@ import React from 'react';
 import UserListItem from './user_list_item';
 
 class UserList extends React.Component {
-  
+
 
   createSocket() {
     let that = this;
@@ -40,6 +40,8 @@ class UserList extends React.Component {
   render(){
     if(this.props.loading) return null;
     return (
+      <div>
+      <p className='users-count'>{`MEMBERS - ${this.props.users.length}`}</p>
       <ul className='user-list'>
         {this.props.users.map(user => (
           <UserListItem
@@ -48,6 +50,7 @@ class UserList extends React.Component {
           />
         ))}
       </ul>
+      </div>
     )
   }
 }
