@@ -209,6 +209,13 @@
     width: 90%;
     padding: 10px;
   }
+  
+  div {
+    display: flex;
+    flex-direction: row;
+    width: 92%;
+    justify-content: space-between;
+  }
 
   span {
     display: flex;
