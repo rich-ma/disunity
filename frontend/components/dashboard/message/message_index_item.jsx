@@ -13,6 +13,7 @@ class MessageIndexItem extends React.Component {
     this.messageDropdown = this.messageDropdown.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.toggleMessage = this.toggleMessage.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleSubmit(e){
@@ -45,12 +46,20 @@ class MessageIndexItem extends React.Component {
     this.setState({ content: e.target.value });
   }
 
+  handleKeyDown(e) {
+    if (e.key === "Enter") {
+      this.handleSubmit(e);
+    } else if (e.key === "Escape") {
+      this.handleCancel();
+    }
+  }
+
   editMessage(){
     return (
         <form className="edit-message-form" action="" onSubmit={e => this.handleSubmit(e)}>
-          <input className="edit-message-input" type="text" onChange={e => this.handleUpdate(e)} value={this.state.content} />
+          <input className="edit-message-input" type="text" onChange={e => this.handleUpdate(e)} value={this.state.content} onKeyDown={this.handleKeyDown}/>
           <span>
-            click&nbsp;<p className="edit-message-link" onClick={this.handleCancel}>here to cancel
+            escape to&nbsp;<p className="edit-message-link" onClick={this.handleCancel}>cancel
             </p> <i className="fas fa-circle" /> enter to&nbsp;<p className="edit-message-link" onClick={e => this.handleSubmit(e)}>save</p>
           </span>
         </form>
