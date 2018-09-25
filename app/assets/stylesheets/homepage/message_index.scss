@@ -113,7 +113,7 @@
       opacity: 0.8;
     }
   }
-  
+
   .message-content {
     font-size: 0.9375rem;
     line-height: 1.3;
@@ -127,6 +127,19 @@
     a {
       color: #0096cf;
     }
+
+    iframe{
+      border-color: #36393f;
+      border-width: 1px;
+      border-style: none;
+    }
+  }
+}
+
+.message-content-image-container{
+  img {
+    max-height: 500px;
+    width: auto;
   }
 }
 
