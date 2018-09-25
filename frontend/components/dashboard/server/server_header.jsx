@@ -20,13 +20,19 @@ class ServerHeader extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    
     if (props.loading) return state;
-    return props.currentServer.id === state.id ? state : {
-      name: props.currentServer.name,
-      photoFile: null,
-      photoUrl: props.currentServer.photoUrl,
+    return props.currentServer.id === state.id ? { 
+      name: state.name, 
+      photoFile: null, 
+      photoUrl: state.photoUrl, 
+      toggle: state.toggle,
+      id: state.id,
+    } : { 
+      name: props.currentServer.name, 
+      photoFile: null, 
+      photoUrl: props.currentServer.photoUrl, 
       toggle: state === null ? false : state.toggle,
+      id: props.currentServer.id
     };
   }
 
@@ -86,12 +92,11 @@ class ServerHeader extends Component {
   ServerInfo(){
     const { currentUser, currentServer, errors } = this.props;
 
-    let admin = (
-      <div>
-        <div onClick={(e) => this.toggleServerInfo(e)} className='close-server-dropdown'></div>
-        <div className='server-dropdown'>
+    let admin = <div>
+        <div onClick={e => this.toggleServerInfo(e)} className="close-server-dropdown" />
+        <div className="server-dropdown">
           <h1>Server Info</h1>
-          <div className='edit-server-errors'>
+          <div className="edit-server-errors">
             <ul>
               {errors.server.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -103,33 +108,27 @@ class ServerHeader extends Component {
               ))}
             </ul>
           </div>
-          <input
-            type="text"
-            autoFocus="true"
-            className='dropdown-input'
-            onChange={this.updateState}
-            value={this.state.name} />
-          <div className='server-dropdown-photo'>
-            <label
-              className="server-photo-input-label"
-              htmlFor="server-photo-input">
-              <div>
-                <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
-                <input
-                  type="file"
-                  id="server-photo-input"
-                  onChange={(e)=>this.handleFile(e)}
-                  accept="image/*"/>
-              </div>
-            </label>
-          </div>
-          <div className='dropdown-buttons'>
-            <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
-            <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
-          </div>
+          <form action="" onSubmit={e => this.handleSubmit(e)}>
+            <input type="text" autoFocus="true" className="dropdown-input" onChange={this.updateState} value={this.state.name} />
+            <div className="server-dropdown-photo">
+              <label className="server-photo-input-label" htmlFor="server-photo-input">
+                <div>
+                  <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
+                  <input type="file" id="server-photo-input" onChange={e => this.handleFile(e)} accept="image/*" />
+                </div>
+              </label>
+            </div>
+            <div className="dropdown-buttons">
+              <button className="edit-submit" onClick={e => this.handleSubmit(e)}>
+                Save
+              </button>
+              <button className="delete-submit" onClick={e => this.handleRemove(e)}>
+                Delete
+              </button>
+            </div>
+          </form>
         </div>
-      </div>
-    );
+      </div>;
 
     let member = (
       <div>
