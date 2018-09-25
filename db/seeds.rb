@@ -45,7 +45,6 @@ ServersMembership.create(user_id: oak.id, server_id: s2.id)
 ServersMembership.create(user_id: mom.id, server_id: s1.id)
 ServersMembership.create(user_id: pikachu.id, server_id: s1.id)
 
-
 Users = {
     'Ash'=> ash,
     'Professor Oak'=> oak,
@@ -69,7 +68,7 @@ end
 
 # office seed
 fake_jim = User.create(username: "RealestJim", email:'jim@jim.io', password: '123456', avatar_url: 'http://www.angryasianman.com/images/angry/randallpark_theoffice01.jpg')
-dwight = User.create(username: "DwightKSchrute", email:'oak@oak.io', password: '123456', avatar_url: 'https://i1.sndcdn.com/artworks-000001104797-rgzcts-t500x500.jpg')
+dwight = User.create(username: "DwightKSchrute", email:'dwight@dwight.io', password: '123456', avatar_url: 'https://i1.sndcdn.com/artworks-000001104797-rgzcts-t500x500.jpg')
 pam = User.create(username: "Pam", email:'pam@pam.io', password: '123456', avatar_url: 'https://screenrant.com/wp-content/uploads/2018/08/Pam-Halpert-in-The-Office.jpg')
 
 ServersMembership.create(user_id: fake_jim.id, server_id: s1.id)
@@ -77,20 +76,20 @@ ServersMembership.create(user_id: dwight.id, server_id: s1.id)
 ServersMembership.create(user_id: dwight.id, server_id: s2.id)
 ServersMembership.create(user_id: pam.id, server_id: s1.id)
 
-contents = File.readlines('app/assets/text/Offices9e3.txt')
+contents2 = File.readlines('app/assets/text/Offices9e3.txt')
 
-Users = {
+Users2 = {
     'Fake Jim'=> fake_jim,
     'Dwight'=> dwight,
     'Pam'=> pam,
   }
 
-contents.each_with_index do |line, i|
+contents2.each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
   content = line[1]
   
-  new_message = Message.create(author_id: Users[author_name].id, channel_id: f.id, content: content)
+  new_message = Message.create(author_id: Users2[author_name].id, channel_id: f.id, content: content)
   new_message.created_at = i.minutes.from_now
   new_message.save
 end
