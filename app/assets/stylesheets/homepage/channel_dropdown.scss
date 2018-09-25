@@ -1,9 +1,10 @@
 .close-channel-dropdown {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: -86px;
-  left: -127px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .channel-dropdown {
   width: 240px;

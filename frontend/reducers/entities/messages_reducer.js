@@ -19,7 +19,6 @@ const messagesReducer = (state = {}, action) => {
       if (action.payload.messages === undefined) return newState;
       return action.payload.messages;
     case REMOVE_MESSAGE:
-      debugger
       delete newState[action.id];
       return newState;
     case RECEIVE_MESSAGE:

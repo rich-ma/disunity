@@ -37,7 +37,6 @@ class MessageIndexItem extends React.Component {
   }
 
   handleCancel(){
-    e.preventDefault();
     this.setState({ editToggle: false, messageToggle: false, content: this.props.message.content });
   }
 
@@ -48,31 +47,31 @@ class MessageIndexItem extends React.Component {
 
   editMessage(){
     return (
-      <div>
-        <form action="" onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" onChange={(e) => this.handleUpdate(e)} value={this.state.content}/>
-          <p>click <p className="edit-message-link" onClick={this.handleCancel}>here to cancel</p> <i className="fas fa-circle"></i> enter to <p className="edit-message-link" onClick={(e) => this.handleSubmit(e)}>save</p>
-          </p>
+        <form className="edit-message-form" action="" onSubmit={e => this.handleSubmit(e)}>
+          <input className="edit-message-input" type="text" onChange={e => this.handleUpdate(e)} value={this.state.content} />
+          <span>
+          click&nbsp;<p className="edit-message-link" onClick={this.handleCancel}>here to cancel
+            </p> <i className="fas fa-circle" /> enter to&nbsp;<p className="edit-message-link" onClick={e => this.handleSubmit(e)}>
+              save
+            </p>
+          </span>
         </form>
-
-      </div>
     )
   }
 
   toggleMessage(){
-    this.setState({ messageToggle: !this.state.messageToggle, editToggle: false });
+    this.setState({ messageToggle: !this.state.messageToggle});
   }
 
   toggleEdit(){
-    this.setState({ editToggle: !this.state.editToggle });
+    this.setState({ editToggle: !this.state.editToggle, messageToggle: false });
   }
 
   messageDropdown(){
     return(
     <div className='message-dropdown-container'> 
-        {this.state.messageToggle ? <div className="message-toggle-background" onClick={this.toggleMessage}></div> : null}
-        <div className="message-dropdown"
-          onClick={this.toggleMessage}>
+        <div className="close-message-dropdown" onClick={this.toggleMessage}></div>
+        <div className="message-dropdown">
           <p onClick={(e) => this.toggleEdit(e)}>Edit</p>
           <p onClick={(e) => this.handleRemove(e)}>Delete</p>
         </div>
@@ -85,26 +84,31 @@ class MessageIndexItem extends React.Component {
     const { author, message } = this.props
     const date = new Date();
     const today = `${date.getDate()} ${date.getFullYear()}`
-    const displayTime = today === `${message.day} ${message.year}` ? message.time : `${message.month} ${message.day} at ${message.time}`
+    const displayTime = today === `${message.day} ${message.year}` ? `Today at ${message.time}` : `${message.month} ${message.day} at ${message.time}`
 
-    return (
-    <div className="message-item">
+    return <div className="message-item">
         <img className="message-user-icon" src={`${author.photoUrl}`} alt="" />
-        <div>
+        <div className="message-info">
           <div className="message-user-info">
             <p className="message-author">{author.username}</p>
             <p className="message-time">{displayTime}</p>
           </div>
-          {this.state.editToggle ? this.editMessage() : <p className='message-content'>{message.content}</p> }
-          { isAuthor ? this.messageDropdown() : null }
+          <div className="message-content-container">
+            {this.state.editToggle ? this.editMessage() : <p className="message-content">
+              {message.content}
+            </p>}
+            <div>
+              {isAuthor ? <i onClick={this.toggleMessage} className="fas fa-ellipsis-v" aria-hidden="true" /> : <span/>}
+              <div className='message-dropdown-relative'>
+                {this.state.messageToggle ? this.messageDropdown() : null }
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    )
+      </div>;
   }
 }
 
 export default MessageIndexItem;
 
 
-//check if user is author, render conditional edit/delete
-// <i class="fas fa-ellipsis-v"></i>
