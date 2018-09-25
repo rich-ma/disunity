@@ -65,3 +65,9 @@ json.messages do
     end
   end
 end
+
+online_user_ids = Session.all.collect {|session| session.user_id}
+
+json.onlineUsers do
+  json.array! online_user_ids
+end
