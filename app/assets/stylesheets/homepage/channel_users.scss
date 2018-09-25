@@ -5,8 +5,9 @@
 
 .channel-message-col{
   background-image: image-url('channel-background.png');
-  background-size: cover;
-  background-position-x: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .message-user-container {
