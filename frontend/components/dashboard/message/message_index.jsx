@@ -98,12 +98,18 @@ class MessageIndex extends React.Component {
 
     return <div className="message-container">
         <div className="message-index">
+          {messages.length > 0 ?
           <ul className="message-index-log">
             {messages.map(message => {
               return <MessageIndexItem message={message} key={message.id} author={users[message.authorId]} currentUserId={currentUserId} chats={this.chats} />;
             })}
           </ul>
+          :
+          <div className='no-messages'>
+          </div>
+          }
           <div id='message-end'/>
+
         </div>
         <MessageForm loading={loading} userId={currentUserId} chats={this.chats} channel={channel} channelId={parseInt(this.props.match.params.channelId)} />
       </div>;
