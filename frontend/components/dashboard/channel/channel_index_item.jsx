@@ -27,11 +27,10 @@ class ChannelIndexItem extends Component {
   }
 
   handleSubmit(e) {
-    
     e.preventDefault();
     const that = this;
-    this.props.updateChannel(this.state)
-    .then(()=>that.toggleChannelInfo());
+    this.props.updateChannel(this.state);
+    this.toggleChannelInfo();
   }
 
   handleRemove(e){
@@ -47,24 +46,23 @@ class ChannelIndexItem extends Component {
   ChannelInfo(){
     const { channel } = this.props;
     
-    return(
-      <div>
-        <div onClick={(e) => this.toggleChannelInfo(e)}  className='close-channel-dropdown'></div>
-        <div className='channel-dropdown'>
+    return <div>
+        <div onClick={e => this.toggleChannelInfo(e)} className="close-channel-dropdown" />
+        <div className="channel-dropdown">
           <h1>Channel Info</h1>
-          <input
-            type="text"
-            autoFocus="true"
-            className='dropdown-input'
-            onChange={(e) => this.updateState(e)}
-            value={this.state.name} />
-          <div className='dropdown-buttons'>
-            <button className="edit-submit" onClick={this.handleSubmit}>Save</button>
-            <button className='delete-submit' onClick={this.handleRemove}>Delete</button>
-          </div>
+          <form action="" onSubmit={this.handleSubmit}>
+            <input type="text" autoFocus="true" className="dropdown-input" onChange={e => this.updateState(e)} value={this.state.name} />
+            <div className="dropdown-buttons">
+              <button className="edit-submit" onClick={this.handleSubmit}>
+                Save
+              </button>
+              <button className="delete-submit" onClick={this.handleRemove}>
+                Delete
+              </button>
+            </div>
+          </form>
         </div>
-    </div>
-    )
+      </div>;
   }
 
   render(){

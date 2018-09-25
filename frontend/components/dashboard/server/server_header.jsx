@@ -102,30 +102,32 @@ class ServerHeader extends Component {
               ))}
             </ul>
           </div>
-          <input
-            type="text"
-            autoFocus="true"
-            className='dropdown-input'
-            onChange={(e) => this.updateState(e)}
-            value={this.state.name} />
-          <div className='server-dropdown-photo'>
-            <label
-              className="server-photo-input-label"
-              htmlFor="server-photo-input">
-              <div>
-                <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
-                <input
-                  type="file"
-                  id="server-photo-input"
-                  onChange={(e)=>this.handleFile(e)}
-                  accept="image/*"/>
-              </div>
-            </label>
-          </div>
-          <div className='dropdown-buttons'>
-            <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
-            <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
-          </div>
+          <form action="" onSubmit={e => this.handleSubmit(e)}>
+            <input
+              type="text"
+              autoFocus="true"
+              className='dropdown-input'
+              onChange={(e) => this.updateState(e)}
+              value={this.state.name} />
+            <div className='server-dropdown-photo'>
+              <label
+                className="server-photo-input-label"
+                htmlFor="server-photo-input">
+                <div>
+                  <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
+                  <input
+                    type="file"
+                    id="server-photo-input"
+                    onChange={(e)=>this.handleFile(e)}
+                    accept="image/*"/>
+                </div>
+              </label>
+            </div>
+            <div className='dropdown-buttons'>
+              <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
+              <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
+            </div>
+          </form>
         </div>
       </div>
     );

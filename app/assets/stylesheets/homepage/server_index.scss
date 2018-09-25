@@ -6,6 +6,11 @@
   align-items: center;
   overflow: auto;
 }
+
+.server-index-col::-webkit-scrollbar {
+  width: 0 !important
+}
+
 @keyframes pulse_animation {
   0% {
     transform: scale(1);
@@ -32,6 +37,7 @@
     transform: scale(1);
   }
 }
+
 
 .server-link {
   position: relative;

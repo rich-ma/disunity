@@ -47,19 +47,21 @@ class CreateChannelForm extends React.Component {
             ))}
           </ul>
         </div>
-        <label>
-          CHANNEL NAME
-          <input
-            type="text"
-            placeholder="Enter a channel name"
-            autoFocus="true"
-            className='create-channel-input'
-            onChange={(e) => this.updateState(e)}
-            value={this.state.name} />
-        </label>
-        <div className='create-channel-footer'>
-          <button className='create-channel-submit' onClick={this.handleSubmit}>Create Channel</button>
-        </div>
+        <form action="" onSubmit={ this.handleSubmit }>
+          <label>
+            CHANNEL NAME
+            <input
+              type="text"
+              placeholder="Enter a channel name"
+              autoFocus="true"
+              className='create-channel-input'
+              onChange={(e) => this.updateState(e)}
+              value={this.state.name} />
+          </label>
+          <div className='create-channel-footer'>
+            <button className='create-channel-submit' onClick={this.handleSubmit}>Create Channel</button>
+          </div>
+          </form>
       </div>
 
     )
