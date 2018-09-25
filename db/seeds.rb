@@ -13,7 +13,7 @@ rich = User.create(username: "richmaaa", email:'rich@rich.io', password: '123456
 steven = User.create(username: "smartestSteven", email:'steven@steven.io', password: '123456')
 david = User.create(username: "DW3B17", email:'david@david.io', password: '123456')
 rob = User.create(username: "RobFarb2010", email:'rob@rob.io', password: '123456')
-demo = User.create(username: 'DWeb17', email: "dweb@appacademy.io", password: 'starwars')
+demo = User.create(username: 'Demo_User', email: "demo@appacademy.io", password: 'starwars')
 
 s1 = Server.create(admin_id: steven.id, name: 'DoUKNowdaWae', icon_url: 'https://png.icons8.com/color/1600/ugandan-knuckles.png')
 s2 = Server.create(admin_id: david.id, name: 'App Academy', icon_url: 'https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/2005/s300/logo-emblem-red-1000-1-.jpg')
