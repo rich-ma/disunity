@@ -9,6 +9,7 @@ class ServerHeader extends Component {
       photoFile: null,
       photoUrl: props.currentServer.photoUrl,
       toggle: false,
+      id: props.currentServer.id
     }
     this.toggleServerInfo = this.toggleServerInfo.bind(this);
     this.ServerInfo = this.ServerInfo.bind(this);
@@ -19,15 +20,15 @@ class ServerHeader extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-  if (props.loading) return state;
-    return {
+    
+    if (props.loading) return state;
+    return props.currentServer.id === state.id ? state : {
       name: props.currentServer.name,
       photoFile: null,
       photoUrl: props.currentServer.photoUrl,
       toggle: state === null ? false : state.toggle,
-    }
+    };
   }
-
 
   updateState(e) {
     e.preventDefault();
@@ -102,32 +103,30 @@ class ServerHeader extends Component {
               ))}
             </ul>
           </div>
-          <form action="" onSubmit={e => this.handleSubmit(e)}>
-            <input
-              type="text"
-              autoFocus="true"
-              className='dropdown-input'
-              onChange={(e) => this.updateState(e)}
-              value={this.state.name} />
-            <div className='server-dropdown-photo'>
-              <label
-                className="server-photo-input-label"
-                htmlFor="server-photo-input">
-                <div>
-                  <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
-                  <input
-                    type="file"
-                    id="server-photo-input"
-                    onChange={(e)=>this.handleFile(e)}
-                    accept="image/*"/>
-                </div>
-              </label>
-            </div>
-            <div className='dropdown-buttons'>
-              <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
-              <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
-            </div>
-          </form>
+          <input
+            type="text"
+            autoFocus="true"
+            className='dropdown-input'
+            onChange={this.updateState}
+            value={this.state.name} />
+          <div className='server-dropdown-photo'>
+            <label
+              className="server-photo-input-label"
+              htmlFor="server-photo-input">
+              <div>
+                <img src={this.state.photoUrl} alt={`${this.state.name}'s icon`} />
+                <input
+                  type="file"
+                  id="server-photo-input"
+                  onChange={(e)=>this.handleFile(e)}
+                  accept="image/*"/>
+              </div>
+            </label>
+          </div>
+          <div className='dropdown-buttons'>
+            <button className="edit-submit" onClick={e => this.handleSubmit(e)}>Save</button>
+            <button className='delete-submit' onClick={e => this.handleRemove(e)}>Delete</button>
+          </div>
         </div>
       </div>
     );
