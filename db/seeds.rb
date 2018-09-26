@@ -29,10 +29,10 @@ ServersMembership.create(user_id: 5, server_id: 2)
 
 a = Channel.create(server_id: 1, name: 'Choose your starter')
 b = Channel.create(server_id: 1, name: 'Cute Pics!')
-f = Channel.create(server_id: 1, name: 'Dunder Mifflin')
-c = Channel.create(server_id: 2, name: 'general')
-d = Channel.create(server_id: 2, name: 'SF June 2018')
-e = Channel.create(server_id: 2, name: 'David\'s Circle')
+c = Channel.create(server_id: 1, name: 'Dunder Mifflin')
+d = Channel.create(server_id: 2, name: 'general')
+e = Channel.create(server_id: 2, name: 'SF June 2018')
+f = Channel.create(server_id: 2, name: 'David\'s Circle')
 
 ash = User.create(username: "TheVeryBest", email:'ash@ash.io', password: '123456', avatar_url: 'https://vignette.wikia.nocookie.net/party-ninja/images/1/15/Ash_season_1.jpg/revision/latest?cb=20131107175054')
 oak = User.create(username: "ProfessorOak", email:'oak@oak.io', password: '123456', avatar_url: 'https://pbs.twimg.com/profile_images/2927846251/bf8cef29642aceb034d4b01ab29a4ca7_400x400.png')
@@ -55,7 +55,6 @@ Users = {
 # pokemon seed
 contents = File.readlines('app/assets/text/pokemons1e1.txt')
 
-
 contents.each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
@@ -67,30 +66,34 @@ contents.each_with_index do |line, i|
 end
 
 # office seed
-fake_jim = User.create(username: "RealestJim", email:'jim@jim.io', password: '123456', avatar_url: 'http://www.angryasianman.com/images/angry/randallpark_theoffice01.jpg')
+fake_jim = User.create(username: "RealestJim", email:'jim@jim.io', password:'123456', avatar_url:'http://www.angryasianman.com/images/angry/randallpark_theoffice01.jpg')
+
 dwight = User.create(username: "DwightKSchrute", email:'dwight@dwight.io', password: '123456', avatar_url: 'https://i1.sndcdn.com/artworks-000001104797-rgzcts-t500x500.jpg')
+
 pam = User.create(username: "Pam", email:'pam@pam.io', password: '123456', avatar_url: 'https://screenrant.com/wp-content/uploads/2018/08/Pam-Halpert-in-The-Office.jpg')
+
+machine = User.create(username: "voicemail", email:'robot@robot.io', password: '123456', avatar_url:'https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/101/10173/10173396.jpg')
 
 ServersMembership.create(user_id: fake_jim.id, server_id: s1.id)
 ServersMembership.create(user_id: dwight.id, server_id: s1.id)
-ServersMembership.create(user_id: dwight.id, server_id: s2.id)
+ServersMembership.create(user_id: machine.id, server_id: s1.id)
 ServersMembership.create(user_id: pam.id, server_id: s1.id)
 
-contents2 = File.readlines('app/assets/text/Offices9e3.txt')
+contents2 = File.readlines('app/assets/text/offices9e3.txt')
 
 Users2 = {
     'Fake Jim'=> fake_jim,
     'Dwight'=> dwight,
     'Pam'=> pam,
+    'Voicemail'=>machine,
   }
 
 contents2.each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
   content = line[1]
-  
-  new_message = Message.create(author_id: Users2[author_name].id, channel_id: f.id, content: content)
+  new_message = Message.create(author_id: Users2[author_name].id, channel_id: c.id, content: content)
   new_message.created_at = i.minutes.from_now
   new_message.save
+  p content
 end
-
