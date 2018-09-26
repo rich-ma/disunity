@@ -85,7 +85,7 @@ Users2 = {
     'Voicemail'=>machine,
   }
 
-  File.readlines('app/assets/text/offices9e3.txt').each_with_index do |line, i|
+  File.readlines('app/assets/text/Offices9e3.txt').each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
   content = line[1]
