@@ -95,5 +95,4 @@ contents2.each_with_index do |line, i|
   new_message = Message.create(author_id: Users2[author_name].id, channel_id: c.id, content: content)
   new_message.created_at = i.minutes.from_now
   new_message.save
-  p content
 end
