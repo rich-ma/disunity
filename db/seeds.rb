@@ -53,9 +53,7 @@ Users = {
   }
 
 # pokemon seed
-contents = File.readlines('app/assets/text/pokemons1e1.txt')
-
-contents.each_with_index do |line, i|
+File.readlines('app/assets/text/pokemons1e1.txt').each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
   content = line[1]
@@ -64,6 +62,7 @@ contents.each_with_index do |line, i|
   new_message.created_at = i.minutes.from_now
   new_message.save
 end
+
 
 # office seed
 fake_jim = User.create(username: "RealestJim", email:'jim@jim.io', password:'123456', avatar_url:'http://www.angryasianman.com/images/angry/randallpark_theoffice01.jpg')
@@ -79,8 +78,6 @@ ServersMembership.create(user_id: dwight.id, server_id: s1.id)
 ServersMembership.create(user_id: machine.id, server_id: s1.id)
 ServersMembership.create(user_id: pam.id, server_id: s1.id)
 
-contents2 = File.readlines('app/assets/text/offices9e3.txt')
-
 Users2 = {
     'Fake Jim'=> fake_jim,
     'Dwight'=> dwight,
@@ -88,7 +85,7 @@ Users2 = {
     'Voicemail'=>machine,
   }
 
-contents2.each_with_index do |line, i|
+  File.readlines('app/assets/text/offices9e3.txt').each_with_index do |line, i|
   line = line.split(': ')
   author_name = line[0]
   content = line[1]
