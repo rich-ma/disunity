@@ -17,9 +17,9 @@ class ChannelIndex extends React.Component {
     return (
       <div
         className="channel-new"
-        onClick={() => this.props.openModal("newChannel", server)}
+        onClick={() => this.props.openModal("newChannel", server)} 
       >
-        <i className="fas fa-plus" />
+        <i className="fas fa-plus"/>
       </div>
     );
   }

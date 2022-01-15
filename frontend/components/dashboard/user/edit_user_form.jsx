@@ -48,7 +48,7 @@ class EditUserForm extends Component {
     } else {
       this.setState({ PhotoUrl: "" , PhotoFile: null });
     }
-  }
+  } 
 
   handleLogout(e){
     e.preventDefault();

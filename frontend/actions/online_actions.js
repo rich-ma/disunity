@@ -10,3 +10,4 @@ export const userLoggedOut = id => ({
   type: LOGGED_OUT,
   userId: id
 });
+ 
