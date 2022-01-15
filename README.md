@@ -19,7 +19,7 @@ This project was designed and developed over 10 days, and I plan to continue imp
 
 ### Administrator Privileges and Conditional Rendering
 
-The dashboard will render each component different based on whether or not you are the administrator for the server. This occurs when you want to add, edit, or delete channels.  Or when you want to edit or delete the server.  If you are not the administrator the user will be able to leave the server, rather than edit or delete it.   
+The dashboard will render each component different based on whether or not you are the administrator for the server. This occurs when you want to add, edit, or delete channels.  Or when you want to edit or delete the server.  If you are not the administrator the user will be able to leave the server, rather than edit or delete it.
 
 ```Server information:```
 ![Non-admin server info](app/assets/images/user-server.png)
